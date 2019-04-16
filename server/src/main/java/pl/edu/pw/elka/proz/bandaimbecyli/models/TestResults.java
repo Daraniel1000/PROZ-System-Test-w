@@ -4,6 +4,9 @@ public class TestResults {
     private int generatedTestId;
     private String someMsg; // TODO
 
+    public TestResults() {
+    }
+
     public TestResults(int generatedTestId, String someMsg) {
         this.generatedTestId = generatedTestId;
         this.someMsg = someMsg;

@@ -1,6 +1,5 @@
-package pl.edu.pw.elka.proz.bandaimbecyli.web;
+package pl.edu.pw.elka.proz.bandaimbecyli.webutil;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
@@ -18,7 +17,6 @@ public class JacksonContextResolver implements ContextResolver<ObjectMapper> {
     public JacksonContextResolver() {
         this.objectMapper = new ObjectMapper();
         this.objectMapper
-                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                 .configure(SerializationFeature.INDENT_OUTPUT, true);
     }
 

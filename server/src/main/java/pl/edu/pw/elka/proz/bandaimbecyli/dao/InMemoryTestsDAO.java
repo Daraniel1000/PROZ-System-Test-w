@@ -1,30 +1,40 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.dao;
 
+import pl.edu.pw.elka.proz.bandaimbecyli.models.AvailableTest;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.GeneratedTest;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.Test;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class InMemoryTestsDAO implements TestsDAO {
-    private static final Map<Integer, Test> tests = new HashMap<>();
+    private static final Map<Integer, AvailableTest> tests = new HashMap<>();
     private static final Map<Integer, GeneratedTest> generatedTests = new HashMap<>();
     private static int generatedTestsLastId = 0;
 
-    static {
-        tests.put(1, new Test(1, "Test pierwszy"));
-        tests.put(2, new Test(2, "Test drugi"));
+    public InMemoryTestsDAO() {
+    }
+
+    public InMemoryTestsDAO(Collection<AvailableTest> tsts) {
+        setAvailableTests(tsts);
+    }
+
+    private void setAvailableTests(Collection<AvailableTest> tsts)
+    {
+        tests.clear();
+        for (AvailableTest t : tsts) {
+            tests.put(t.getId(), t);
+        }
     }
 
     @Override
-    public Collection<Test> listAvailableTests()
+    public Collection<AvailableTest> listAvailableTests()
     {
         return tests.values();
     }
 
     @Override
-    public Test getTestById(int id, boolean includingQuestionsAnswers)
+    public AvailableTest getTestById(int id, boolean includingQuestionsAnswers)
     {
         return tests.get(id);
     }

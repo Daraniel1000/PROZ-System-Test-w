@@ -5,6 +5,9 @@ public class GeneratedTest {
     private int testId;
     private String someMsg;
 
+    public GeneratedTest() {
+    }
+
     public GeneratedTest(int testId, String someMsg) {
         this.testId = testId;
         this.someMsg = someMsg;

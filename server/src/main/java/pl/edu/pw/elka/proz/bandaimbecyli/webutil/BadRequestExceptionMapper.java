@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.proz.bandaimbecyli.web;
+package pl.edu.pw.elka.proz.bandaimbecyli.webutil;
 
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.core.Response;

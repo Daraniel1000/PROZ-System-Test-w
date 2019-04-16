@@ -4,11 +4,13 @@ import pl.edu.pw.elka.proz.bandaimbecyli.dao.InMemoryTestsDAO;
 import pl.edu.pw.elka.proz.bandaimbecyli.dao.TestsDAO;
 import pl.edu.pw.elka.proz.bandaimbecyli.generator.TestGenerator;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.GeneratedTest;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.Test;
+import pl.edu.pw.elka.proz.bandaimbecyli.models.AvailableTest;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.TestResults;
 
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,11 +18,19 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class TestsService
 {
-    private TestsDAO dao = new InMemoryTestsDAO();
+    public static TestsDAO dao;
+
+    static
+    {
+        List<AvailableTest> tests = new ArrayList<>();
+        tests.add(new AvailableTest(1, "Test pierwszy"));
+        tests.add(new AvailableTest(2, "Test drugi"));
+        dao = new InMemoryTestsDAO(tests);
+    }
 
     @Path("/")
     @GET
-    public Collection<Test> listAvailableTests()
+    public Collection<AvailableTest> listAvailableTests()
     {
         return dao.listAvailableTests();
     }
@@ -29,7 +39,7 @@ public class TestsService
     @POST
     public GeneratedTest generateTest(@PathParam("testId") int testId)
     {
-        Test test = dao.getTestById(testId, true);
+        AvailableTest test = dao.getTestById(testId, true);
         if (test == null)
             throw new NotFoundException("No such test found");
         return new TestGenerator(dao).generateTest(test);
@@ -40,12 +50,14 @@ public class TestsService
     @Consumes(MediaType.APPLICATION_JSON)
     public TestResults submitAnswers(@PathParam("testId") int testId, @PathParam("solveId") int solveId, List<String> solutions)
     {
+        if (solutions == null)
+            throw new BadRequestException("No solutions sent");
         GeneratedTest genTest = dao.getGeneratedTestById(solveId);
         if (genTest == null)
             throw new NotFoundException("No such generated test found");
         if (genTest.getTestId() != testId)
             throw new BadRequestException("Invalid - solution does not match testId");
-        Test test = dao.getTestById(testId, true);
+        AvailableTest test = dao.getTestById(testId, true);
         return new TestGenerator(dao).submitAndGradeTest(test, genTest, solutions);
     }
 }

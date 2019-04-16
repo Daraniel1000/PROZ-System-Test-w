@@ -1,15 +1,18 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.models;
 
 //TODO
-public class Test {
+public class AvailableTest {
     private int id;
     private String name;
 
-    public Test(String name) {
+    public AvailableTest() {
+    }
+
+    public AvailableTest(String name) {
         this.name = name;
     }
 
-    public Test(int id, String name) {
+    public AvailableTest(int id, String name) {
         this.id = id;
         this.name = name;
     }

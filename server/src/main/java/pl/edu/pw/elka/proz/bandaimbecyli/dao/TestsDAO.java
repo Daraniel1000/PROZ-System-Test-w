@@ -1,14 +1,14 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.dao;
 
+import pl.edu.pw.elka.proz.bandaimbecyli.models.AvailableTest;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.GeneratedTest;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.Test;
 
 import java.util.Collection;
 
 public interface TestsDAO {
-    Collection<Test> listAvailableTests();
+    Collection<AvailableTest> listAvailableTests();
 
-    Test getTestById(int id, boolean includingQuestionsAnswers);
+    AvailableTest getTestById(int id, boolean includingQuestionsAnswers);
 
     void saveGeneratedTest(GeneratedTest genTest);
 
