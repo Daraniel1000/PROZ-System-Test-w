@@ -17,3 +17,68 @@ git clone https://github.com/Daraniel1000/proz_banda_imbecyli.git
 cd proz_banda_imbecyli/server
 mvn tomcat7:run
 ```
+
+## Server docs
+
+```
+> GET /tests HTTP/1.1
+> Host: localhost:8080
+> 
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+< 
+[ {
+  "id" : 1,
+  "name" : "Test pierwszy"
+}, {
+  "id" : 2,
+  "name" : "Test drugi"
+} ]
+
+> POST /tests/1/solve HTTP/1.1
+> Host: localhost:8080
+> 
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+< 
+{
+  "id" : 1,
+  "testId" : 1,
+  "someMsg" : "bla bla bla something TODO"
+}
+
+> POST /tests/1/solve HTTP/1.1
+> Host: localhost:8080
+> 
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+< 
+{
+  "id" : 2,
+  "testId" : 1,
+  "someMsg" : "bla bla bla something TODO"
+}
+
+> POST /tests/1/solve/2/submit HTTP/1.1
+> Host: localhost:8080
+> Content-Type: application/json
+> 
+["1", "3", "zielony"]
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+< 
+{
+  "generatedTestId" : 2,
+  "someMsg" : "Dobra robota, 2/10"
+}
+
+> POST /tests/1/solve/13/submit HTTP/1.1
+> Host: localhost:8080
+> Content-Type: application/json
+> 
+["1", "3", "zielony"]
+< HTTP/1.1 404 Not Found
+< Content-Type: application/json
+< 
+No such generated test found
+```

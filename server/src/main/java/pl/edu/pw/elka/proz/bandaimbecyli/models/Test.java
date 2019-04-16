@@ -1,0 +1,32 @@
+package pl.edu.pw.elka.proz.bandaimbecyli.models;
+
+//TODO
+public class Test {
+    private int id;
+    private String name;
+
+    public Test(String name) {
+        this.name = name;
+    }
+
+    public Test(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
