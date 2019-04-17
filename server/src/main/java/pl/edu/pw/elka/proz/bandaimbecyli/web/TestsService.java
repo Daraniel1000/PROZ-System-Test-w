@@ -1,5 +1,6 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.web;
 
+import pl.edu.pw.elka.proz.bandaimbecyli.dao.DatabaseTestsDAO;
 import pl.edu.pw.elka.proz.bandaimbecyli.dao.InMemoryTestsDAO;
 import pl.edu.pw.elka.proz.bandaimbecyli.dao.TestsDAO;
 import pl.edu.pw.elka.proz.bandaimbecyli.generator.TestGenerator;
@@ -10,6 +11,7 @@ import pl.edu.pw.elka.proz.bandaimbecyli.models.TestResults;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,10 +24,15 @@ public class TestsService
 
     static
     {
-        List<AvailableTest> tests = new ArrayList<>();
+        /*List<AvailableTest> tests = new ArrayList<>();
         tests.add(new AvailableTest(1, "Test pierwszy"));
         tests.add(new AvailableTest(2, "Test drugi"));
-        dao = new InMemoryTestsDAO(tests);
+        dao = new InMemoryTestsDAO(tests);*/
+        try {
+            dao = new DatabaseTestsDAO();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Path("/")

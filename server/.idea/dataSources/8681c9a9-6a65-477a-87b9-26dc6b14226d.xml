@@ -1,0 +1,2669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="ora3inf">
+  <database-model serializer="dbm" dbms="ORACLE" family-id="ORACLE" format-version="4.15">
+    <root id="1">
+      <ServerVersion>11.2.0.1.0</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="AANGULO1">
+      <ObjectId>3086</ObjectId>
+    </schema>
+    <schema id="3" parent="1" name="ABIENIEK">
+      <ObjectId>3087</ObjectId>
+    </schema>
+    <schema id="4" parent="1" name="ABRODZIK">
+      <ObjectId>3088</ObjectId>
+    </schema>
+    <schema id="5" parent="1" name="ACELEJ">
+      <ObjectId>3089</ObjectId>
+    </schema>
+    <schema id="6" parent="1" name="ACH">
+      <ObjectId>2891</ObjectId>
+    </schema>
+    <schema id="7" parent="1" name="ACHMIEL1">
+      <ObjectId>3259</ObjectId>
+    </schema>
+    <schema id="8" parent="1" name="ACIEMSKI">
+      <ObjectId>100</ObjectId>
+    </schema>
+    <schema id="9" parent="1" name="ADAOUAS">
+      <ObjectId>3090</ObjectId>
+    </schema>
+    <schema id="10" parent="1" name="AGOLISZ">
+      <ObjectId>3260</ObjectId>
+    </schema>
+    <schema id="11" parent="1" name="AGOSZKOW">
+      <ObjectId>3091</ObjectId>
+    </schema>
+    <schema id="12" parent="1" name="AGRABICZ">
+      <ObjectId>3092</ObjectId>
+    </schema>
+    <schema id="13" parent="1" name="AJEDYNAK">
+      <ObjectId>3093</ObjectId>
+    </schema>
+    <schema id="14" parent="1" name="AKARPETA">
+      <ObjectId>3094</ObjectId>
+    </schema>
+    <schema id="15" parent="1" name="AKASHKOU">
+      <ObjectId>3095</ObjectId>
+    </schema>
+    <schema id="16" parent="1" name="AKHMELOW">
+      <ObjectId>508</ObjectId>
+    </schema>
+    <schema id="17" parent="1" name="AKOZLOW2">
+      <ObjectId>2497</ObjectId>
+    </schema>
+    <schema id="18" parent="1" name="ALOBACH1">
+      <ObjectId>3096</ObjectId>
+    </schema>
+    <schema id="19" parent="1" name="AMAJKOWS">
+      <ObjectId>3097</ObjectId>
+    </schema>
+    <schema id="20" parent="1" name="AMARCQ">
+      <ObjectId>3098</ObjectId>
+    </schema>
+    <schema id="21" parent="1" name="AMENDAK">
+      <ObjectId>3308</ObjectId>
+    </schema>
+    <schema id="22" parent="1" name="AMOTAK">
+      <ObjectId>3309</ObjectId>
+    </schema>
+    <schema id="23" parent="1" name="AMUSIAL">
+      <ObjectId>1194</ObjectId>
+    </schema>
+    <schema id="24" parent="1" name="AMUSIAL1">
+      <ObjectId>2210</ObjectId>
+    </schema>
+    <schema id="25" parent="1" name="ANADRATO">
+      <ObjectId>3099</ObjectId>
+    </schema>
+    <schema id="26" parent="1" name="ANATH">
+      <ObjectId>3100</ObjectId>
+    </schema>
+    <schema id="27" parent="1" name="ANONYMOUS">
+      <ObjectId>46</ObjectId>
+    </schema>
+    <schema id="28" parent="1" name="AOSMONT">
+      <ObjectId>3101</ObjectId>
+    </schema>
+    <schema id="29" parent="1" name="APAWLUS">
+      <ObjectId>3102</ObjectId>
+    </schema>
+    <schema id="30" parent="1" name="APEX_030200">
+      <ObjectId>78</ObjectId>
+    </schema>
+    <schema id="31" parent="1" name="APEX_PUBLIC_USER">
+      <ObjectId>76</ObjectId>
+    </schema>
+    <schema id="32" parent="1" name="APPQOSSYS">
+      <ObjectId>31</ObjectId>
+    </schema>
+    <schema id="33" parent="1" name="ASERRANO">
+      <ObjectId>3103</ObjectId>
+    </schema>
+    <schema id="34" parent="1" name="ASIWEK">
+      <ObjectId>3261</ObjectId>
+    </schema>
+    <schema id="35" parent="1" name="ASZMURLO">
+      <ObjectId>2842</ObjectId>
+    </schema>
+    <schema id="36" parent="1" name="AWARGOCK">
+      <ObjectId>3104</ObjectId>
+    </schema>
+    <schema id="37" parent="1" name="AWYROZEB">
+      <ObjectId>3105</ObjectId>
+    </schema>
+    <schema id="38" parent="1" name="AZENEVIC">
+      <ObjectId>3106</ObjectId>
+    </schema>
+    <schema id="39" parent="1" name="AZIOLO">
+      <ObjectId>3107</ObjectId>
+    </schema>
+    <schema id="40" parent="1" name="BCIUCKOW">
+      <ObjectId>3108</ObjectId>
+    </schema>
+    <schema id="41" parent="1" name="BI">
+      <ObjectId>90</ObjectId>
+    </schema>
+    <schema id="42" parent="1" name="BLESIEWI">
+      <ObjectId>3109</ObjectId>
+    </schema>
+    <schema id="43" parent="1" name="BPARTYKA">
+      <ObjectId>3110</ObjectId>
+    </schema>
+    <schema id="44" parent="1" name="BSCOTT">
+      <ObjectId>3111</ObjectId>
+    </schema>
+    <schema id="45" parent="1" name="BTUNC">
+      <ObjectId>3112</ObjectId>
+    </schema>
+    <schema id="46" parent="1" name="BTWARDOW">
+      <ObjectId>301</ObjectId>
+    </schema>
+    <schema id="47" parent="1" name="BWALEGA">
+      <ObjectId>3262</ObjectId>
+    </schema>
+    <schema id="48" parent="1" name="BWOLSKI">
+      <ObjectId>3113</ObjectId>
+    </schema>
+    <schema id="49" parent="1" name="CKONOPCZ">
+      <ObjectId>3114</ObjectId>
+    </schema>
+    <schema id="50" parent="1" name="CTXSYS">
+      <ObjectId>43</ObjectId>
+    </schema>
+    <schema id="51" parent="1" name="DAJLERT">
+      <ObjectId>3115</ObjectId>
+    </schema>
+    <schema id="52" parent="1" name="DBRZOZOW">
+      <ObjectId>3116</ObjectId>
+    </schema>
+    <schema id="53" parent="1" name="DBSNMP">
+      <ObjectId>30</ObjectId>
+    </schema>
+    <schema id="54" parent="1" name="DGABIEC">
+      <ObjectId>3117</ObjectId>
+    </schema>
+    <schema id="55" parent="1" name="DIP">
+      <ObjectId>14</ObjectId>
+    </schema>
+    <schema id="56" parent="1" name="DJAGODZI">
+      <ObjectId>2211</ObjectId>
+    </schema>
+    <schema id="57" parent="1" name="DKLOCHKO">
+      <ObjectId>3118</ObjectId>
+    </schema>
+    <schema id="58" parent="1" name="DKOSS">
+      <ObjectId>3119</ObjectId>
+    </schema>
+    <schema id="59" parent="1" name="DMALICZA">
+      <ObjectId>3263</ObjectId>
+    </schema>
+    <schema id="60" parent="1" name="DNGUYEN">
+      <ObjectId>3120</ObjectId>
+    </schema>
+    <schema id="61" parent="1" name="DPAPIERN">
+      <ObjectId>3264</ObjectId>
+    </schema>
+    <schema id="62" parent="1" name="DPETRYKO">
+      <ObjectId>3121</ObjectId>
+    </schema>
+    <schema id="63" parent="1" name="DRYZKO">
+      <ObjectId>105</ObjectId>
+    </schema>
+    <schema id="64" parent="1" name="DWOJCIE2">
+      <ObjectId>3122</ObjectId>
+    </schema>
+    <schema id="65" parent="1" name="EDUTKIEW">
+      <ObjectId>3310</ObjectId>
+    </schema>
+    <schema id="66" parent="1" name="EERTUNC">
+      <ObjectId>3123</ObjectId>
+    </schema>
+    <schema id="67" parent="1" name="EFROUIN">
+      <ObjectId>3124</ObjectId>
+    </schema>
+    <schema id="68" parent="1" name="EKONDRAC">
+      <ObjectId>3265</ObjectId>
+    </schema>
+    <schema id="69" parent="1" name="EMENDES">
+      <ObjectId>3125</ObjectId>
+    </schema>
+    <schema id="70" parent="1" name="EMONZON">
+      <ObjectId>3126</ObjectId>
+    </schema>
+    <schema id="71" parent="1" name="EPAPROCK">
+      <ObjectId>3266</ObjectId>
+    </schema>
+    <schema id="72" parent="1" name="ESENSAN">
+      <ObjectId>3127</ObjectId>
+    </schema>
+    <schema id="73" parent="1" name="ETURSKA">
+      <ObjectId>3128</ObjectId>
+    </schema>
+    <schema id="74" parent="1" name="EWASILE1">
+      <ObjectId>3267</ObjectId>
+    </schema>
+    <schema id="75" parent="1" name="EXFSYS">
+      <ObjectId>42</ObjectId>
+    </schema>
+    <schema id="76" parent="1" name="FLOWS_FILES">
+      <ObjectId>75</ObjectId>
+    </schema>
+    <schema id="77" parent="1" name="FPRZYBYS">
+      <ObjectId>3129</ObjectId>
+    </schema>
+    <schema id="78" parent="1" name="GALEKSIU">
+      <ObjectId>3130</ObjectId>
+    </schema>
+    <schema id="79" parent="1" name="GFAUCON">
+      <ObjectId>3131</ObjectId>
+    </schema>
+    <schema id="80" parent="1" name="GHANDEL">
+      <ObjectId>3268</ObjectId>
+    </schema>
+    <schema id="81" parent="1" name="GKALITSI">
+      <ObjectId>3132</ObjectId>
+    </schema>
+    <schema id="82" parent="1" name="GPROTAZI">
+      <ObjectId>1440</ObjectId>
+    </schema>
+    <schema id="83" parent="1" name="GROGOZIN">
+      <ObjectId>3133</ObjectId>
+    </schema>
+    <schema id="84" parent="1" name="GTENUS">
+      <ObjectId>3269</ObjectId>
+    </schema>
+    <schema id="85" parent="1" name="HALMUSH">
+      <ObjectId>3134</ObjectId>
+    </schema>
+    <schema id="86" parent="1" name="HGAN1">
+      <ObjectId>3135</ObjectId>
+    </schema>
+    <schema id="87" parent="1" name="HPOLEKHA">
+      <ObjectId>3136</ObjectId>
+    </schema>
+    <schema id="88" parent="1" name="HR">
+      <ObjectId>85</ObjectId>
+    </schema>
+    <schema id="89" parent="1" name="IAARABU">
+      <ObjectId>3137</ObjectId>
+    </schema>
+    <schema id="90" parent="1" name="ISEREDYN">
+      <ObjectId>3270</ObjectId>
+    </schema>
+    <schema id="91" parent="1" name="IX">
+      <ObjectId>87</ObjectId>
+    </schema>
+    <schema id="92" parent="1" name="JBRYL">
+      <ObjectId>3138</ObjectId>
+    </schema>
+    <schema id="93" parent="1" name="JFICEK">
+      <ObjectId>3139</ObjectId>
+    </schema>
+    <schema id="94" parent="1" name="JGAJEWS3">
+      <ObjectId>3140</ObjectId>
+    </schema>
+    <schema id="95" parent="1" name="JGLEGOLA">
+      <ObjectId>3141</ObjectId>
+    </schema>
+    <schema id="96" parent="1" name="JGODLEWS">
+      <ObjectId>3271</ObjectId>
+    </schema>
+    <schema id="97" parent="1" name="JGRZECH2">
+      <ObjectId>3311</ObjectId>
+    </schema>
+    <schema id="98" parent="1" name="JJANKOW2">
+      <ObjectId>3272</ObjectId>
+    </schema>
+    <schema id="99" parent="1" name="JKIESIAK">
+      <ObjectId>3142</ObjectId>
+    </schema>
+    <schema id="100" parent="1" name="JLEE3">
+      <ObjectId>3143</ObjectId>
+    </schema>
+    <schema id="101" parent="1" name="JLEMMENS">
+      <ObjectId>3144</ObjectId>
+    </schema>
+    <schema id="102" parent="1" name="JLEWANDO">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="103" parent="1" name="JMODZEL3">
+      <ObjectId>3145</ObjectId>
+    </schema>
+    <schema id="104" parent="1" name="JMY">
+      <ObjectId>304</ObjectId>
+    </schema>
+    <schema id="105" parent="1" name="JMYRCHA">
+      <ObjectId>1443</ObjectId>
+    </schema>
+    <schema id="106" parent="1" name="JORLINSK">
+      <ObjectId>3146</ObjectId>
+    </schema>
+    <schema id="107" parent="1" name="JPIETRO1">
+      <ObjectId>3147</ObjectId>
+    </schema>
+    <schema id="108" parent="1" name="JPRUGARE">
+      <ObjectId>3148</ObjectId>
+    </schema>
+    <schema id="109" parent="1" name="JSOSNOW1">
+      <ObjectId>729</ObjectId>
+    </schema>
+    <schema id="110" parent="1" name="JSWIERCZ">
+      <ObjectId>3149</ObjectId>
+    </schema>
+    <schema id="111" parent="1" name="KBIEGAJS">
+      <ObjectId>3150</ObjectId>
+    </schema>
+    <schema id="112" parent="1" name="KBIELSKI">
+      <ObjectId>3273</ObjectId>
+    </schema>
+    <schema id="113" parent="1" name="KBLANKIE">
+      <ObjectId>3151</ObjectId>
+    </schema>
+    <schema id="114" parent="1" name="KGORLACH">
+      <ObjectId>3152</ObjectId>
+    </schema>
+    <schema id="115" parent="1" name="KGROCHOW">
+      <ObjectId>1438</ObjectId>
+    </schema>
+    <schema id="116" parent="1" name="KHALADYN">
+      <ObjectId>3153</ObjectId>
+    </schema>
+    <schema id="117" parent="1" name="KHESS">
+      <ObjectId>3274</ObjectId>
+    </schema>
+    <schema id="118" parent="1" name="KJAGODZI">
+      <ObjectId>3275</ObjectId>
+    </schema>
+    <schema id="119" parent="1" name="KKARWAN">
+      <ObjectId>3312</ObjectId>
+    </schema>
+    <schema id="120" parent="1" name="KKASZEWS">
+      <ObjectId>3276</ObjectId>
+    </schema>
+    <schema id="121" parent="1" name="KKIPA">
+      <ObjectId>3154</ObjectId>
+    </schema>
+    <schema id="122" parent="1" name="KKOKIEC">
+      <ObjectId>3155</ObjectId>
+    </schema>
+    <schema id="123" parent="1" name="KKRUK">
+      <ObjectId>3313</ObjectId>
+    </schema>
+    <schema id="124" parent="1" name="KKULA">
+      <ObjectId>3156</ObjectId>
+    </schema>
+    <schema id="125" parent="1" name="KKUSMIER">
+      <ObjectId>3277</ObjectId>
+    </schema>
+    <schema id="126" parent="1" name="KLECOMTE">
+      <ObjectId>3157</ObjectId>
+    </schema>
+    <schema id="127" parent="1" name="KMEYSZTO">
+      <ObjectId>3158</ObjectId>
+    </schema>
+    <schema id="128" parent="1" name="KOLEKSI2">
+      <ObjectId>3278</ObjectId>
+    </schema>
+    <schema id="129" parent="1" name="KOPALINS">
+      <ObjectId>3159</ObjectId>
+    </schema>
+    <schema id="130" parent="1" name="KPAWLUK">
+      <ObjectId>3160</ObjectId>
+    </schema>
+    <schema id="131" parent="1" name="KPODSIAD">
+      <ObjectId>3161</ObjectId>
+    </schema>
+    <schema id="132" parent="1" name="KRZECZY1">
+      <ObjectId>3162</ObjectId>
+    </schema>
+    <schema id="133" parent="1" name="KSWISLOW">
+      <ObjectId>3279</ObjectId>
+    </schema>
+    <schema id="134" parent="1" name="KSZUBA">
+      <ObjectId>3280</ObjectId>
+    </schema>
+    <schema id="135" parent="1" name="KZACHARC">
+      <ObjectId>3163</ObjectId>
+    </schema>
+    <schema id="136" parent="1" name="KZAJAC1">
+      <ObjectId>3164</ObjectId>
+    </schema>
+    <schema id="137" parent="1" name="KZAWITAJ">
+      <ObjectId>3165</ObjectId>
+    </schema>
+    <schema id="138" parent="1" name="KZBIKOWS">
+      <ObjectId>2496</ObjectId>
+    </schema>
+    <schema id="139" parent="1" name="LGINALSK">
+      <ObjectId>3281</ObjectId>
+    </schema>
+    <schema id="140" parent="1" name="LMOUSSY">
+      <ObjectId>3166</ObjectId>
+    </schema>
+    <schema id="141" parent="1" name="LROMBEL">
+      <ObjectId>3167</ObjectId>
+    </schema>
+    <schema id="142" parent="1" name="LSLIWA1">
+      <ObjectId>1444</ObjectId>
+    </schema>
+    <schema id="143" parent="1" name="LWOLANIN">
+      <ObjectId>3168</ObjectId>
+    </schema>
+    <schema id="144" parent="1" name="MBARTOLD">
+      <ObjectId>3282</ObjectId>
+    </schema>
+    <schema id="145" parent="1" name="MBERLIN1">
+      <ObjectId>3169</ObjectId>
+    </schema>
+    <schema id="146" parent="1" name="MBURDA">
+      <ObjectId>3170</ObjectId>
+    </schema>
+    <schema id="147" parent="1" name="MCHMURA">
+      <ObjectId>3283</ObjectId>
+    </schema>
+    <schema id="148" parent="1" name="MDDATA">
+      <ObjectId>65</ObjectId>
+    </schema>
+    <schema id="149" parent="1" name="MDO">
+      <ObjectId>3171</ObjectId>
+    </schema>
+    <schema id="150" parent="1" name="MDSYS">
+      <ObjectId>57</ObjectId>
+    </schema>
+    <schema id="151" parent="1" name="MFURDYNA">
+      <ObjectId>3284</ObjectId>
+    </schema>
+    <schema id="152" parent="1" name="MGAJEWSK">
+      <ObjectId>3285</ObjectId>
+    </schema>
+    <schema id="153" parent="1" name="MGMT_VIEW">
+      <ObjectId>74</ObjectId>
+    </schema>
+    <schema id="154" parent="1" name="MGORA">
+      <ObjectId>3172</ObjectId>
+    </schema>
+    <schema id="155" parent="1" name="MGORAL">
+      <ObjectId>3314</ObjectId>
+    </schema>
+    <schema id="156" parent="1" name="MGORECKA">
+      <ObjectId>3173</ObjectId>
+    </schema>
+    <schema id="157" parent="1" name="MJAREK">
+      <ObjectId>3174</ObjectId>
+    </schema>
+    <schema id="158" parent="1" name="MJM">
+      <ObjectId>95</ObjectId>
+    </schema>
+    <schema id="159" parent="1" name="MKAPUSCI">
+      <ObjectId>3175</ObjectId>
+      <CreatedTimestamp>2019-03-04.12:50:56</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-05.12:43:42</ModifiedTimestamp>
+      <IntrospectionTimestamp>2019-04-17.12:57:38</IntrospectionTimestamp>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="160" parent="1" name="MKILIANS">
+      <ObjectId>3176</ObjectId>
+    </schema>
+    <schema id="161" parent="1" name="MKILJAN">
+      <ObjectId>3177</ObjectId>
+    </schema>
+    <schema id="162" parent="1" name="MKOLACZ">
+      <ObjectId>3178</ObjectId>
+    </schema>
+    <schema id="163" parent="1" name="MKORDOW1">
+      <ObjectId>3179</ObjectId>
+    </schema>
+    <schema id="164" parent="1" name="MKOWALC3">
+      <ObjectId>104</ObjectId>
+    </schema>
+    <schema id="165" parent="1" name="MKOWIESK">
+      <ObjectId>3180</ObjectId>
+    </schema>
+    <schema id="166" parent="1" name="MKOZLOW3">
+      <ObjectId>102</ObjectId>
+    </schema>
+    <schema id="167" parent="1" name="MKUBALSK">
+      <ObjectId>3181</ObjectId>
+    </schema>
+    <schema id="168" parent="1" name="MKUSTOSZ">
+      <ObjectId>3286</ObjectId>
+    </schema>
+    <schema id="169" parent="1" name="MKUZMA2">
+      <ObjectId>3182</ObjectId>
+    </schema>
+    <schema id="170" parent="1" name="MLALAK">
+      <ObjectId>3287</ObjectId>
+    </schema>
+    <schema id="171" parent="1" name="MLEWAND3">
+      <ObjectId>2498</ObjectId>
+    </schema>
+    <schema id="172" parent="1" name="MLOTZ">
+      <ObjectId>2220</ObjectId>
+    </schema>
+    <schema id="173" parent="1" name="MMACHITK">
+      <ObjectId>3288</ObjectId>
+    </schema>
+    <schema id="174" parent="1" name="MMAKOS">
+      <ObjectId>3183</ObjectId>
+    </schema>
+    <schema id="175" parent="1" name="MMARCIN2">
+      <ObjectId>3184</ObjectId>
+    </schema>
+    <schema id="176" parent="1" name="MMAZUREK">
+      <ObjectId>3185</ObjectId>
+    </schema>
+    <schema id="177" parent="1" name="MMICHALA">
+      <ObjectId>3289</ObjectId>
+    </schema>
+    <schema id="178" parent="1" name="MMILOSZ">
+      <ObjectId>3186</ObjectId>
+    </schema>
+    <schema id="179" parent="1" name="MMOZOLEW">
+      <ObjectId>3187</ObjectId>
+    </schema>
+    <schema id="180" parent="1" name="MNOWAK5">
+      <ObjectId>3315</ObjectId>
+    </schema>
+    <schema id="181" parent="1" name="MOLEKSIK">
+      <ObjectId>3290</ObjectId>
+    </schema>
+    <schema id="182" parent="1" name="MORZELOW">
+      <ObjectId>3188</ObjectId>
+    </schema>
+    <schema id="183" parent="1" name="MOZAROWS">
+      <ObjectId>3291</ObjectId>
+    </schema>
+    <schema id="184" parent="1" name="MPARYS">
+      <ObjectId>3292</ObjectId>
+    </schema>
+    <schema id="185" parent="1" name="MPASZYLK">
+      <ObjectId>3189</ObjectId>
+    </schema>
+    <schema id="186" parent="1" name="MPESTKA">
+      <ObjectId>3190</ObjectId>
+    </schema>
+    <schema id="187" parent="1" name="MPRUK">
+      <ObjectId>3191</ObjectId>
+    </schema>
+    <schema id="188" parent="1" name="MPUCHALS">
+      <ObjectId>3192</ObjectId>
+    </schema>
+    <schema id="189" parent="1" name="MROZANSK">
+      <ObjectId>3193</ObjectId>
+    </schema>
+    <schema id="190" parent="1" name="MSLEDZ">
+      <ObjectId>3194</ObjectId>
+    </schema>
+    <schema id="191" parent="1" name="MSMOLENS">
+      <ObjectId>3293</ObjectId>
+    </schema>
+    <schema id="192" parent="1" name="MSOKOL">
+      <ObjectId>3195</ObjectId>
+    </schema>
+    <schema id="193" parent="1" name="MSZCZERB">
+      <ObjectId>507</ObjectId>
+    </schema>
+    <schema id="194" parent="1" name="MSZEWCZ1">
+      <ObjectId>3196</ObjectId>
+    </schema>
+    <schema id="195" parent="1" name="MSZKUTNI">
+      <ObjectId>3197</ObjectId>
+    </schema>
+    <schema id="196" parent="1" name="MSZULIK">
+      <ObjectId>3198</ObjectId>
+    </schema>
+    <schema id="197" parent="1" name="MSZYPRO1">
+      <ObjectId>3294</ObjectId>
+    </schema>
+    <schema id="198" parent="1" name="MTYMOREK">
+      <ObjectId>3295</ObjectId>
+    </schema>
+    <schema id="199" parent="1" name="MURBANSK">
+      <ObjectId>3199</ObjectId>
+    </schema>
+    <schema id="200" parent="1" name="MWILK">
+      <ObjectId>3316</ObjectId>
+    </schema>
+    <schema id="201" parent="1" name="MZADROZ1">
+      <ObjectId>3200</ObjectId>
+    </schema>
+    <schema id="202" parent="1" name="MZALEWS3">
+      <ObjectId>3201</ObjectId>
+    </schema>
+    <schema id="203" parent="1" name="MZIELINS">
+      <ObjectId>3202</ObjectId>
+    </schema>
+    <schema id="204" parent="1" name="MZYCH1">
+      <ObjectId>3203</ObjectId>
+    </schema>
+    <schema id="205" parent="1" name="OE">
+      <ObjectId>86</ObjectId>
+    </schema>
+    <schema id="206" parent="1" name="OLAPSYS">
+      <ObjectId>61</ObjectId>
+    </schema>
+    <schema id="207" parent="1" name="OOZTURK">
+      <ObjectId>3204</ObjectId>
+    </schema>
+    <schema id="208" parent="1" name="ORACLE_OCM">
+      <ObjectId>21</ObjectId>
+    </schema>
+    <schema id="209" parent="1" name="ORDDATA">
+      <ObjectId>54</ObjectId>
+    </schema>
+    <schema id="210" parent="1" name="ORDPLUGINS">
+      <ObjectId>55</ObjectId>
+    </schema>
+    <schema id="211" parent="1" name="ORDSYS">
+      <ObjectId>53</ObjectId>
+    </schema>
+    <schema id="212" parent="1" name="OUTLN">
+      <ObjectId>9</ObjectId>
+    </schema>
+    <schema id="213" parent="1" name="OWBSYS">
+      <ObjectId>79</ObjectId>
+    </schema>
+    <schema id="214" parent="1" name="OWBSYS_AUDIT">
+      <ObjectId>83</ObjectId>
+    </schema>
+    <schema id="215" parent="1" name="PANDRUSZ">
+      <ObjectId>302</ObjectId>
+    </schema>
+    <schema id="216" parent="1" name="PBEDELEK">
+      <ObjectId>3205</ObjectId>
+    </schema>
+    <schema id="217" parent="1" name="PBLOK">
+      <ObjectId>3206</ObjectId>
+    </schema>
+    <schema id="218" parent="1" name="PBOCIAN">
+      <ObjectId>3207</ObjectId>
+    </schema>
+    <schema id="219" parent="1" name="PBUNIA">
+      <ObjectId>3296</ObjectId>
+    </schema>
+    <schema id="220" parent="1" name="PDOMANS2">
+      <ObjectId>3208</ObjectId>
+    </schema>
+    <schema id="221" parent="1" name="PDRYZALO">
+      <ObjectId>3209</ObjectId>
+    </schema>
+    <schema id="222" parent="1" name="PGLEGOLA">
+      <ObjectId>3210</ObjectId>
+    </schema>
+    <schema id="223" parent="1" name="PGORNIAK">
+      <ObjectId>3297</ObjectId>
+    </schema>
+    <schema id="224" parent="1" name="PGUZIK">
+      <ObjectId>3298</ObjectId>
+    </schema>
+    <schema id="225" parent="1" name="PJAREK2">
+      <ObjectId>3317</ObjectId>
+    </schema>
+    <schema id="226" parent="1" name="PJAROSLA">
+      <ObjectId>3299</ObjectId>
+    </schema>
+    <schema id="227" parent="1" name="PJS">
+      <ObjectId>97</ObjectId>
+    </schema>
+    <schema id="228" parent="1" name="PKAMINS9">
+      <ObjectId>3318</ObjectId>
+    </schema>
+    <schema id="229" parent="1" name="PKUMANOW">
+      <ObjectId>3300</ObjectId>
+    </schema>
+    <schema id="230" parent="1" name="PKUROWS1">
+      <ObjectId>3211</ObjectId>
+    </schema>
+    <schema id="231" parent="1" name="PLIMANOW">
+      <ObjectId>3212</ObjectId>
+    </schema>
+    <schema id="232" parent="1" name="PM">
+      <ObjectId>89</ObjectId>
+    </schema>
+    <schema id="233" parent="1" name="PMACIAG">
+      <ObjectId>1437</ObjectId>
+    </schema>
+    <schema id="234" parent="1" name="PMAKARUK">
+      <ObjectId>3213</ObjectId>
+    </schema>
+    <schema id="235" parent="1" name="PPA">
+      <ObjectId>98</ObjectId>
+    </schema>
+    <schema id="236" parent="1" name="PPALUSIN">
+      <ObjectId>3301</ObjectId>
+    </schema>
+    <schema id="237" parent="1" name="PPIEKAR2">
+      <ObjectId>3214</ObjectId>
+    </schema>
+    <schema id="238" parent="1" name="PRAWICKI">
+      <ObjectId>3215</ObjectId>
+    </schema>
+    <schema id="239" parent="1" name="PRODZEN">
+      <ObjectId>3302</ObjectId>
+    </schema>
+    <schema id="240" parent="1" name="PRZEWNI1">
+      <ObjectId>3216</ObjectId>
+    </schema>
+    <schema id="241" parent="1" name="PSADURA">
+      <ObjectId>3217</ObjectId>
+    </schema>
+    <schema id="242" parent="1" name="PSAWICKI">
+      <ObjectId>3218</ObjectId>
+    </schema>
+    <schema id="243" parent="1" name="PSCIEBUR">
+      <ObjectId>3319</ObjectId>
+    </schema>
+    <schema id="244" parent="1" name="PSM">
+      <ObjectId>96</ObjectId>
+    </schema>
+    <schema id="245" parent="1" name="PSTAWCZY">
+      <ObjectId>3219</ObjectId>
+    </schema>
+    <schema id="246" parent="1" name="PSWIATKO">
+      <ObjectId>3220</ObjectId>
+    </schema>
+    <schema id="247" parent="1" name="PSWISTAK">
+      <ObjectId>3221</ObjectId>
+    </schema>
+    <schema id="248" parent="1" name="PSZAFRA1">
+      <ObjectId>3222</ObjectId>
+    </schema>
+    <schema id="249" parent="1" name="PSZCZEP5">
+      <ObjectId>103</ObjectId>
+    </schema>
+    <schema id="250" parent="1" name="PTARASHK">
+      <ObjectId>3223</ObjectId>
+    </schema>
+    <schema id="251" parent="1" name="PUBLIC">
+      <ObjectId>1</ObjectId>
+    </schema>
+    <schema id="252" parent="1" name="PWASIEWI">
+      <ObjectId>303</ObjectId>
+    </schema>
+    <schema id="253" parent="1" name="PWIECZO3">
+      <ObjectId>3224</ObjectId>
+    </schema>
+    <schema id="254" parent="1" name="PWILK">
+      <ObjectId>3303</ObjectId>
+    </schema>
+    <schema id="255" parent="1" name="PZMYSLON">
+      <ObjectId>3225</ObjectId>
+    </schema>
+    <schema id="256" parent="1" name="QVASSEUR">
+      <ObjectId>3226</ObjectId>
+    </schema>
+    <schema id="257" parent="1" name="RBA">
+      <ObjectId>94</ObjectId>
+    </schema>
+    <schema id="258" parent="1" name="RBABINSK">
+      <ObjectId>3227</ObjectId>
+    </schema>
+    <schema id="259" parent="1" name="RBEMBENI">
+      <ObjectId>101</ObjectId>
+    </schema>
+    <schema id="260" parent="1" name="RCEGIELK">
+      <ObjectId>3228</ObjectId>
+    </schema>
+    <schema id="261" parent="1" name="RCRESSOL">
+      <ObjectId>3229</ObjectId>
+    </schema>
+    <schema id="262" parent="1" name="RDUDZINS">
+      <ObjectId>3230</ObjectId>
+    </schema>
+    <schema id="263" parent="1" name="RGARCIA2">
+      <ObjectId>3231</ObjectId>
+    </schema>
+    <schema id="264" parent="1" name="RKRAJEWS">
+      <ObjectId>728</ObjectId>
+    </schema>
+    <schema id="265" parent="1" name="RKRAWCZY">
+      <ObjectId>1441</ObjectId>
+    </schema>
+    <schema id="266" parent="1" name="RKUPIBID">
+      <ObjectId>3232</ObjectId>
+    </schema>
+    <schema id="267" parent="1" name="RKZ">
+      <ObjectId>2212</ObjectId>
+    </schema>
+    <schema id="268" parent="1" name="RLEWANCZ">
+      <ObjectId>3233</ObjectId>
+    </schema>
+    <schema id="269" parent="1" name="RMIERZWA">
+      <ObjectId>3234</ObjectId>
+    </schema>
+    <schema id="270" parent="1" name="RMOSKALE">
+      <ObjectId>3235</ObjectId>
+    </schema>
+    <schema id="271" parent="1" name="ROSTOJA">
+      <ObjectId>3236</ObjectId>
+    </schema>
+    <schema id="272" parent="1" name="RTROCHIM">
+      <ObjectId>3237</ObjectId>
+    </schema>
+    <schema id="273" parent="1" name="RWLAZLY">
+      <ObjectId>3304</ObjectId>
+    </schema>
+    <schema id="274" parent="1" name="RZIETEK">
+      <ObjectId>3305</ObjectId>
+    </schema>
+    <schema id="275" parent="1" name="SAKSAMIT">
+      <ObjectId>3238</ObjectId>
+    </schema>
+    <schema id="276" parent="1" name="SCOTT">
+      <ObjectId>84</ObjectId>
+    </schema>
+    <schema id="277" parent="1" name="SH">
+      <ObjectId>2237</ObjectId>
+    </schema>
+    <schema id="278" parent="1" name="SHAJIBR">
+      <ObjectId>3320</ObjectId>
+    </schema>
+    <schema id="279" parent="1" name="SI_INFORMTN_SCHEMA">
+      <ObjectId>56</ObjectId>
+    </schema>
+    <schema id="280" parent="1" name="SJAKUBAS">
+      <ObjectId>3239</ObjectId>
+    </schema>
+    <schema id="281" parent="1" name="SMALOLEP">
+      <ObjectId>3240</ObjectId>
+    </schema>
+    <schema id="282" parent="1" name="SPATIAL_CSW_ADMIN_USR">
+      <ObjectId>70</ObjectId>
+    </schema>
+    <schema id="283" parent="1" name="SPATIAL_WFS_ADMIN_USR">
+      <ObjectId>67</ObjectId>
+    </schema>
+    <schema id="284" parent="1" name="SPIETRAS">
+      <ObjectId>3241</ObjectId>
+    </schema>
+    <schema id="285" parent="1" name="SSAWICKI">
+      <ObjectId>3242</ObjectId>
+    </schema>
+    <schema id="286" parent="1" name="SSHAFIEI">
+      <ObjectId>3324</ObjectId>
+    </schema>
+    <schema id="287" parent="1" name="SSKRZYPE">
+      <ObjectId>3243</ObjectId>
+    </schema>
+    <schema id="288" parent="1" name="SSOLECKI">
+      <ObjectId>3306</ObjectId>
+    </schema>
+    <schema id="289" parent="1" name="SYS">
+      <ObjectId>0</ObjectId>
+    </schema>
+    <schema id="290" parent="1" name="SYSMAN">
+      <ObjectId>72</ObjectId>
+    </schema>
+    <schema id="291" parent="1" name="SYSTEM">
+      <ObjectId>5</ObjectId>
+    </schema>
+    <schema id="292" parent="1" name="TCHRUSCI">
+      <ObjectId>3244</ObjectId>
+    </schema>
+    <schema id="293" parent="1" name="TJOZWIK">
+      <ObjectId>3245</ObjectId>
+    </schema>
+    <schema id="294" parent="1" name="TMADURA">
+      <ObjectId>3321</ObjectId>
+    </schema>
+    <schema id="295" parent="1" name="TMAZUR">
+      <ObjectId>3246</ObjectId>
+    </schema>
+    <schema id="296" parent="1" name="TSCISLO">
+      <ObjectId>3307</ObjectId>
+    </schema>
+    <schema id="297" parent="1" name="TZALUSKA">
+      <ObjectId>3247</ObjectId>
+    </schema>
+    <schema id="298" parent="1" name="VOREC">
+      <ObjectId>3248</ObjectId>
+    </schema>
+    <schema id="299" parent="1" name="WBLONSKI">
+      <ObjectId>3322</ObjectId>
+    </schema>
+    <schema id="300" parent="1" name="WFABJANC">
+      <ObjectId>3249</ObjectId>
+    </schema>
+    <schema id="301" parent="1" name="WJENCZAL">
+      <ObjectId>3250</ObjectId>
+    </schema>
+    <schema id="302" parent="1" name="WKRUPSKI">
+      <ObjectId>3251</ObjectId>
+    </schema>
+    <schema id="303" parent="1" name="WMACIEJE">
+      <ObjectId>3252</ObjectId>
+    </schema>
+    <schema id="304" parent="1" name="WMICHALS">
+      <ObjectId>3253</ObjectId>
+    </schema>
+    <schema id="305" parent="1" name="WMSYS">
+      <ObjectId>32</ObjectId>
+    </schema>
+    <schema id="306" parent="1" name="WPASZKO">
+      <ObjectId>3254</ObjectId>
+    </schema>
+    <schema id="307" parent="1" name="WPOLUBIE">
+      <ObjectId>3323</ObjectId>
+    </schema>
+    <schema id="308" parent="1" name="WSITEK">
+      <ObjectId>3255</ObjectId>
+    </schema>
+    <schema id="309" parent="1" name="WSZALYGA">
+      <ObjectId>3256</ObjectId>
+    </schema>
+    <schema id="310" parent="1" name="XDB">
+      <ObjectId>45</ObjectId>
+    </schema>
+    <schema id="311" parent="1" name="XS$NULL">
+      <ObjectId>2147483638</ObjectId>
+    </schema>
+    <schema id="312" parent="1" name="XTEMP27">
+      <ObjectId>3080</ObjectId>
+    </schema>
+    <schema id="313" parent="1" name="XTEMP28">
+      <ObjectId>3081</ObjectId>
+    </schema>
+    <schema id="314" parent="1" name="XTEMP29">
+      <ObjectId>3082</ObjectId>
+    </schema>
+    <schema id="315" parent="1" name="XTEMP30">
+      <ObjectId>3083</ObjectId>
+    </schema>
+    <schema id="316" parent="1" name="XTEMP31">
+      <ObjectId>3084</ObjectId>
+    </schema>
+    <schema id="317" parent="1" name="XTEMP32">
+      <ObjectId>3085</ObjectId>
+    </schema>
+    <schema id="318" parent="1" name="XWKAMINS">
+      <ObjectId>1442</ObjectId>
+    </schema>
+    <schema id="319" parent="1" name="ZDYNOWSK">
+      <ObjectId>3257</ObjectId>
+    </schema>
+    <schema id="320" parent="1" name="ZZAK">
+      <ObjectId>3258</ObjectId>
+    </schema>
+    <sequence id="321" parent="159" name="TEEEEST">
+      <ObjectId>641256</ObjectId>
+      <CreatedTimestamp>2019-03-20.12:04:06</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:04:06</ModifiedTimestamp>
+      <SequenceIdentity>1+2..9</SequenceIdentity>
+      <Cycled>1</Cycled>
+      <CacheSize>4</CacheSize>
+    </sequence>
+    <sequence id="322" parent="159" name="TRANSACTIONS_SEQ">
+      <ObjectId>638317</ObjectId>
+      <CreatedTimestamp>2019-03-06.12:26:06</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-06.12:26:06</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <table id="323" parent="159" name="ADRESY">
+      <ObjectId>644377</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:37</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="324" parent="159" name="ANSWERS">
+      <ObjectId>647280</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-05.12:43:01</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="325" parent="159" name="BONUS">
+      <ObjectId>636537</ObjectId>
+      <CreatedTimestamp>2019-03-04.12:50:57</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-04.12:50:57</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="326" parent="159" name="BOOKS">
+      <ObjectId>638079</ObjectId>
+      <CreatedTimestamp>2019-03-06.11:48:12</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.11:53:57</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="327" parent="159" name="BOOKS_TMP1">
+      <ObjectId>641151</ObjectId>
+      <CreatedTimestamp>2019-03-20.11:44:09</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.11:44:09</ModifiedTimestamp>
+      <Temporary>1</Temporary>
+    </table>
+    <table id="328" parent="159" name="BOOKS_TMP2">
+      <ObjectId>641153</ObjectId>
+      <CreatedTimestamp>2019-03-20.11:44:09</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.11:44:09</ModifiedTimestamp>
+      <Temporary>1</Temporary>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="329" parent="159" name="DEPT">
+      <ObjectId>636533</ObjectId>
+      <CreatedTimestamp>2019-03-04.12:50:57</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-04.12:50:57</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="330" parent="159" name="EMP">
+      <ObjectId>636535</ObjectId>
+      <CreatedTimestamp>2019-03-04.12:50:57</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-04.12:50:57</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="331" parent="159" name="HISTORIA_STANOWISK">
+      <ObjectId>644379</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="332" parent="159" name="KLASY">
+      <ObjectId>641363</ObjectId>
+      <CreatedTimestamp>2019-03-20.12:49:39</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:49:39</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="333" parent="159" name="KRAJE">
+      <ObjectId>644381</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="334" parent="159" name="PATRONS">
+      <ObjectId>638155</ObjectId>
+      <CreatedTimestamp>2019-03-06.11:56:20</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-06.11:58:01</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="335" parent="159" name="PLAN_TABLE">
+      <ObjectId>636530</ObjectId>
+      <CreatedTimestamp>2019-03-04.12:50:56</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-04.12:50:56</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="336" parent="159" name="POSTACIE">
+      <ObjectId>641393</ObjectId>
+      <CreatedTimestamp>2019-03-20.12:57:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:57:30</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="337" parent="159" name="PRACOWNICY">
+      <ObjectId>644383</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="338" parent="159" name="QUESTION">
+      <ObjectId>647282</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-05.12:43:42</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="339" parent="159" name="REGIONY">
+      <ObjectId>644385</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="340" parent="159" name="RESULTS">
+      <ObjectId>647284</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="341" parent="159" name="RESULTS_ANSWERS">
+      <ObjectId>647286</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="342" parent="159" name="SALGRADE">
+      <ObjectId>636538</ObjectId>
+      <CreatedTimestamp>2019-03-04.12:50:57</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-04.12:50:57</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="343" parent="159" name="STANOWISKA">
+      <ObjectId>644387</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="344" parent="159" name="TEST">
+      <ObjectId>647288</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-05.12:36:29</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="345" parent="159" name="TEST_QUESTIONS">
+      <ObjectId>647290</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-05.12:40:05</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="346" parent="159" name="TOWARY">
+      <ObjectId>641333</ObjectId>
+      <CreatedTimestamp>2019-03-20.12:40:41</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:40:41</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="347" parent="159" name="TOWARY_TYP">
+      <ObjectId>641331</ObjectId>
+      <CreatedTimestamp>2019-03-20.12:40:41</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:40:41</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="348" parent="159" name="TOWARY_ZMIANY">
+      <ObjectId>641335</ObjectId>
+      <CreatedTimestamp>2019-03-20.12:40:41</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:40:41</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="349" parent="159" name="TRANSACTIONS">
+      <ObjectId>638315</ObjectId>
+      <CreatedTimestamp>2019-03-06.12:26:06</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-06.12:27:06</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="350" parent="159" name="USERS_TESTS">
+      <ObjectId>647294</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="351" parent="159" name="ZAKLADY">
+      <ObjectId>644389</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:37</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="352" parent="159" name="user">
+      <ObjectId>647292</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-05.12:35:19</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <view id="353" parent="159" name="PATRONS_BOOKS">
+      <ObjectId>641272</ObjectId>
+      <SourceTextLength>146</SourceTextLength>
+      <DependsOnIds>638079,638155</DependsOnIds>
+      <CreatedTimestamp>2019-03-20.12:26:15</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:26:15</ModifiedTimestamp>
+      <Modifiable>1</Modifiable>
+    </view>
+    <view id="354" parent="159" name="RBOOKS_VIEW">
+      <ObjectId>641261</ObjectId>
+      <SourceTextLength>181</SourceTextLength>
+      <DependsOnIds>638079</DependsOnIds>
+      <CreatedTimestamp>2019-03-20.12:34:16</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:34:16</ModifiedTimestamp>
+      <Modifiable>1</Modifiable>
+    </view>
+    <column id="355" parent="323" name="KOD_ADRESU">
+      <Position>1</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="356" parent="323" name="ULICA">
+      <Position>2</Position>
+      <DataType>VARCHAR2(40 byte)|0s</DataType>
+    </column>
+    <column id="357" parent="323" name="KOD_POCZTOWY">
+      <Position>3</Position>
+      <DataType>VARCHAR2(40 byte)|0s</DataType>
+    </column>
+    <column id="358" parent="323" name="MIASTO">
+      <Position>4</Position>
+      <DataType>VARCHAR2(40 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="359" parent="323" name="KOD_KRAJU">
+      <Position>5</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="360" parent="323" name="ADRESY_PK">
+      <ObjectId>644378</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>KOD_ADRESU</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="361" parent="323" name="ADRESY_PK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>KOD_ADRESU</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>ADRESY_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="362" parent="323" name="ADRESY_KRAJE_FK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>KOD_KRAJU</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>KRAJE</RefTableName>
+      <RefKeyName>KRAJE_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="363" parent="324" name="ANSWER_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="364" parent="324" name="TEXT">
+      <Position>2</Position>
+      <DataType>VARCHAR2(50 char)|0us</DataType>
+    </column>
+    <column id="365" parent="324" name="QUESTION_ID">
+      <Position>3</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="366" parent="324" name="CORRECT">
+      <Position>4</Position>
+      <DataType>CHAR(1 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="367" parent="324" name="ANSWERS_PK">
+      <ObjectId>647281</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>ANSWER_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="368" parent="324" name="ANSWERS_PK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>ANSWER_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>ANSWERS_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="369" parent="324" name="ANSWERS_QUESTION_FK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>QUESTION_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>QUESTION</RefTableName>
+      <RefKeyName>QUESTION_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="370" parent="325" name="ENAME">
+      <Position>1</Position>
+      <DataType>VARCHAR2(10 byte)|0s</DataType>
+    </column>
+    <column id="371" parent="325" name="JOB">
+      <Position>2</Position>
+      <DataType>VARCHAR2(9 byte)|0s</DataType>
+    </column>
+    <column id="372" parent="325" name="SAL">
+      <Position>3</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="373" parent="325" name="COMM">
+      <Position>4</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="374" parent="326" name="BOOK_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="375" parent="326" name="TITLE">
+      <Position>2</Position>
+      <DataType>VARCHAR2(50 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="376" parent="326" name="AUTHOR_LAST_NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="377" parent="326" name="AUTHOR_FIRST_NAME">
+      <Position>4</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="378" parent="326" name="RATING">
+      <Position>5</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="379" parent="326" name="MODIFIED_COLUMN">
+      <Position>6</Position>
+      <DataType>DATE|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>SYSDATE</DefaultExpression>
+    </column>
+    <column id="380" parent="326" name="AUTHOR_FULL_NAME">
+      <Position>7</Position>
+      <DataType>VARCHAR2(50 byte)|0s</DataType>
+      <DefaultExpression>&quot;AUTHOR_LAST_NAME&quot;||&quot;AUTHOR_FIRST_NAME&quot;</DefaultExpression>
+    </column>
+    <column id="381" parent="326" name="STATUS">
+      <Position>8</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <index id="382" parent="326" name="BOOKS_PK">
+      <ObjectId>638080</ObjectId>
+      <CreatedTimestamp>2019-03-06.11:48:12</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-06.11:48:12</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>BOOK_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="383" parent="326" name="AUTHOR_TITLE_UNIQUE">
+      <ObjectId>638081</ObjectId>
+      <CreatedTimestamp>2019-03-06.11:48:12</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-06.11:48:12</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>AUTHOR_LAST_NAME
+TITLE</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="384" parent="326" name="BOOKS_PK">
+      <ModifiedTimestamp>2019-03-06.11:48:12</ModifiedTimestamp>
+      <ColNames>BOOK_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>BOOKS_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="385" parent="326" name="AUTHOR_TITLE_UNIQUE">
+      <ModifiedTimestamp>2019-03-06.11:48:12</ModifiedTimestamp>
+      <ColNames>AUTHOR_LAST_NAME
+TITLE</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>AUTHOR_TITLE_UNIQUE</UnderlyingIndexName>
+    </key>
+    <check id="386" parent="326" name="RATING_1_TO_10">
+      <ModifiedTimestamp>2019-03-06.11:48:12</ModifiedTimestamp>
+      <ColNames>RATING</ColNames>
+      <Predicate>rating &gt;= 1 and rating &lt;= 10</Predicate>
+    </check>
+    <check id="387" parent="326" name="STATUS_CHECK">
+      <ModifiedTimestamp>2019-03-20.11:53:57</ModifiedTimestamp>
+      <ColNames>STATUS</ColNames>
+      <Predicate>status in (&apos;wypozyczona&apos;,&apos;dostepna&apos;)</Predicate>
+    </check>
+    <column id="388" parent="327" name="BOOK_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="389" parent="327" name="TITLE">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="390" parent="327" name="AUTHOR_LAST_NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="391" parent="327" name="AUTHOR_FIRST_NAME">
+      <Position>4</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="392" parent="327" name="RATING">
+      <Position>5</Position>
+      <DataType>NUMBER(2 digit)|0s</DataType>
+    </column>
+    <index id="393" parent="327" name="SYS_C00754982">
+      <ObjectId>641152</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-03-20.11:44:09</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.11:44:09</ModifiedTimestamp>
+      <ColNames>BOOK_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="394" parent="327" name="SYS_C00754982">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-20.11:44:09</ModifiedTimestamp>
+      <ColNames>BOOK_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C00754982</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <check id="395" parent="327" name="SYS_C00754981">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-20.11:44:09</ModifiedTimestamp>
+      <ColNames>RATING</ColNames>
+      <Predicate>RATING &gt; 0 AND RATING &lt;= 10</Predicate>
+    </check>
+    <column id="396" parent="328" name="BOOK_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="397" parent="328" name="TITLE">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="398" parent="328" name="AUTHOR_LAST_NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="399" parent="328" name="AUTHOR_FIRST_NAME">
+      <Position>4</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="400" parent="328" name="RATING">
+      <Position>5</Position>
+      <DataType>NUMBER(2 digit)|0s</DataType>
+    </column>
+    <index id="401" parent="328" name="SYS_C00754987">
+      <ObjectId>641154</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-03-20.11:44:09</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.11:44:09</ModifiedTimestamp>
+      <ColNames>BOOK_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="402" parent="328" name="SYS_C00754987">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-20.11:44:09</ModifiedTimestamp>
+      <ColNames>BOOK_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C00754987</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <check id="403" parent="328" name="SYS_C00754986">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-20.11:44:09</ModifiedTimestamp>
+      <ColNames>RATING</ColNames>
+      <Predicate>RATING &gt; 0 AND RATING &lt;= 10</Predicate>
+    </check>
+    <column id="404" parent="329" name="DEPTNO">
+      <Position>1</Position>
+      <DataType>NUMBER(2 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="405" parent="329" name="DNAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(14 byte)|0s</DataType>
+    </column>
+    <column id="406" parent="329" name="LOC">
+      <Position>3</Position>
+      <DataType>VARCHAR2(13 byte)|0s</DataType>
+    </column>
+    <index id="407" parent="329" name="PK_DEPT">
+      <ObjectId>636534</ObjectId>
+      <CreatedTimestamp>2019-03-04.12:50:57</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-04.12:50:57</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>DEPTNO</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="408" parent="329" name="PK_DEPT">
+      <ModifiedTimestamp>2019-03-04.12:50:57</ModifiedTimestamp>
+      <ColNames>DEPTNO</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>PK_DEPT</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="409" parent="330" name="EMPNO">
+      <Position>1</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="410" parent="330" name="ENAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(6 byte)|0s</DataType>
+    </column>
+    <column id="411" parent="330" name="JOB">
+      <Position>3</Position>
+      <DataType>VARCHAR2(8 byte)|0s</DataType>
+    </column>
+    <column id="412" parent="330" name="MGR">
+      <Position>4</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+    </column>
+    <column id="413" parent="330" name="HIREDATE">
+      <Position>5</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="414" parent="330" name="SAL">
+      <Position>6</Position>
+      <DataType>NUMBER(7,2 digit)|0s</DataType>
+    </column>
+    <column id="415" parent="330" name="COMM">
+      <Position>7</Position>
+      <DataType>NUMBER(7,2 digit)|0s</DataType>
+    </column>
+    <column id="416" parent="330" name="DEPTNO">
+      <Position>8</Position>
+      <DataType>NUMBER(2 digit)|0s</DataType>
+    </column>
+    <index id="417" parent="330" name="PK_EMP">
+      <ObjectId>636536</ObjectId>
+      <CreatedTimestamp>2019-03-04.12:50:57</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-04.12:50:57</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>EMPNO</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="418" parent="330" name="PK_EMP">
+      <ModifiedTimestamp>2019-03-04.12:50:57</ModifiedTimestamp>
+      <ColNames>EMPNO</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>PK_EMP</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="419" parent="330" name="FK_DEPTNO">
+      <ModifiedTimestamp>2019-03-04.12:50:57</ModifiedTimestamp>
+      <ColNames>DEPTNO</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>DEPT</RefTableName>
+      <RefKeyName>PK_DEPT</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="420" parent="331" name="ID_PRACOWNIKA">
+      <Position>1</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="421" parent="331" name="DATA_ROZP">
+      <Position>2</Position>
+      <DataType>DATE|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="422" parent="331" name="DATA_ZAK">
+      <Position>3</Position>
+      <DataType>DATE|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="423" parent="331" name="ID_ZAKLADU">
+      <Position>4</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="424" parent="331" name="KOD_STANOWISKA">
+      <Position>5</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="425" parent="331" name="SYS_C00760630">
+      <ObjectId>644380</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>ID_PRACOWNIKA
+DATA_ROZP
+DATA_ZAK</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="426" parent="331" name="SYS_C00760630">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>ID_PRACOWNIKA
+DATA_ROZP
+DATA_ZAK</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C00760630</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="427" parent="331" name="HS_PRACOWNICY_FK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>ID_PRACOWNIKA</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>PRACOWNICY</RefTableName>
+      <RefKeyName>PRACOWNICY_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="428" parent="331" name="HS_ZAKLADY_FK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>ID_ZAKLADU</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>ZAKLADY</RefTableName>
+      <RefKeyName>ZAKLADY_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="429" parent="331" name="HS_STANOWISKA_FK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>KOD_STANOWISKA</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>STANOWISKA</RefTableName>
+      <RefKeyName>STANOWISKA_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="430" parent="332" name="ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="431" parent="332" name="TYP">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="432" parent="332" name="OPIS">
+      <Position>3</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <index id="433" parent="332" name="SYS_C00755327">
+      <ObjectId>641364</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-03-20.12:49:39</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:49:39</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="434" parent="332" name="SYS_C00755327">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-20.12:49:39</ModifiedTimestamp>
+      <ColNames>ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C00755327</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="435" parent="333" name="KOD_KRAJU">
+      <Position>1</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="436" parent="333" name="NAZWA">
+      <Position>2</Position>
+      <DataType>VARCHAR2(40 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="437" parent="333" name="KOD_REGIONU">
+      <Position>3</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="438" parent="333" name="KRAJE_PK">
+      <ObjectId>644382</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>KOD_KRAJU</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="439" parent="333" name="KRAJE_PK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>KOD_KRAJU</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>KRAJE_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="440" parent="333" name="KRAJE_REGIONY_FK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>KOD_REGIONU</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>REGIONY</RefTableName>
+      <RefKeyName>REGIONY_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="441" parent="334" name="PATRON_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="442" parent="334" name="LAST_NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="443" parent="334" name="FIRST_NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="444" parent="334" name="STREET_ADDRESS">
+      <Position>4</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="445" parent="334" name="CITY_STATE_ZIP">
+      <Position>5</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="446" parent="334" name="LOCATION">
+      <Position>6</Position>
+      <DataType>MDSYS.SDO_GEOMETRY()|0cs</DataType>
+    </column>
+    <index id="447" parent="334" name="TABLE1_PK">
+      <ObjectId>638160</ObjectId>
+      <CreatedTimestamp>2019-03-06.11:56:20</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-06.11:56:20</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>PATRON_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="448" parent="334" name="TABLE1_PK">
+      <ModifiedTimestamp>2019-03-06.11:56:20</ModifiedTimestamp>
+      <ColNames>PATRON_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>TABLE1_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="449" parent="335" name="STATEMENT_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="450" parent="335" name="PLAN_ID">
+      <Position>2</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="451" parent="335" name="TIMESTAMP">
+      <Position>3</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="452" parent="335" name="REMARKS">
+      <Position>4</Position>
+      <DataType>VARCHAR2(4000 byte)|0s</DataType>
+    </column>
+    <column id="453" parent="335" name="OPERATION">
+      <Position>5</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="454" parent="335" name="OPTIONS">
+      <Position>6</Position>
+      <DataType>VARCHAR2(255 byte)|0s</DataType>
+    </column>
+    <column id="455" parent="335" name="OBJECT_NODE">
+      <Position>7</Position>
+      <DataType>VARCHAR2(128 byte)|0s</DataType>
+    </column>
+    <column id="456" parent="335" name="OBJECT_OWNER">
+      <Position>8</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="457" parent="335" name="OBJECT_NAME">
+      <Position>9</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="458" parent="335" name="OBJECT_ALIAS">
+      <Position>10</Position>
+      <DataType>VARCHAR2(65 byte)|0s</DataType>
+    </column>
+    <column id="459" parent="335" name="OBJECT_INSTANCE">
+      <Position>11</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="460" parent="335" name="OBJECT_TYPE">
+      <Position>12</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="461" parent="335" name="OPTIMIZER">
+      <Position>13</Position>
+      <DataType>VARCHAR2(255 byte)|0s</DataType>
+    </column>
+    <column id="462" parent="335" name="SEARCH_COLUMNS">
+      <Position>14</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="463" parent="335" name="ID">
+      <Position>15</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="464" parent="335" name="PARENT_ID">
+      <Position>16</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="465" parent="335" name="DEPTH">
+      <Position>17</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="466" parent="335" name="POSITION">
+      <Position>18</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="467" parent="335" name="COST">
+      <Position>19</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="468" parent="335" name="CARDINALITY">
+      <Position>20</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="469" parent="335" name="BYTES">
+      <Position>21</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="470" parent="335" name="OTHER_TAG">
+      <Position>22</Position>
+      <DataType>VARCHAR2(255 byte)|0s</DataType>
+    </column>
+    <column id="471" parent="335" name="PARTITION_START">
+      <Position>23</Position>
+      <DataType>VARCHAR2(255 byte)|0s</DataType>
+    </column>
+    <column id="472" parent="335" name="PARTITION_STOP">
+      <Position>24</Position>
+      <DataType>VARCHAR2(255 byte)|0s</DataType>
+    </column>
+    <column id="473" parent="335" name="PARTITION_ID">
+      <Position>25</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="474" parent="335" name="OTHER">
+      <Position>26</Position>
+      <DataType>LONG|0s</DataType>
+    </column>
+    <column id="475" parent="335" name="DISTRIBUTION">
+      <Position>27</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="476" parent="335" name="CPU_COST">
+      <Position>28</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="477" parent="335" name="IO_COST">
+      <Position>29</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="478" parent="335" name="TEMP_SPACE">
+      <Position>30</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="479" parent="335" name="ACCESS_PREDICATES">
+      <Position>31</Position>
+      <DataType>VARCHAR2(4000 byte)|0s</DataType>
+    </column>
+    <column id="480" parent="335" name="FILTER_PREDICATES">
+      <Position>32</Position>
+      <DataType>VARCHAR2(4000 byte)|0s</DataType>
+    </column>
+    <column id="481" parent="335" name="PROJECTION">
+      <Position>33</Position>
+      <DataType>VARCHAR2(4000 byte)|0s</DataType>
+    </column>
+    <column id="482" parent="335" name="TIME">
+      <Position>34</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="483" parent="335" name="QBLOCK_NAME">
+      <Position>35</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="484" parent="335" name="OTHER_XML">
+      <Position>36</Position>
+      <DataType>CLOB|0s</DataType>
+    </column>
+    <column id="485" parent="336" name="ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="486" parent="336" name="IMIĘ">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="487" parent="336" name="KLASA">
+      <Position>3</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="488" parent="336" name="GRACZ">
+      <Position>4</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <index id="489" parent="336" name="SYS_C00755360">
+      <ObjectId>641394</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-03-20.12:57:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:57:30</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="490" parent="336" name="SYS_C00755361">
+      <ObjectId>641395</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-03-20.12:57:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:57:30</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>GRACZ</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="491" parent="336" name="SYS_C00755360">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-20.12:57:30</ModifiedTimestamp>
+      <ColNames>ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C00755360</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="492" parent="336" name="SYS_C00755361">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-20.12:57:30</ModifiedTimestamp>
+      <ColNames>GRACZ</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C00755361</UnderlyingIndexName>
+    </key>
+    <check id="493" parent="336" name="SYS_C00755359">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-20.12:57:30</ModifiedTimestamp>
+      <ColNames>KLASA</ColNames>
+      <Predicate>KLASA in (&apos;Wojownik&apos;,&apos;Łotrzyk&apos;)</Predicate>
+    </check>
+    <column id="494" parent="337" name="ID_PRACOWNIKA">
+      <Position>1</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="495" parent="337" name="IMIE">
+      <Position>2</Position>
+      <DataType>VARCHAR2(40 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="496" parent="337" name="NAZWISKO">
+      <Position>3</Position>
+      <DataType>VARCHAR2(40 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="497" parent="337" name="ZAROBKI">
+      <Position>4</Position>
+      <DataType>NUMBER(7,2 digit)|0s</DataType>
+    </column>
+    <column id="498" parent="337" name="DATA_ZATRUDNIENIA">
+      <Position>5</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="499" parent="337" name="ID_ZAKLADU">
+      <Position>6</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="500" parent="337" name="ID_KIEROWNIKA">
+      <Position>7</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+    </column>
+    <column id="501" parent="337" name="KOD_STANOWISKA">
+      <Position>8</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="502" parent="337" name="PRACOWNICY_PK">
+      <ObjectId>644384</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>ID_PRACOWNIKA</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="503" parent="337" name="PRACOWNICY_PK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>ID_PRACOWNIKA</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>PRACOWNICY_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="504" parent="337" name="PRACOWNICY_ZAKLADY_FK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>ID_ZAKLADU</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>ZAKLADY</RefTableName>
+      <RefKeyName>ZAKLADY_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="505" parent="337" name="PRACOWNICY_PRACOWNICY_FK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>ID_KIEROWNIKA</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>PRACOWNICY</RefTableName>
+      <RefKeyName>PRACOWNICY_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="506" parent="337" name="PRACOWNICY_STANOWISKA_FK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>KOD_STANOWISKA</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>STANOWISKA</RefTableName>
+      <RefKeyName>STANOWISKA_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="507" parent="338" name="QUESTION_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="508" parent="338" name="TEXT">
+      <Position>2</Position>
+      <DataType>VARCHAR2(150 byte)|0s</DataType>
+    </column>
+    <column id="509" parent="338" name="TYPE">
+      <Position>3</Position>
+      <DataType>NUMBER(1 digit)|0s</DataType>
+    </column>
+    <index id="510" parent="338" name="QUESTION_PK">
+      <ObjectId>647283</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>QUESTION_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="511" parent="338" name="QUESTION_PK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>QUESTION_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>QUESTION_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="512" parent="339" name="KOD_REGIONU">
+      <Position>1</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="513" parent="339" name="NAZWA">
+      <Position>2</Position>
+      <DataType>VARCHAR2(40 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="514" parent="339" name="REGIONY_PK">
+      <ObjectId>644386</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>KOD_REGIONU</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="515" parent="339" name="REGIONY_PK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>KOD_REGIONU</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>REGIONY_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="516" parent="340" name="RESULTS_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="517" parent="340" name="TEST_ID">
+      <Position>2</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="518" parent="340" name="USER_ID">
+      <Position>3</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="519" parent="340" name="SENT_DATE">
+      <Position>4</Position>
+      <DataType>DATE|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="520" parent="340" name="POINTS">
+      <Position>5</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <index id="521" parent="340" name="RESULTS_PK">
+      <ObjectId>647285</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>RESULTS_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="522" parent="340" name="RESULTS_PK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>RESULTS_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>RESULTS_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="523" parent="340" name="RESULTS_TEST_FK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>TEST_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>TEST</RefTableName>
+      <RefKeyName>TEST_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="524" parent="340" name="RESULTS_USER_FK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>USER_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>USER_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="525" parent="341" name="ANSWER_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="526" parent="341" name="RESULTS_ID">
+      <Position>2</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="527" parent="341" name="RELATION_2_PK">
+      <ObjectId>647287</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>ANSWER_ID
+RESULTS_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="528" parent="341" name="RELATION_2_PK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>ANSWER_ID
+RESULTS_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>RELATION_2_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="529" parent="341" name="ANSWERS_FK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>ANSWER_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>ANSWERS</RefTableName>
+      <RefKeyName>ANSWERS_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="530" parent="341" name="RESULTS_FK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>RESULTS_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>RESULTS</RefTableName>
+      <RefKeyName>RESULTS_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="531" parent="342" name="GRADE">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="532" parent="342" name="LOSAL">
+      <Position>2</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="533" parent="342" name="HISAL">
+      <Position>3</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="534" parent="343" name="KOD_STANOWISKA">
+      <Position>1</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="535" parent="343" name="NAZWA">
+      <Position>2</Position>
+      <DataType>VARCHAR2(40 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="536" parent="343" name="MIN_PLACA">
+      <Position>3</Position>
+      <DataType>NUMBER(7,2 digit)|0s</DataType>
+    </column>
+    <column id="537" parent="343" name="MAX_PLACA">
+      <Position>4</Position>
+      <DataType>NUMBER(7,2 digit)|0s</DataType>
+    </column>
+    <index id="538" parent="343" name="STANOWISKA_PK">
+      <ObjectId>644388</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>KOD_STANOWISKA</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="539" parent="343" name="STANOWISKA_PK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>KOD_STANOWISKA</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>STANOWISKA_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="540" parent="344" name="TEST_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="541" parent="344" name="TITLE">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="542" parent="344" name="START_DATE">
+      <Position>3</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="543" parent="344" name="FINISH_DATE">
+      <Position>4</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="544" parent="344" name="TYPE">
+      <Position>5</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <index id="545" parent="344" name="TEST_PK">
+      <ObjectId>647289</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>TEST_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="546" parent="344" name="TEST_PK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>TEST_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>TEST_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="547" parent="345" name="QUESTION_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="548" parent="345" name="TEST_ID">
+      <Position>2</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="549" parent="345" name="RELATION_3_PK">
+      <ObjectId>647291</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>QUESTION_ID
+TEST_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="550" parent="345" name="RELATION_3_PK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>QUESTION_ID
+TEST_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>RELATION_3_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="551" parent="345" name="QUESTION_FK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>QUESTION_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>QUESTION</RefTableName>
+      <RefKeyName>QUESTION_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="552" parent="345" name="TEST_FK">
+      <ModifiedTimestamp>2019-04-05.12:39:20</ModifiedTimestamp>
+      <ColNames>TEST_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>TEST</RefTableName>
+      <RefKeyName>TEST_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="553" parent="346" name="ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="554" parent="346" name="NAZWA">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="555" parent="346" name="CENA">
+      <Position>3</Position>
+      <DataType>NUMBER(5,2 digit)|0s</DataType>
+    </column>
+    <column id="556" parent="346" name="TYP_ID">
+      <Position>4</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="557" parent="346" name="DOSTAWCA">
+      <Position>5</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="558" parent="346" name="ILOSC">
+      <Position>6</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <index id="559" parent="346" name="SYS_C00755305">
+      <ObjectId>641334</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-03-20.12:40:41</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:40:41</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="560" parent="346" name="SYS_C00755305">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-20.12:40:41</ModifiedTimestamp>
+      <ColNames>ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C00755305</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="561" parent="346" name="REFKEY1">
+      <ModifiedTimestamp>2019-03-20.12:40:41</ModifiedTimestamp>
+      <ColNames>TYP_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>TOWARY_TYP</RefTableName>
+      <RefKeyName>SYS_C00755304</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="562" parent="347" name="ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="563" parent="347" name="TYP">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="564" parent="347" name="OPIS">
+      <Position>3</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <index id="565" parent="347" name="SYS_C00755304">
+      <ObjectId>641332</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-03-20.12:40:41</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:40:41</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="566" parent="347" name="SYS_C00755304">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-20.12:40:41</ModifiedTimestamp>
+      <ColNames>ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C00755304</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="567" parent="348" name="ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="568" parent="348" name="NAZWA">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="569" parent="348" name="CENA">
+      <Position>3</Position>
+      <DataType>NUMBER(5,2 digit)|0s</DataType>
+    </column>
+    <column id="570" parent="348" name="TYP_ID">
+      <Position>4</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="571" parent="348" name="DOSTAWCA">
+      <Position>5</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="572" parent="348" name="ILOSC">
+      <Position>6</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="573" parent="348" name="PRZYSZLA_DATA_ZMIANY">
+      <Position>7</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="574" parent="348" name="ADMINISTRATOR">
+      <Position>8</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <index id="575" parent="348" name="SYS_C00755307">
+      <ObjectId>641336</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-03-20.12:40:41</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-20.12:40:41</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="576" parent="348" name="SYS_C00755307">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2019-03-20.12:40:41</ModifiedTimestamp>
+      <ColNames>ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C00755307</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="577" parent="348" name="REFKEY2">
+      <ModifiedTimestamp>2019-03-20.12:40:41</ModifiedTimestamp>
+      <ColNames>TYP_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>TOWARY_TYP</RefTableName>
+      <RefKeyName>SYS_C00755304</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="578" parent="349" name="TRANSACTION_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="579" parent="349" name="PATRON_ID">
+      <Position>2</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="580" parent="349" name="BOOK_ID">
+      <Position>3</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="581" parent="349" name="TRANSACTION_DATE">
+      <Position>4</Position>
+      <DataType>DATE|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="582" parent="349" name="TRANSACTION_TYPE">
+      <Position>5</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="583" parent="349" name="TRANSACTIONS_PK">
+      <ObjectId>638316</ObjectId>
+      <CreatedTimestamp>2019-03-06.12:26:06</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-06.12:26:06</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>TRANSACTION_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="584" parent="349" name="TRANSACTIONS_PK">
+      <ModifiedTimestamp>2019-03-06.12:26:06</ModifiedTimestamp>
+      <ColNames>TRANSACTION_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>TRANSACTIONS_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="585" parent="349" name="FOR_KEY_PATRON_ID">
+      <ModifiedTimestamp>2019-03-06.12:27:06</ModifiedTimestamp>
+      <ColNames>PATRON_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>PATRONS</RefTableName>
+      <RefKeyName>TABLE1_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="586" parent="349" name="FOR_KEY_BOOK_ID">
+      <ModifiedTimestamp>2019-03-06.12:26:06</ModifiedTimestamp>
+      <ColNames>BOOK_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>BOOKS</RefTableName>
+      <RefKeyName>BOOKS_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <trigger id="587" parent="349" name="TRANSACTIONS_TRG">
+      <ObjectId>638313</ObjectId>
+      <SourceTextLength>209</SourceTextLength>
+      <CreatedTimestamp>2019-03-06.12:26:06</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-06.12:28:02</ModifiedTimestamp>
+      <Events>I</Events>
+      <Turn>before-row</Turn>
+    </trigger>
+    <column id="588" parent="350" name="USER_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="589" parent="350" name="TEST_ID">
+      <Position>2</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="590" parent="350" name="RELATION_6_PK">
+      <ObjectId>647295</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>USER_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="591" parent="350" name="RELATION_6_PK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>USER_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>RELATION_6_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="592" parent="350" name="RELATION_6_USER_FK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>USER_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>USER_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="593" parent="350" name="RELATION_6_TEST_FK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>TEST_ID</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>TEST</RefTableName>
+      <RefKeyName>TEST_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="594" parent="351" name="ID_ZAKLADU">
+      <Position>1</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="595" parent="351" name="NAZWA_ZAKLADU">
+      <Position>2</Position>
+      <DataType>VARCHAR2(40 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="596" parent="351" name="KOD_ADRESU">
+      <Position>3</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="597" parent="351" name="ID_KIEROWNIKA">
+      <Position>4</Position>
+      <DataType>NUMBER(4 digit)|0s</DataType>
+    </column>
+    <index id="598" parent="351" name="ZAKLADY_PK">
+      <ObjectId>644391</ObjectId>
+      <CreatedTimestamp>2019-03-27.11:52:29</CreatedTimestamp>
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>ID_ZAKLADU</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="599" parent="351" name="ZAKLADY_PK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>ID_ZAKLADU</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>ZAKLADY_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="600" parent="351" name="ZAKLADY_ADRESY_FK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>KOD_ADRESU</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>ADRESY</RefTableName>
+      <RefKeyName>ADRESY_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="601" parent="351" name="ZAKLADY_PRACOWNICY_FK">
+      <ModifiedTimestamp>2019-03-27.11:52:29</ModifiedTimestamp>
+      <ColNames>ID_KIEROWNIKA</ColNames>
+      <RefSchemaName>MKAPUSCI</RefSchemaName>
+      <RefTableName>PRACOWNICY</RefTableName>
+      <RefKeyName>PRACOWNICY_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="602" parent="352" name="USER_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="603" parent="352" name="LOGIN">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="604" parent="352" name="PASSWORD">
+      <Position>3</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="605" parent="352" name="FIRST_NAME">
+      <Position>4</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="606" parent="352" name="LAST_NAME">
+      <Position>5</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="607" parent="352" name="ADMIN">
+      <Position>6</Position>
+      <DataType>CHAR(1 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="608" parent="352" name="USER_PK">
+      <ObjectId>647293</ObjectId>
+      <CreatedTimestamp>2019-04-03.23:36:30</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <TablespaceName>II_DATA</TablespaceName>
+      <ColNames>USER_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="609" parent="352" name="USER_PK">
+      <ModifiedTimestamp>2019-04-03.23:36:30</ModifiedTimestamp>
+      <ColNames>USER_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>USER_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="610" parent="353" name="TITLE">
+      <Position>1</Position>
+      <DataType>VARCHAR2(50 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="611" parent="353" name="AUTHOR_LAST_NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="612" parent="353" name="AUTHOR_FIRST_NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="613" parent="353" name="PATRON_ID">
+      <Position>4</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="614" parent="353" name="LAST_NAME">
+      <Position>5</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="615" parent="353" name="FIRST_NAME">
+      <Position>6</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="616" parent="354" name="BOOK_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="617" parent="354" name="TITLE">
+      <Position>2</Position>
+      <DataType>VARCHAR2(50 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="618" parent="354" name="AUTHOR_LAST_NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="619" parent="354" name="AUTHOR_FIRST_NAME">
+      <Position>4</Position>
+      <DataType>VARCHAR2(30 byte)|0s</DataType>
+    </column>
+    <column id="620" parent="354" name="RATING">
+      <Position>5</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="621" parent="354" name="MODIFIED_COLUMN">
+      <Position>6</Position>
+      <DataType>DATE|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="622" parent="354" name="AUTHOR_FULL_NAME">
+      <Position>7</Position>
+      <DataType>VARCHAR2(50 byte)|0s</DataType>
+    </column>
+    <column id="623" parent="354" name="STATUS">
+      <Position>8</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+  </database-model>
+</dataSource>
