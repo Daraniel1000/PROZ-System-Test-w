@@ -1,6 +1,10 @@
 package database_classes;
 
+import java.lang.reflect.Array;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import static database_classes.prozDatabaseConnection.GetTestQuestions;
 
 public class prozTest {
     private int testID, type;
@@ -26,6 +30,11 @@ public class prozTest {
         type = ty;
     }
 
+    public void setQuestions(ArrayList<prozQuestion> qList)
+    {
+        questions = new ArrayList<>(qList);
+    }
+
     public void initQuestions(int i)
     {
         if(!questions.isEmpty()) return;
@@ -40,6 +49,11 @@ public class prozTest {
     public prozQuestion getQuestion(int i)
     {
         return questions.get(i);
+    }
+
+    public int getQuestionsSize()
+    {
+        return questions.size();
     }
 
     public int getTestID() {

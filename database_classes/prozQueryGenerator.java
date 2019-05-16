@@ -9,6 +9,12 @@ public class prozQueryGenerator {
                 "    where users_tests.user_id = " + uID + ");";
     }
 
+    public static String GetTestQuery(int tID)
+    {
+        return "select * from test\n" +
+                "where test_id = " + tID + ";";
+    }
+
     public static String AnswersForQuestionQuery(int qID) {
         return "select * from answers\n" +
                 "where question_id = " + qID + ";";

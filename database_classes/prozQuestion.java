@@ -22,6 +22,11 @@ public class prozQuestion {
         answers = new ArrayList<>(answerAmount);
     }
 
+    public void setAnswers(ArrayList<prozAnswer> aList)
+    {
+        answers = new ArrayList<>(aList);
+    }
+
     public void initAnswers(int n)
     {
         if(!answers.isEmpty()) return;
@@ -37,6 +42,8 @@ public class prozQuestion {
     {
         return answers.get(i);
     }
+
+    public int getAnswersSize(){return answers.size();}
 
     public int getQuestionID() {
         return questionID;
