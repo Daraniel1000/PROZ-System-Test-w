@@ -10,6 +10,10 @@ wykładowca czy coś - tworzy nowe testy i wysyła do serwera, który dodaje do 
 
 zbigniew stonoga - gnije w pierdlu
 
+# UI?
+
+Dodałem tylko kody źródłowe, bo całej apki chyba nie ma sensu ładować, zaznaczyłem przy pomocy TODO sekcje gdzie potrzebuję połączenia z serwerem
+
 ## Server install
 
 ```bash
