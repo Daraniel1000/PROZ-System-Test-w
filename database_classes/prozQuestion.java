@@ -29,8 +29,8 @@ public class prozQuestion {
 
     public void initAnswers(int n)
     {
-        if(!answers.isEmpty()) return;
-        answers = new ArrayList<>(n);
+        if(answers != null)
+            answers = new ArrayList<>(n);
     }
 
     public boolean addAnswer(prozAnswer ans)

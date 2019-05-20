@@ -37,8 +37,8 @@ public class prozTest {
 
     public void initQuestions(int i)
     {
-        if(!questions.isEmpty()) return;
-        questions = new ArrayList<>(i);
+        if(questions == null)
+            questions = new ArrayList<>(i);
     }
 
     public boolean addQuestion(prozQuestion q)

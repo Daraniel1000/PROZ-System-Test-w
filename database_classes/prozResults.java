@@ -28,8 +28,8 @@ public class prozResults {
 
     public void initAnswers(int i)
     {
-        if(!answerID.isEmpty()) return;
-        answerID = new ArrayList<>(i);
+        if(answerID == null)
+            answerID = new ArrayList<>(i);
     }
 
     public boolean addAnswerID(Integer ID)
