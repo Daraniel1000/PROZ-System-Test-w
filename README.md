@@ -12,7 +12,7 @@ zbigniew stonoga - gnije w pierdlu
 
 # UI?
 
-Dodałem tylko kody źródłowe, bo całej apki chyba nie ma sensu ładować, zaznaczyłem przy pomocy TODO sekcje gdzie potrzebuję połączenia z serwerem( w /proz_app/app/src/main/java/com/example/projekt_proz/activities/ )
+zaznaczyłem przy pomocy TODO sekcje gdzie potrzebuję połączenia z serwerem( w /proz_app/app/src/main/java/com/example/projekt_proz/activities/ )
 
 ## Server install
 
