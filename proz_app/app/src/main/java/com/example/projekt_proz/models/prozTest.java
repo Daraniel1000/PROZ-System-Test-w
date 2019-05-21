@@ -35,7 +35,7 @@ public class prozTest implements Serializable {
 
     public void initQuestions(int i)
     {
-        if(!questions.isEmpty()) return;
+        if(questions == null)
         questions = new ArrayList<>(i);
     }
 
