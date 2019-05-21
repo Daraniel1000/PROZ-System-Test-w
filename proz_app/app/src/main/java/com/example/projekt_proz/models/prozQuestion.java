@@ -30,7 +30,7 @@ public class prozQuestion implements Serializable {
 
     public void initAnswers(int n)
     {
-        if(!answers.isEmpty()) return;
+       if(answers != null)
         answers = new ArrayList<>(n);
     }
 
