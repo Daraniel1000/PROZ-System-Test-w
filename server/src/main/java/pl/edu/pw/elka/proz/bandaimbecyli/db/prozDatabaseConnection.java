@@ -93,7 +93,7 @@ public class prozDatabaseConnection implements TestsDAO {
     public prozTest GetTest(int tID) throws SQLException {
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.GetTestQuery(tID));
-        while rs.next() {
+        while (rs.next()) {
             prozTest test = new prozTest(
                     rs.getInt("TEST_ID"),
                     rs.getString("TITLE"),
