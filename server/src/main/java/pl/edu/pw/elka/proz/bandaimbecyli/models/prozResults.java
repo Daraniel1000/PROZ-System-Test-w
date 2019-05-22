@@ -1,4 +1,4 @@
-package database_classes;
+package pl.edu.pw.elka.proz.bandaimbecyli.models;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -7,6 +7,9 @@ public class prozResults {
     private int resultsID,testID,userID,points;
     private Timestamp sentDate;
     private ArrayList<Integer> answerID;
+
+    public prozResults() {
+    }
 
     public prozResults(int resID, int tID, int uID, Timestamp sent, int poi)
     {

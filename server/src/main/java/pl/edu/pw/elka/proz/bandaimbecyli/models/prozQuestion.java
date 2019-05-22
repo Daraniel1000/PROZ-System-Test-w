@@ -1,25 +1,22 @@
-package database_classes;
+package pl.edu.pw.elka.proz.bandaimbecyli.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 
 public class prozQuestion {
     private int questionID, type;
     private String text;
-    private java.util.ArrayList<prozAnswer> answers;
+    private ArrayList<prozAnswer> answers;
+
+    public prozQuestion() {
+    }
 
     public prozQuestion(int id, int ty, String te)
     {
         questionID = id;
         type = ty;
         text = te;
-    }
-
-    public prozQuestion(int id, int ty, String te, int answerAmount)
-    {
-        questionID = id;
-        type = ty;
-        text = te;
-        answers = new ArrayList<>(answerAmount);
     }
 
     public void setAnswers(ArrayList<prozAnswer> aList)
@@ -29,7 +26,7 @@ public class prozQuestion {
 
     public void initAnswers(int n)
     {
-        if(answers != null)
+        if(answers == null)
             answers = new ArrayList<>(n);
     }
 
@@ -43,6 +40,11 @@ public class prozQuestion {
         return answers.get(i);
     }
 
+    public ArrayList<prozAnswer> getAnswers() {
+        return answers;
+    }
+
+    @JsonIgnore
     public int getAnswersSize(){return answers.size();}
 
     public int getQuestionID() {

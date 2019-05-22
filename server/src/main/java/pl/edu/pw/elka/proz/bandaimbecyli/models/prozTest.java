@@ -1,24 +1,15 @@
-package database_classes;
+package pl.edu.pw.elka.proz.bandaimbecyli.models;
 
-import java.lang.reflect.Array;
-import java.sql.SQLException;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
-
-import static database_classes.prozDatabaseConnection.GetTestQuestions;
 
 public class prozTest {
     private int testID, type;
     private String title, startDate, endDate;
     private ArrayList<prozQuestion> questions;
 
-    public prozTest(int id, String ti, String sd, String ed, int ty, int questionAmount)
-    {
-        testID = id;
-        title = ti;
-        startDate = sd;
-        endDate = ed;
-        type = ty;
-        questions = new ArrayList<>(questionAmount);
+    public prozTest() {
     }
 
     public prozTest(int id, String ti, String sd, String ed, int ty)
@@ -32,7 +23,10 @@ public class prozTest {
 
     public void setQuestions(ArrayList<prozQuestion> qList)
     {
-        questions = new ArrayList<>(qList);
+        if (qList == null)
+            questions = null;
+        else
+            questions = new ArrayList<>(qList);
     }
 
     public void initQuestions(int i)
@@ -51,9 +45,14 @@ public class prozTest {
         return questions.get(i);
     }
 
+    @JsonIgnore
     public int getQuestionsSize()
     {
         return questions.size();
+    }
+
+    public ArrayList<prozQuestion> getQuestions() {
+        return questions;
     }
 
     public int getTestID() {

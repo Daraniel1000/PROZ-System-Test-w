@@ -1,17 +1,29 @@
-package database_classes;
+package pl.edu.pw.elka.proz.bandaimbecyli.db;
+
+import pl.edu.pw.elka.proz.bandaimbecyli.models.prozAnswer;
+import pl.edu.pw.elka.proz.bandaimbecyli.models.prozQuestion;
+import pl.edu.pw.elka.proz.bandaimbecyli.models.prozTest;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
-public class prozDatabaseConnection {
-    public static ArrayList<prozTest> GetUserTests() throws SQLException {
-        return GetUserTests(1);
+public class prozDatabaseConnection implements TestsDAO {
+    private final Connection databaseConn;
+
+    public prozDatabaseConnection() throws SQLException {
+        databaseConn = DriverManager.getConnection("jdbc:oracle:thin:@ora3.elka.pw.edu.pl:1521:ora3inf","mkapusci","mkapusci");
     }
 
-    public static ArrayList<prozTest> GetUserTests(int uID) throws SQLException
+    @Override
+    public int CheckUserLogin(String username, String password) throws SQLException {
+        throw new UnsupportedOperationException(); // TODO
+    }
+
+    @Override
+    public List<prozTest> GetTestsAvailableForUser(int uID) throws SQLException
     {
         ArrayList<prozTest> testList = new ArrayList<>();
-        Connection databaseConn = DriverManager.getConnection("jdbc:oracle:thin:@ora3.elka.pw.edu.pl:1521:ora3inf","mkapusci","mkapusci");
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.TestsForUserQuery(uID));
         while (rs.next())
@@ -23,19 +35,17 @@ public class prozDatabaseConnection {
                 rs.getString("FINISH_DATE"),
                 rs.getInt("TYPE")));
         }
-        databaseConn.close();
         return testList;
     }
 
-    public static void GetTestQuestions(prozTest test) throws SQLException {
+    @Override
+    public void FillTestQuestions(prozTest test) throws SQLException {
         test.setQuestions(GetTestQuestions(test.getTestID()));
-        return;
     }
 
-    public static ArrayList<prozQuestion> GetTestQuestions(int tID) throws SQLException
+    private ArrayList<prozQuestion> GetTestQuestions(int tID) throws SQLException
     {
         ArrayList<prozQuestion> qList = new ArrayList<>();
-        Connection databaseConn = DriverManager.getConnection("jdbc:oracle:thin:@ora3.elka.pw.edu.pl:1521:ora3inf","mkapusci","mkapusci");
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.QuestionsForTestQuery(tID));
         while (rs.next())
@@ -45,19 +55,17 @@ public class prozDatabaseConnection {
                     rs.getInt("TYPE"),
                     rs.getString("TEXT")));
         }
-        databaseConn.close();
         return qList;
     }
 
-    public static void GetQuestionAnswers(prozQuestion question) throws SQLException {
+    @Override
+    public void FillQuestionAnswers(prozQuestion question) throws SQLException {
         question.setAnswers(GetQuestionAnswers(question.getQuestionID()));
-        return;
     }
 
-    public static ArrayList<prozAnswer> GetQuestionAnswers(int qID) throws SQLException
+    private ArrayList<prozAnswer> GetQuestionAnswers(int qID) throws SQLException
     {
         ArrayList<prozAnswer> aList = new ArrayList<>();
-        Connection databaseConn = DriverManager.getConnection("jdbc:oracle:thin:@ora3.elka.pw.edu.pl:1521:ora3inf","mkapusci","mkapusci");
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.AnswersForQuestionQuery(qID));
         while (rs.next())
@@ -67,12 +75,11 @@ public class prozDatabaseConnection {
                     rs.getBoolean("CORRECT"),
                     rs.getString("TEXT")));
         }
-        databaseConn.close();
         return aList;
     }
 
-    public static prozTest FillTest(int tID) throws SQLException {
-        Connection databaseConn = DriverManager.getConnection("jdbc:oracle:thin:@ora3.elka.pw.edu.pl:1521:ora3inf","mkapusci","mkapusci");
+    @Override
+    public prozTest GetTest(int tID) throws SQLException {
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.GetTestQuery(tID));
         prozTest test = new prozTest(
@@ -81,17 +88,6 @@ public class prozDatabaseConnection {
                 rs.getString("START_DATE"),
                 rs.getString("FINISH_DATE"),
                 rs.getInt("TYPE"));
-        databaseConn.close();
-        FillTest(test);
         return test;
-    }
-
-    public static void FillTest(prozTest test) throws SQLException
-    {
-        GetTestQuestions(test);
-        for (int i=0; i<test.getQuestionsSize(); ++i)
-        {
-            GetQuestionAnswers(test.getQuestion(i));
-        }
     }
 }
