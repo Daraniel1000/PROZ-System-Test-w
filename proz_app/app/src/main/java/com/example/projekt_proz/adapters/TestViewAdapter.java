@@ -1,6 +1,7 @@
 package com.example.projekt_proz.adapters;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,18 +19,24 @@ public class TestViewAdapter extends RecyclerView.Adapter<TestViewAdapter.MyView
     private LayoutInflater inflater;
     private OnTestClickListener mOnTestClickListener;
 
-    private List<prozTest> prozTestArrayList;
+    private List<prozTest> testList = new ArrayList<>();
 
-    public TestViewAdapter(Context ctx, List<prozTest> prozTestArrayList, OnTestClickListener onTestClickListener) {
+    public interface OnTestClickListener {
+        void onTestClick(CardView view, int position);
+    }
 
+    public TestViewAdapter(Context ctx, OnTestClickListener onTestClickListener) {
         inflater = LayoutInflater.from(ctx);
-        this.prozTestArrayList = prozTestArrayList;
         mOnTestClickListener = onTestClickListener;
+    }
+
+    public void setTestList(List<prozTest> testList) {
+        this.testList = testList;
+        notifyDataSetChanged();
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view = inflater.inflate(R.layout.recycler_item, parent, false);
         MyViewHolder holder = new MyViewHolder(view, mOnTestClickListener);
         return holder;
@@ -37,42 +44,32 @@ public class TestViewAdapter extends RecyclerView.Adapter<TestViewAdapter.MyView
 
     @Override
     public void onBindViewHolder(TestViewAdapter.MyViewHolder holder, int position) {
-
-        holder.tvTitle.setText(prozTestArrayList.get(position).getTitle());
-        holder.tvStartD.setText(prozTestArrayList.get(position).getStartDate());
-        holder.tvEndD.setText(prozTestArrayList.get(position).getEndDate());
-        // holder.tvQAmount.setText(""+prozTestArrayList.get(position).getQuestionsSize());// TODO
+        holder.tvTitle.setText(testList.get(position).getTitle());
+        holder.tvEndCountdown.setText(testList.get(position).getEndDate()); // TODO: odliczanie
     }
 
     @Override
     public int getItemCount() {
-        return prozTestArrayList.size();
+        return testList.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        private CardView cardView;
+        private TextView tvTitle, tvEndCountdown;
 
-        private TextView tvTitle, tvStartD, tvEndD, tvQAmount;
-        OnTestClickListener onTestClickListener;
-
-        public MyViewHolder(View itemView, OnTestClickListener onTestClickListener) {
+        public MyViewHolder(View itemView, final OnTestClickListener onTestClickListener) {
             super(itemView);
+
+            cardView = itemView.findViewById(R.id.card_view);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvStartD = itemView.findViewById(R.id.tvStartD);
-            tvEndD = itemView.findViewById(R.id.tvEndD);
-            tvQAmount = itemView.findViewById(R.id.tvQAmount);
+            tvEndCountdown = itemView.findViewById(R.id.tvEndCountdown);
 
-            this.onTestClickListener = onTestClickListener;
-
-            itemView.setOnClickListener(this);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onTestClickListener.onTestClick(cardView, getAdapterPosition());
+                }
+            });
         }
-
-        @Override
-        public void onClick(View v) {
-            onTestClickListener.onTestClick(getAdapterPosition());
-        }
-    }
-
-    public interface OnTestClickListener {
-        void onTestClick(int position);
     }
 }

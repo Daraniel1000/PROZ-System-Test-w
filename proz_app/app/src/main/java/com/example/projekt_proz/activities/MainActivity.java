@@ -4,10 +4,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 
 import android.os.AsyncTask;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,28 +23,46 @@ import java.io.IOException;
 import okhttp3.Credentials;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "AfterLogin";
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            supportFinishAfterTransition();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     public void logInService(View view) {
         String account = ((EditText) findViewById(R.id.input1)).getText().toString();
         String password = ((EditText) findViewById(R.id.input2)).getText().toString();
 
-        new LoginTask(account, password).execute();
+        new LoginTask(view, account, password).execute();
     }
 
     private class LoginTask extends AsyncTask<Void, Void, Boolean> {
+        private final View loginButton;
         private final String login;
         private final String password;
         private ProgressDialog dialog;
+        private Exception e;
 
-        LoginTask(String login, String password) {
+        LoginTask(View loginButton, String login, String password) {
             super();
+            this.loginButton = loginButton;
             this.login = login;
             this.password = password;
         }
@@ -68,7 +89,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, AfterLogin.class);
                 intent.putExtra("login", login);
                 intent.putExtra("password", password);
-                startActivity(intent);
+
+                ActivityOptionsCompat options =
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this,
+                        loginButton,
+                        "testListActivity"
+                    );
+                ActivityCompat.startActivity(MainActivity.this, intent, options.toBundle());
             } else {
                 Toast.makeText(MainActivity.this, "Nie udało się zalogować!", Toast.LENGTH_LONG).show();
             }

@@ -3,17 +3,20 @@ package com.example.projekt_proz.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.projekt_proz.R;
-import com.example.projekt_proz.models.TestWrapper;
-import com.example.projekt_proz.models.prozResults;
 import com.example.projekt_proz.models.prozTest;
 import com.example.projekt_proz.adapters.TestViewAdapter;
 import com.example.projekt_proz.net.MyClient;
@@ -31,7 +34,7 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
     private String password;
 
     private RecyclerView recyclerView;
-    private List<prozTest> prozTestList;
+    private List<prozTest> testList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +46,9 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        prozTestList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler);
-        recyclerView.setAdapter(new TestViewAdapter(this, prozTestList, this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(new TestViewAdapter(this, this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
         new FetchTests().execute();
@@ -56,7 +59,7 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            finish();
+            supportFinishAfterTransition();
             return true;
         }
 
@@ -64,9 +67,8 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
     }
 
     @Override
-    public void onTestClick(int position) {
-        Log.d(TAG, "test clicked:" + position);
-        new FetchTest(prozTestList.get(position).getTestID()).execute();
+    public void onTestClick(CardView view, int position) {
+        new FetchTest(view, testList.get(position).getTestID()).execute();
     }
 
     private class FetchTests extends AsyncTask<Void, Void, List<prozTest>> {
@@ -95,18 +97,21 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
                 finish();
                 return;
             }
-            prozTestList = testList;
-            recyclerView.swapAdapter(new TestViewAdapter(AfterLogin.this, prozTestList, AfterLogin.this), false);
+            AfterLogin.this.testList = testList;
+            TestViewAdapter adapter = (TestViewAdapter) recyclerView.getAdapter();
+            adapter.setTestList(testList);
         }
     }
 
     private class FetchTest extends AsyncTask<Void, Void, prozTest> {
         private ProgressDialog dialog;
+        private CardView card;
 
         private final int testId;
 
-        private FetchTest(int testId) {
+        private FetchTest(CardView card, int testId) {
             super();
+            this.card = card;
             this.testId = testId;
         }
 
@@ -135,7 +140,12 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
 
             Intent intent = new Intent(AfterLogin.this, WithinTest.class);
             intent.putExtra("test", test);
-            startActivity(intent);
+            ActivityOptionsCompat options =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(AfterLogin.this,
+                    card,
+                    "testActivity"
+                );
+            ActivityCompat.startActivity(AfterLogin.this, intent, options.toBundle());
         }
     }
 }

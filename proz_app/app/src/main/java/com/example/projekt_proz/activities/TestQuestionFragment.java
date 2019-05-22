@@ -1,0 +1,120 @@
+package com.example.projekt_proz.activities;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import com.example.projekt_proz.R;
+import com.example.projekt_proz.models.prozQuestion;
+
+public class TestQuestionFragment extends Fragment {
+    private static final String ARG_QUESTION = "question";
+    private static final String ARG_QUESTION_NUMBER = "questionNumber";
+    private static final String ARG_IS_LAST = "isLast";
+
+    private prozQuestion question;
+    private int questionNumber;
+    private boolean isLast;
+
+    private OnFragmentInteractionListener mListener;
+
+    public static TestQuestionFragment newInstance(int questionNumber, prozQuestion question, boolean isLast) {
+        TestQuestionFragment fragment = new TestQuestionFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_QUESTION, question);
+        args.putInt(ARG_QUESTION_NUMBER, questionNumber);
+        args.putBoolean(ARG_IS_LAST, isLast);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            question = (prozQuestion) getArguments().getSerializable(ARG_QUESTION);
+            questionNumber = getArguments().getInt(ARG_QUESTION_NUMBER);
+            isLast = getArguments().getBoolean(ARG_IS_LAST);
+        }
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_test_question, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        TextView tvQuestion = view.findViewById(R.id.tvQuestion);
+        RadioGroup radioGroup = view.findViewById(R.id.radio_group);
+        Button btnNext = view.findViewById(R.id.btnNext);
+
+        tvQuestion.setText("Pytanie " + questionNumber + ": " + question.getText());
+
+        for (int i = 0; i < question.getAnswersSize(); i++) {
+            RadioButton radioButton = new RadioButton(getActivity());
+            radioButton.setId(View.generateViewId());
+
+            radioButton.setText(question.getAnswer(i).getText());
+
+            radioButton.setLayoutParams(new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, RadioGroup.LayoutParams.WRAP_CONTENT, 1f));
+            radioButton.setTextSize(20);
+            radioButton.setBackgroundColor(Color.parseColor("#E8D233"));
+            radioGroup.addView(radioButton);
+        }
+
+        if (isLast) {
+            btnNext.setText("Zakończ Test");
+        }
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isLast)
+                {
+                    mListener.finishTest();
+                }
+                else
+                {
+                    mListener.nextQuestion();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        void nextQuestion();
+        void finishTest();
+    }
+}
