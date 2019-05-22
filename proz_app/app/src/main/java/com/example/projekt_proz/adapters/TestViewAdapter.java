@@ -3,6 +3,7 @@ package com.example.projekt_proz.adapters;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.example.projekt_proz.R;
 import com.example.projekt_proz.models.prozTest;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class TestViewAdapter extends RecyclerView.Adapter<TestViewAdapter.MyViewHolder> {
@@ -45,7 +47,20 @@ public class TestViewAdapter extends RecyclerView.Adapter<TestViewAdapter.MyView
     @Override
     public void onBindViewHolder(TestViewAdapter.MyViewHolder holder, int position) {
         holder.tvTitle.setText(testList.get(position).getTitle());
-        holder.tvEndCountdown.setText(testList.get(position).getEndDate()); // TODO: odliczanie
+        long startTime = testList.get(position).getStartDate().getTime();
+        long endTime = testList.get(position).getEndDate().getTime();
+        long currentTime = Calendar.getInstance().getTime().getTime();
+        if (currentTime < startTime)
+        {
+            holder.tvEndLabel.setText("Rozpocznie się: ");
+            holder.tvEndCountdown.setText(DateUtils.getRelativeTimeSpanString(startTime, currentTime, 0, DateUtils.FORMAT_ABBREV_RELATIVE));
+        }
+        else
+        {
+            holder.tvEndLabel.setText(currentTime < endTime ? "Kończy się: " : "Zakończył się: ");
+            holder.tvEndCountdown.setText(DateUtils.getRelativeTimeSpanString(endTime, currentTime, 0, DateUtils.FORMAT_ABBREV_RELATIVE));
+        }
+        holder.tvReadyToStartLabel.setVisibility(currentTime >= startTime && currentTime <= endTime ? View.VISIBLE : View.INVISIBLE);
     }
 
     @Override
@@ -55,13 +70,15 @@ public class TestViewAdapter extends RecyclerView.Adapter<TestViewAdapter.MyView
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         private CardView cardView;
-        private TextView tvTitle, tvEndCountdown;
+        private TextView tvTitle, tvReadyToStartLabel, tvEndLabel, tvEndCountdown;
 
         public MyViewHolder(View itemView, final OnTestClickListener onTestClickListener) {
             super(itemView);
 
             cardView = itemView.findViewById(R.id.card_view);
             tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvReadyToStartLabel = itemView.findViewById(R.id.tvReadyToStartLabel);
+            tvEndLabel = itemView.findViewById(R.id.tvEndLabel);
             tvEndCountdown = itemView.findViewById(R.id.tvEndCountdown);
 
             cardView.setOnClickListener(new View.OnClickListener() {

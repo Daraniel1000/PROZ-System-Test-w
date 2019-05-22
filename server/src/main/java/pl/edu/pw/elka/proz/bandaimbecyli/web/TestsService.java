@@ -12,7 +12,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Path("/tests")
 @Produces(MediaType.APPLICATION_JSON)
@@ -69,7 +71,7 @@ public class TestsService
     {
         int user = checkUser(auth);
         if (user == -1)
-            throw new NotAuthorizedException("Invalid user");
+            throw new ForbiddenException("Invalid user");
         return dao.GetTestsAvailableForUser(user);
     }
 
@@ -79,11 +81,15 @@ public class TestsService
     {
         int user = checkUser(auth);
         if (user == -1)
-            throw new NotAuthorizedException("Invalid user");
+            throw new ForbiddenException("Invalid user");
 
         prozTest test = dao.GetTest(testId);
         if (test == null)
             throw new NotFoundException("No such test found");
+        if (Calendar.getInstance().getTime().getTime() < test.getStartDate().getTime())
+            throw new ForbiddenException("Test not started");
+        if (Calendar.getInstance().getTime().getTime() > test.getEndDate().getTime())
+            throw new ForbiddenException("Test already finished");
         dao.FillTestQuestions(test);
         for(prozQuestion q : test.getQuestions())
             dao.FillQuestionAnswers(q);
@@ -97,7 +103,7 @@ public class TestsService
     {
         int user = checkUser(auth);
         if (user == -1)
-            throw new NotAuthorizedException("Invalid user");
+            throw new ForbiddenException("Invalid user");
 
         if (solutions == null)
             throw new BadRequestException("No solutions sent");

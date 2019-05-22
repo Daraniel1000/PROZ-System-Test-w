@@ -2,16 +2,19 @@ package com.example.projekt_proz.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class prozTest implements Serializable {
     private int testID, type;
-    private String title, startDate, endDate;
+
+    private String title;
+    private Date startDate, endDate;
     private ArrayList<prozQuestion> questions;
 
     public prozTest() {
     }
 
-    public prozTest(int id, String ti, String sd, String ed, int ty)
+    public prozTest(int id, String ti, Date sd, Date ed, int ty)
     {
         testID = id;
         title = ti;
@@ -61,11 +64,11 @@ public class prozTest implements Serializable {
         return title;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 

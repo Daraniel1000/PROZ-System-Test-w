@@ -2,19 +2,19 @@ package pl.edu.pw.elka.proz.bandaimbecyli.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class prozTest {
     private int testID, type;
     private String title;
-    private Timestamp startDate, endDate;
+    private Date startDate, endDate;
     private ArrayList<prozQuestion> questions;
 
     public prozTest() {
     }
 
-    public prozTest(int id, String ti, Timestamp sd, Timestamp ed, int ty)
+    public prozTest(int id, String ti, Date sd, Date ed, int ty)
     {
         testID = id;
         title = ti;
@@ -65,11 +65,11 @@ public class prozTest {
         return title;
     }
 
-    public Timestamp getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public Timestamp getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 

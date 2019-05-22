@@ -3,8 +3,10 @@ package com.example.projekt_proz.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -23,18 +25,23 @@ import com.example.projekt_proz.net.MyClient;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import okhttp3.Credentials;
 
-public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnTestClickListener {
+public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnTestClickListener, SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = "AfterLogin";
 
     private String login;
     private String password;
 
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout refreshLayout;
+
     private List<prozTest> testList;
+
+    private Handler timerHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +58,24 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
         recyclerView.setAdapter(new TestViewAdapter(this, this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
+        refreshLayout = findViewById(R.id.swipe_container);
+        refreshLayout.setOnRefreshListener(this);
+        refreshLayout.setColorSchemeResources(R.color.colorPrimary,
+            android.R.color.holo_green_dark,
+            android.R.color.holo_orange_dark,
+            android.R.color.holo_blue_dark);
+
         new FetchTests().execute();
+
+        Runnable timerRunnable = new Runnable() {
+            @Override
+            public void run() {
+                recyclerView.getAdapter().notifyDataSetChanged();
+                timerHandler.postDelayed(this, 1000);
+            }
+        };
+
+        timerHandler.postDelayed(timerRunnable, 1000);
     }
 
     @Override
@@ -67,16 +91,36 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
     }
 
     @Override
+    public void onRefresh() {
+        new FetchTests().execute();
+    }
+
+    @Override
     public void onTestClick(CardView view, int position) {
-        new FetchTest(view, testList.get(position).getTestID()).execute();
+        prozTest test = testList.get(position);
+
+        long startTime = test.getStartDate().getTime();
+        long endTime = test.getEndDate().getTime();
+        long currentTime = Calendar.getInstance().getTime().getTime();
+
+        if (startTime > currentTime)
+        {
+            Toast.makeText(this, "Ten test jeszcze się nie rozpoczął!", Toast.LENGTH_SHORT).show();
+        }
+        else if (currentTime > endTime)
+        {
+            Toast.makeText(this, "Ten test już się zakończył!", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            new FetchTest(view, test.getTestID()).execute();
+        }
     }
 
     private class FetchTests extends AsyncTask<Void, Void, List<prozTest>> {
-        private ProgressDialog dialog;
-
         @Override
         protected void onPreExecute() {
-            dialog = ProgressDialog.show(AfterLogin.this, "", "Pobieranie testów", true);
+            refreshLayout.setRefreshing(true);
         }
 
         @Override
@@ -91,7 +135,7 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
 
         @Override
         protected void onPostExecute(List<prozTest> testList) {
-            dialog.cancel();
+            refreshLayout.setRefreshing(false);
             if (testList == null) {
                 Toast.makeText(AfterLogin.this, "Nie udało się pobrać testów!", Toast.LENGTH_LONG).show();
                 finish();
