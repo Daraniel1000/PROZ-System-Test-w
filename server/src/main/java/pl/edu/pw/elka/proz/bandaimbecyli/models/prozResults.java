@@ -45,6 +45,11 @@ public class prozResults {
         return answerID.get(i);
     }
 
+    public Integer getAnswerIDSize()
+    {
+        return answerID.size();
+    }
+
     public int getResultsID() {
         return resultsID;
     }

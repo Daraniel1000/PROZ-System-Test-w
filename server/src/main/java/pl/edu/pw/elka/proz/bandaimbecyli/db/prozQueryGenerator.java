@@ -28,4 +28,14 @@ class prozQueryGenerator {
                 "    where test_id = " + tID +");";
     }
 
+    static String InsertResultsQuery()
+    {
+        return "insert into Results values (?, ?, ?, ?, ?);";
+    }
+
+    static String InsertResultsAnswersQuery()
+    {
+        return "insert into RESULTS_ANSWERS values (?, ?);";
+    }
+
 }

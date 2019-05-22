@@ -3,6 +3,8 @@ package pl.edu.pw.elka.proz.bandaimbecyli.db;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozAnswer;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozQuestion;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozTest;
+import pl.edu.pw.elka.proz.bandaimbecyli.models.prozResults;
+import pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -89,5 +91,23 @@ public class prozDatabaseConnection implements TestsDAO {
                 rs.getString("FINISH_DATE"),
                 rs.getInt("TYPE"));
         return test;
+    }
+
+    public void SendResults(prozResults Results) throws SQLException
+    {
+        PreparedStatement preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.InsertResultsQuery());
+        preparedStmt.setInt(1, Results.getResultsID());
+        preparedStmt.setInt(2, Results.getTestID());
+        preparedStmt.setInt(3, Results.getUserID());
+        preparedStmt.setTimestamp(4, Results.getSentDate());
+        preparedStmt.setInt(5, Results.getPoints());
+        preparedStmt.execute();
+        for(int i=0; i<Results.getAnswerIDSize(); ++i)
+        {
+            preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.InsertResultsAnswersQuery());
+            preparedStmt.setInt(1, Results.getAnswerID(i));
+            preparedStmt.setInt(2, Results.getResultsID());
+            preparedStmt.execute();
+        }
     }
 }
