@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,7 +29,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            supportFinishAfterTransition();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     public void logInService(View view) {
         String account = ((EditText) findViewById(R.id.input1)).getText().toString();
@@ -42,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         private final String login;
         private final String password;
         private ProgressDialog dialog;
+        private Exception e;
 
         LoginTask(View loginButton, String login, String password) {
             super();

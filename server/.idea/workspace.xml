@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f61e7b6-e7c6-4289-833e-bf86be330dd0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/TestQuestionFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/drawable/tab_indicator_default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/drawable/tab_indicator_selected.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/drawable/tab_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/layout/fragment_test_question.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/WithinTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/WithinTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/res/layout/activity_within_test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/layout/activity_within_test.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java" afterDir="false" />
-    </list>
+    <list default="true" id="3f61e7b6-e7c6-4289-833e-bf86be330dd0" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,7 +52,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="660">
@@ -97,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/InMemoryTestsDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
+            <state relative-caret-position="344">
+              <caret line="78" column="53" lean-forward="true" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#499#500#0" expanded="true" />
@@ -386,12 +374,12 @@
       <updated>1555439645719</updated>
       <workItem from="1555439646865" duration="9336000" />
       <workItem from="1555490561466" duration="1308000" />
-      <workItem from="1558515913315" duration="13232000" />
+      <workItem from="1558515913315" duration="13973000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23876000" />
+    <option name="totallyTimeSpent" value="24617000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1062" extended-state="6" />
@@ -661,24 +649,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/InMemoryTestsDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#529#530#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="44" column="26" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/InMemoryTestsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="78" column="53" lean-forward="true" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#529#530#0" expanded="true" />
           </folding>
         </state>
       </provider>
