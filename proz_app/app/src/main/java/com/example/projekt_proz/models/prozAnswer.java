@@ -7,6 +7,9 @@ public class prozAnswer implements Serializable {
     private boolean correct;
     private String text;
 
+    public prozAnswer() {
+    }
+
     public prozAnswer(int id, boolean c, String t)
     {
         answerID = id;

@@ -9,26 +9,31 @@ public class prozResults implements Serializable {
     private Timestamp sentDate;
     private ArrayList<Integer> answerID;
 
-    public prozResults(int resID, int tID, int uID,  int poi)
+    public prozResults() {
+    }
+
+    public prozResults(int resID, int tID, int uID, Timestamp sent, int poi)
     {
         resultsID = resID;
         testID = tID;
         userID = uID;
         points = poi;
+        sentDate = sent;
     }
 
-    public prozResults(int resID, int tID, int uID)
+    public prozResults(int resID, int tID, int uID, Timestamp sent)
     {
         resultsID = resID;
         testID = tID;
         userID = uID;
         points = 0;
+        sentDate = sent;
     }
 
     public void initAnswers(int i)
     {
-
-        answerID = new ArrayList<>(i);
+        if(answerID == null)
+            answerID = new ArrayList<>(i);
     }
 
     public boolean addAnswerID(Integer ID)
@@ -56,12 +61,6 @@ public class prozResults implements Serializable {
     public int getPoints() {
         return points;
     }
-
-    public void setPoints(int i){points=i;}
-
-    public void setSentDate(Timestamp ts){sentDate=ts;}
-
-    public void addAnswer(int i){answerID.add(i);}
 
     public Timestamp getSentDate() {
         return sentDate;

@@ -6,21 +6,16 @@ import java.util.ArrayList;
 public class prozQuestion implements Serializable {
     private int questionID, type;
     private String text;
-    private java.util.ArrayList<prozAnswer> answers;
+    private ArrayList<prozAnswer> answers;
+
+    public prozQuestion() {
+    }
 
     public prozQuestion(int id, int ty, String te)
     {
         questionID = id;
         type = ty;
         text = te;
-    }
-
-    public prozQuestion(int id, int ty, String te, int answerAmount)
-    {
-        questionID = id;
-        type = ty;
-        text = te;
-        answers = new ArrayList<>(answerAmount);
     }
 
     public void setAnswers(ArrayList<prozAnswer> aList)
@@ -30,8 +25,8 @@ public class prozQuestion implements Serializable {
 
     public void initAnswers(int n)
     {
-       if(answers != null)
-        answers = new ArrayList<>(n);
+        if(answers == null)
+            answers = new ArrayList<>(n);
     }
 
     public boolean addAnswer(prozAnswer ans)
@@ -42,6 +37,10 @@ public class prozQuestion implements Serializable {
     public prozAnswer getAnswer(int i)
     {
         return answers.get(i);
+    }
+
+    public ArrayList<prozAnswer> getAnswers() {
+        return answers;
     }
 
     public int getAnswersSize(){return answers.size();}

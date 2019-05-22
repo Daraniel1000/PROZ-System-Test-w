@@ -1,5 +1,6 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.web;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import pl.edu.pw.elka.proz.bandaimbecyli.db.InMemoryTestsDAO;
 import pl.edu.pw.elka.proz.bandaimbecyli.db.TestsDAO;
 import pl.edu.pw.elka.proz.bandaimbecyli.db.prozDatabaseConnection;
@@ -21,7 +22,6 @@ public class TestsService
 
     static
     {
-
         prozQuestion q1 = new prozQuestion(1, 1, "Pamiętaj, zawsze B");
         q1.initAnswers(4);
         q1.addAnswer(new prozAnswer(1, false, "A"));
@@ -50,15 +50,22 @@ public class TestsService
 
     @Path("/")
     @GET
-    public List<prozTest> listAvailableTests() throws SQLException
+    public List<prozTest> listAvailableTests(@HeaderParam("Authorization") String auth) throws SQLException
     {
-        return dao.GetTestsAvailableForUser(1);
+        int user = checkUser(auth);
+        if (user == -1)
+            throw new NotAuthorizedException("Invalid user");
+        return dao.GetTestsAvailableForUser(user);
     }
 
     @Path("/{testId}")
     @GET
-    public prozTest generateTest(@PathParam("testId") int testId) throws SQLException
+    public prozTest startTest(@PathParam("testId") int testId, @HeaderParam("Authorization") String auth) throws SQLException
     {
+        int user = checkUser(auth);
+        if (user == -1)
+            throw new NotAuthorizedException("Invalid user");
+
         prozTest test = dao.GetTest(testId);
         if (test == null)
             throw new NotFoundException("No such test found");
@@ -71,8 +78,12 @@ public class TestsService
     @Path("/{testId}/submit")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public String submitAnswers(@PathParam("testId") int testId,List<String> solutions) throws SQLException
+    public String submitAnswers(@PathParam("testId") int testId, List<String> solutions, @HeaderParam("Authorization") String auth) throws SQLException
     {
+        int user = checkUser(auth);
+        if (user == -1)
+            throw new NotAuthorizedException("Invalid user");
+
         if (solutions == null)
             throw new BadRequestException("No solutions sent");
         prozTest test = dao.GetTest(testId);
@@ -82,5 +93,25 @@ public class TestsService
         for(prozQuestion q : test.getQuestions())
             dao.FillQuestionAnswers(q);
         return "good job"; // TODO
+    }
+
+    private int checkUser(String authString) throws SQLException
+    {
+        if (authString == null)
+            return -1;
+        String[] authParts = authString.split(" ");
+        if (authParts.length != 2)
+            return -1;
+        if (!authParts[0].equals("Basic"))
+            return -1;
+
+        String decodedAuth = new String(Base64.decode(authParts[1]));
+        String[] authData = decodedAuth.split(":");
+        if (authData.length != 2)
+            return -1;
+        String username = authData[0];
+        String password = authData[1];
+
+        return dao.CheckUserLogin(username, password);
     }
 }

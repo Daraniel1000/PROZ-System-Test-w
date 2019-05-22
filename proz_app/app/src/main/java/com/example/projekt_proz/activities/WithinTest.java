@@ -26,6 +26,8 @@ import com.example.projekt_proz.models.prozTest;
 public class WithinTest extends AppCompatActivity {
     private static final String TAG = "WITHIN TEST";
 
+    private prozTest test;
+
     private TestWrapper tw;
     private int QuestionNr;
     private int FinalQuestionNr;
@@ -36,13 +38,14 @@ public class WithinTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_within_test);
-        tw = (TestWrapper) getIntent().getSerializableExtra("TEST");
-        prozTest CurrentTest = tw.getTest();
-        QuestionNr = tw.getCurrentQuestionNumber();
-        FinalQuestionNr = tw.getMaxQuestionNumber();
-        prozQuestion CurrentQuestion = CurrentTest.getQuestion(QuestionNr);
+        test = (prozTest) getIntent().getSerializableExtra("test");
+        //TODO
 
-        Log.d(TAG, "received test" + CurrentTest.getTitle());
+        /*QuestionNr = tw.getCurrentQuestionNumber();
+        FinalQuestionNr = tw.getMaxQuestionNumber();
+        prozQuestion CurrentQuestion = test.getQuestion(QuestionNr);
+
+        Log.d(TAG, "received test" + test.getTitle());
 
         relativeLayout = findViewById(R.id.relative_layout);
         radioGroup = findViewById(R.id.radio_group);
@@ -79,7 +82,7 @@ public class WithinTest extends AppCompatActivity {
 
         }
         Button btn = relativeLayout.findViewById(R.id.button11);
-        if (QuestionNr == FinalQuestionNr) btn.setText("Zakończ Test");
+        if (QuestionNr == FinalQuestionNr) btn.setText("Zakończ Test");*/
     }
 
     public void nextQuestion(View view) {
