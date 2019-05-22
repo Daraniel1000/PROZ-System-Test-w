@@ -22,7 +22,7 @@ public class TestsService
 
     static
     {
-        prozQuestion q1 = new prozQuestion(1, 1, "Pamiętaj, zawsze B");
+        /*prozQuestion q1 = new prozQuestion(1, 1, "Pamiętaj, zawsze B");
         q1.initAnswers(4);
         q1.addAnswer(new prozAnswer(1, false, "A"));
         q1.addAnswer(new prozAnswer(2, true, "B"));
@@ -54,12 +54,13 @@ public class TestsService
         List<prozTest> tests = new ArrayList<>();
         tests.add(t1);
         tests.add(t2);
-        dao = new InMemoryTestsDAO(tests);
-        /*try {
+        dao = new InMemoryTestsDAO(tests);*/
+
+        try {
             dao = new prozDatabaseConnection();
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     @Path("/")

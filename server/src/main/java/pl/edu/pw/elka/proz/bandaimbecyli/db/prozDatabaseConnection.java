@@ -18,8 +18,17 @@ public class prozDatabaseConnection implements TestsDAO {
     }
 
     @Override
-    public int CheckUserLogin(String username, String password) throws SQLException {
-        throw new UnsupportedOperationException(); // TODO
+    public int CheckUserLogin(String username, String password) throws SQLException
+    {
+        PreparedStatement stmt = databaseConn.prepareStatement(prozQueryGenerator.CheckUserQuery());
+        stmt.setString(1, username);
+        stmt.setString(2, password);
+        ResultSet rs = stmt.executeQuery();
+        while(rs.next())
+        {
+            return rs.getInt("USER_ID");
+        }
+        return -1;
     }
 
     @Override

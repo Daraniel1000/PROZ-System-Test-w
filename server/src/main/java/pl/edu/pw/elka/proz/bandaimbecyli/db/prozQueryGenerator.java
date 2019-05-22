@@ -1,6 +1,11 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.db;
 
 class prozQueryGenerator {
+    static String CheckUserQuery()
+    {
+        return "select user_id from users where login = ? and password = ?";
+    }
+
     static String TestsForUserQuery(int uID)
     {
         return "select * from test\n" +
