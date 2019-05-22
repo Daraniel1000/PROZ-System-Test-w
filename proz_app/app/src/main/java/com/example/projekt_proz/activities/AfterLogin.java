@@ -59,7 +59,7 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            finish();
+            supportFinishAfterTransition();
             return true;
         }
 

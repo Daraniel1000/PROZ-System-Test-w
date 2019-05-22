@@ -29,9 +29,23 @@ public class TestsService
         q1.addAnswer(new prozAnswer(3, false, "C"));
         q1.addAnswer(new prozAnswer(4, false, "D"));
 
+        prozQuestion q2 = new prozQuestion(2, 1, "Czy zdążymy z projektem na czas?");
+        q2.initAnswers(2);
+        q2.addAnswer(new prozAnswer(5, false, "Tak"));
+        q2.addAnswer(new prozAnswer(6, true, "Oczywiście że tak"));
+
+        prozQuestion q3 = new prozQuestion(3, 1, "Czy chodzisz na wykłady z PODA?");
+        q3.initAnswers(3);
+        q3.addAnswer(new prozAnswer(7, false, "Na wszystkie"));
+        q3.addAnswer(new prozAnswer(8, true, "No ze dwa razy może się zdarzyło..."));
+        q3.addAnswer(new prozAnswer(9, false, "Nope"));
+
+
         prozTest t1 = new prozTest(1, "Test pierwszy", "20.03.2007", "30.05.2020", 1);
-        t1.initQuestions(1);
+        t1.initQuestions(3);
         t1.addQuestion(q1);
+        t1.addQuestion(q2);
+        t1.addQuestion(q3);
 
         prozTest t2 = new prozTest(2, "Test drugi", "20.03.2007", "30.05.2020", 1);
         t2.initQuestions(1);
