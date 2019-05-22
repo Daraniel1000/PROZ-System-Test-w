@@ -93,13 +93,16 @@ public class prozDatabaseConnection implements TestsDAO {
     public prozTest GetTest(int tID) throws SQLException {
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.GetTestQuery(tID));
-        prozTest test = new prozTest(
-                rs.getInt("TEST_ID"),
-                rs.getString("TITLE"),
-                rs.getTimestamp("START_DATE"),
-                rs.getTimestamp("FINISH_DATE"),
-                rs.getInt("TYPE"));
-        return test;
+        while rs.next() {
+            prozTest test = new prozTest(
+                    rs.getInt("TEST_ID"),
+                    rs.getString("TITLE"),
+                    rs.getTimestamp("START_DATE"),
+                    rs.getTimestamp("FINISH_DATE"),
+                    rs.getInt("TYPE"));
+            return test;
+        }
+        return null;
     }
 
     public void SendResults(prozResults Results) throws SQLException
