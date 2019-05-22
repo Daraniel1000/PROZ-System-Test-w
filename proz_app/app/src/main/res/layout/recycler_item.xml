@@ -13,7 +13,7 @@
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:transitionName="testActivity"
-        card_view:cardBackgroundColor="#e6ed17"
+        card_view:cardBackgroundColor="@color/colorTest"
         card_view:cardCornerRadius="4dp">
 
         <LinearLayout
