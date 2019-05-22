@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f61e7b6-e7c6-4289-833e-bf86be330dd0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/net/MyClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/net/TestsAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/webutil/NotAuthorizedExceptionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/AfterLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/AfterLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/adapters/TestViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/adapters/TestViewAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/models/prozAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/models/prozAnswer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/models/prozQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/models/prozQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/models/prozResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/models/prozResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/models/prozTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/models/prozTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/res/layout/activity_after_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/layout/activity_after_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java" afterDir="false" />
-    </list>
+    <list default="true" id="3f61e7b6-e7c6-4289-833e-bf86be330dd0" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -393,12 +377,12 @@
       <updated>1555439645719</updated>
       <workItem from="1555439646865" duration="9336000" />
       <workItem from="1555490561466" duration="1308000" />
-      <workItem from="1558515913315" duration="8320000" />
+      <workItem from="1558515913315" duration="10288000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18964000" />
+    <option name="totallyTimeSpent" value="20932000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1062" extended-state="6" />
