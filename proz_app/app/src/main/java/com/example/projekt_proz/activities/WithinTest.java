@@ -23,7 +23,7 @@ import com.example.projekt_proz.models.prozResults;
 import com.example.projekt_proz.models.prozTest;
 
 /*TODO:IMPLEMENT TIMER*/
-public class WithinTest extends AppCompatActivity{
+public class WithinTest extends AppCompatActivity {
     private static final String TAG = "WITHIN TEST";
 
     private TestWrapper tw;
@@ -36,35 +36,34 @@ public class WithinTest extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_within_test);
-        tw  = (TestWrapper) getIntent().getSerializableExtra("TEST");
+        tw = (TestWrapper) getIntent().getSerializableExtra("TEST");
         prozTest CurrentTest = tw.getTest();
-        QuestionNr=tw.getCurrentQuestionNumber();
+        QuestionNr = tw.getCurrentQuestionNumber();
         FinalQuestionNr = tw.getMaxQuestionNumber();
-        prozQuestion CurrentQuestion=CurrentTest.getQuestion(QuestionNr);
+        prozQuestion CurrentQuestion = CurrentTest.getQuestion(QuestionNr);
 
-        Log.d(TAG,"received test"+CurrentTest.getTitle());
+        Log.d(TAG, "received test" + CurrentTest.getTitle());
 
         relativeLayout = findViewById(R.id.relative_layout);
         radioGroup = findViewById(R.id.radio_group);
 
         TextView tv = new TextView(this);
-        tv.setText("Pytanie "+(QuestionNr+1)+": "+CurrentQuestion.getText());
+        tv.setText("Pytanie " + (QuestionNr + 1) + ": " + CurrentQuestion.getText());
         tv.setBackgroundColor(Color.parseColor("#E8D233"));
         tv.setTextSize(25);
         tv.setTextColor(Color.parseColor("#000000"));
-        RelativeLayout.LayoutParams prm = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams prm = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         prm.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-        prm.setMargins(10,20,10,10);
+        prm.setMargins(10, 20, 10, 10);
         tv.setLayoutParams(prm);
         relativeLayout.addView(tv);
-
 
 
         for (int i = 0; i < CurrentQuestion.getAnswersSize(); i++) {
 
 
             RadioButton radioButton = new RadioButton(this);
-            radioButton.setId(10+i);
+            radioButton.setId(10 + i);
 
             radioButton.setText(CurrentQuestion.getAnswer(i).getText());
 
@@ -80,35 +79,35 @@ public class WithinTest extends AppCompatActivity{
 
         }
         Button btn = relativeLayout.findViewById(R.id.button11);
-        if(QuestionNr==FinalQuestionNr)btn.setText("Zakończ Test");
+        if (QuestionNr == FinalQuestionNr) btn.setText("Zakończ Test");
     }
 
-    public void nextQuestion(View view){
+    public void nextQuestion(View view) {
         int i;
-        for (i = 0; i < tw.getTest().getQuestion(QuestionNr).getAnswersSize(); i++){
-            RadioButton rbtn = radioGroup.findViewById(10+i);
-            if(rbtn.isChecked()==true)break;
+        for (i = 0; i < tw.getTest().getQuestion(QuestionNr).getAnswersSize(); i++) {
+            RadioButton rbtn = radioGroup.findViewById(10 + i);
+            if (rbtn.isChecked() == true) break;
         }
-        if(i== tw.getTest().getQuestion(QuestionNr).getAnswersSize()){
-            Toast.makeText(this,"Musisz wybrać odpowiedź! ",Toast.LENGTH_LONG).show(); return;
+        if (i == tw.getTest().getQuestion(QuestionNr).getAnswersSize()) {
+            Toast.makeText(this, "Musisz wybrać odpowiedź! ", Toast.LENGTH_LONG).show();
+            return;
         }
-        Log.d(TAG,"Checked button nr "+(i+1));
+        Log.d(TAG, "Checked button nr " + (i + 1));
         prozResults tempResults = tw.getResult();
         tempResults.addAnswerID(tw.getTest().getQuestion(QuestionNr).getAnswer(i).getAnswerID());
         tw.setResult(tempResults);
-        if(QuestionNr==FinalQuestionNr){
+        if (QuestionNr == FinalQuestionNr) {
             /*TODO: ADD TIMESTAMP, SEND RESULT */
-            Toast.makeText(this,"Odpowiedzi wysłano! ",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Odpowiedzi wysłano! ", Toast.LENGTH_LONG).show();
             startActivity(new Intent(WithinTest.this, AfterLogin.class));
-        }
-        else{
-        tw.incQuestion();
-        Intent intent = new Intent(WithinTest.this, WithinTest.class);
+        } else {
+            tw.incQuestion();
+            Intent intent = new Intent(WithinTest.this, WithinTest.class);
 
-            intent.putExtra("TEST",tw);
+            intent.putExtra("TEST", tw);
             startActivity(intent);
 
+        }
     }
-}
 
 }
