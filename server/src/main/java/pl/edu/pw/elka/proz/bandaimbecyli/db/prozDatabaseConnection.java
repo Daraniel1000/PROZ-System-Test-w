@@ -42,8 +42,8 @@ public class prozDatabaseConnection implements TestsDAO {
             testList.add(new prozTest(
                 rs.getInt("TEST_ID"),
                 rs.getString("TITLE"),
-                rs.getString("START_DATE"),
-                rs.getString("FINISH_DATE"),
+                rs.getTimestamp("START_DATE"),
+                rs.getTimestamp("FINISH_DATE"),
                 rs.getInt("TYPE")));
         }
         return testList;
@@ -96,8 +96,8 @@ public class prozDatabaseConnection implements TestsDAO {
         prozTest test = new prozTest(
                 rs.getInt("TEST_ID"),
                 rs.getString("TITLE"),
-                rs.getString("START_DATE"),
-                rs.getString("FINISH_DATE"),
+                rs.getTimestamp("START_DATE"),
+                rs.getTimestamp("FINISH_DATE"),
                 rs.getInt("TYPE"));
         return test;
     }
