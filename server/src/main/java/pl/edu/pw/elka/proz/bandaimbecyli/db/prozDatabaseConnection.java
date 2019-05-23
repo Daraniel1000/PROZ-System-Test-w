@@ -135,10 +135,11 @@ public class prozDatabaseConnection implements TestsDAO {
         preparedStmt.setTimestamp(3, Results.getSentDate());
         preparedStmt.setInt(4, Results.getPoints());
         preparedStmt.execute();
-        Statement stmt = databaseConn.createStatement();
-        ResultSet rs = stmt.executeQuery(prozQueryGenerator.ResultsForUserTestQuery(Results.getTestID(),Results.getUserID())); // TODO: brzydkie xd
+        //Statement stmt = databaseConn.createStatement();
+        //ResultSet rs = stmt.executeQuery(prozQueryGenerator.ResultsForUserTestQuery(Results.getTestID(),Results.getUserID())); // TODO: brzydkie xd
+        ResultSet rs = preparedStmt.getGeneratedKeys();
         rs.next();
-        Results.setResultsID(rs.getInt("RESULTS_ID"));
+        Results.setResultsID(rs.getInt(1));
         for(int i=0; i<Results.getAnswerIDSize(); ++i)
         {
             preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.InsertResultsAnswersQuery());
