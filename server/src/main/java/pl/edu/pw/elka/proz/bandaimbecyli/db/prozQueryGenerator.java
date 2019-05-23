@@ -43,7 +43,7 @@ class prozQueryGenerator {
         return "insert into RESULTS_ANSWERS values (?, ?)";
     }
 
-    static String IsTestFinishedQuery(int tID, int uID)
+    static String ResultsForUserTestQuery(int tID, int uID)
     {
         return "select * from RESULTS where TEST_ID = " + tID + " AND USER_ID = " + uID +";";
     }
