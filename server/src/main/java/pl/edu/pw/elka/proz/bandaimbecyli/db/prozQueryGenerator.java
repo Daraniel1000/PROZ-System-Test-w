@@ -48,4 +48,9 @@ class prozQueryGenerator {
         return "select * from RESULTS where TEST_ID = " + tID + " AND USER_ID = " + uID;
     }
 
+    static String AnswerIDsForResultsQuery(int rID)
+    {
+        return "select ANSWER_ID from RESULTS_ANSWERS where RESULTS_ID = " + rID;
+    }
+
 }
