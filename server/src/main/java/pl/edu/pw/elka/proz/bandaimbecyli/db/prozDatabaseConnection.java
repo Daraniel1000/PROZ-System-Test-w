@@ -41,8 +41,10 @@ public class prozDatabaseConnection implements TestsDAO {
         ResultSet rs = stmt.executeQuery();
         while(rs.next())
         {
+            rs.close();
             return rs.getInt("USER_ID");
         }
+        rs.close();
         return -1;
     }
 
@@ -63,6 +65,7 @@ public class prozDatabaseConnection implements TestsDAO {
                 rs.getInt("TYPE"),
                 isTestDoneByUser(rs.getInt("TEST_ID"), uID))); // TODO: dlaczego to jest w oddzielnym zapytaniu
         }
+        rs.close();
         return testList;
     }
 
@@ -84,6 +87,7 @@ public class prozDatabaseConnection implements TestsDAO {
                     rs.getInt("TYPE"),
                     rs.getString("TEXT")));
         }
+        rs.close();
         return qList;
     }
 
@@ -105,6 +109,7 @@ public class prozDatabaseConnection implements TestsDAO {
                     rs.getBoolean("CORRECT"),
                     rs.getString("TEXT")));
         }
+        rs.close();
         return aList;
     }
 
@@ -120,8 +125,10 @@ public class prozDatabaseConnection implements TestsDAO {
                     rs.getTimestamp("START_DATE"),
                     rs.getTimestamp("FINISH_DATE"),
                     rs.getInt("TYPE"));
+            rs.close();
             return test;
         }
+        rs.close();
         return null;
     }
 
@@ -140,12 +147,14 @@ public class prozDatabaseConnection implements TestsDAO {
         ResultSet rs = preparedStmt.getGeneratedKeys();
         rs.next();
         Results.setResultsID(rs.getInt(1));
+        preparedStmt.close();
         for(int i=0; i<Results.getAnswerIDSize(); ++i)
         {
             preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.InsertResultsAnswersQuery());
             preparedStmt.setInt(1, Results.getAnswerID(i));
             preparedStmt.setInt(2, Results.getResultsID());
             preparedStmt.execute();
+            preparedStmt.close();
         }
     }
 
@@ -154,7 +163,9 @@ public class prozDatabaseConnection implements TestsDAO {
         checkConnection();
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.ResultsForUserTestQuery(tID, uID));
-        return rs.next();
+        Boolean b = rs.next();
+        rs.close();
+        return b;
     }
 
     @Override
@@ -184,6 +195,7 @@ public class prozDatabaseConnection implements TestsDAO {
             rs.close();
             return Results;
         }
+        rs.close();
         return null;
     }
 
