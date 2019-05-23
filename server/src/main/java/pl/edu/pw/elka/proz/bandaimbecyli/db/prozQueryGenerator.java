@@ -38,6 +38,26 @@ class prozQueryGenerator {
         return "insert into Results (TEST_ID, USER_ID, SENT_DATE, POINTS) values (?, ?, ?, ?)";
     }
 
+    static String InsertQuestionQuery()
+    {
+        return "insert into Question (TEXT, TYPE) values (?, ?)";
+    }
+
+    static String insertAnswerQuery()
+    {
+        return "insert into Answers (TEXT, QUESTION_ID, CORRECT) values (?, ?, ?)";
+    }
+
+    static String InsertTestQuery()
+    {
+        return "insert into Test (TITLE, START_DATE, FINISH_DATE, TYPE) values (?, ?, ?, ?)";
+    }
+
+    static String insertTestQuestionsQuery()
+    {
+        return "insert into Test_Questions (QUESTION_ID, TEST_ID) values (?, ?)";
+    }
+
     static String InsertResultsAnswersQuery()
     {
         return "insert into RESULTS_ANSWERS values (?, ?)";
