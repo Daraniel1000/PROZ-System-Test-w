@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name="com.example.projekt_proz.activities.AfterLogin" />
+        <activity android:name="com.example.projekt_proz.activities.AdminHomeScreen" />
         <activity android:name="com.example.projekt_proz.activities.WithinTest"/>
         <activity android:name="com.example.projekt_proz.activities.MainActivity" android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
