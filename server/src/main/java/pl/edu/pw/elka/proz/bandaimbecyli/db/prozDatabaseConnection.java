@@ -109,11 +109,10 @@ public class prozDatabaseConnection implements TestsDAO {
     public void SendResults(prozResults Results) throws SQLException
     {
         PreparedStatement preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.InsertResultsQuery());
-        preparedStmt.setInt(1, Results.getResultsID());
-        preparedStmt.setInt(2, Results.getTestID());
-        preparedStmt.setInt(3, Results.getUserID());
-        preparedStmt.setTimestamp(4, Results.getSentDate());
-        preparedStmt.setInt(5, Results.getPoints());
+        preparedStmt.setInt(1, Results.getTestID());
+        preparedStmt.setInt(2, Results.getUserID());
+        preparedStmt.setTimestamp(3, Results.getSentDate());
+        preparedStmt.setInt(4, Results.getPoints());
         preparedStmt.execute();
         for(int i=0; i<Results.getAnswerIDSize(); ++i)
         {

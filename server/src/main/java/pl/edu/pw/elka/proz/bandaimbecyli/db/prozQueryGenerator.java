@@ -35,7 +35,7 @@ class prozQueryGenerator {
 
     static String InsertResultsQuery()
     {
-        return "insert into Results values (?, ?, ?, ?, ?)";
+        return "insert into Results (TEST_ID, USER_ID, SENT_DATE, POINTS) values (?, ?, ?, ?)";
     }
 
     static String InsertResultsAnswersQuery()
