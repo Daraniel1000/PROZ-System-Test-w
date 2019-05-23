@@ -1,5 +1,7 @@
 package com.example.projekt_proz.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
 public class prozAnswer implements Serializable {
@@ -22,6 +24,7 @@ public class prozAnswer implements Serializable {
         return answerID;
     }
 
+    @JsonIgnore
     public boolean isCorrect() {
         return correct;
     }

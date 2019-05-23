@@ -1,20 +1,23 @@
 package com.example.projekt_proz.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class prozTest implements Serializable {
-    private int testID, type;
+    public static final int TYPE_TEST = 0; // TODO: ankiety czy cokolwiek to miało być?
 
+    private int testID, type;
     private String title;
-    private Date startDate, endDate;
+    private Timestamp startDate, endDate;
     private ArrayList<prozQuestion> questions;
 
     public prozTest() {
     }
 
-    public prozTest(int id, String ti, Date sd, Date ed, int ty)
+    public prozTest(int id, String ti, Timestamp sd, Timestamp ed, int ty)
     {
         testID = id;
         title = ti;
@@ -47,6 +50,7 @@ public class prozTest implements Serializable {
         return questions.get(i);
     }
 
+    @JsonIgnore
     public int getQuestionsSize()
     {
         return questions.size();
@@ -64,11 +68,11 @@ public class prozTest implements Serializable {
         return title;
     }
 
-    public Date getStartDate() {
+    public Timestamp getStartDate() {
         return startDate;
     }
 
-    public Date getEndDate() {
+    public Timestamp getEndDate() {
         return endDate;
     }
 

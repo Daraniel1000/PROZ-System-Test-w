@@ -2,9 +2,13 @@ package pl.edu.pw.elka.proz.bandaimbecyli.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class prozQuestion {
+public class prozQuestion implements Serializable {
+    public static final int TYPE_SINGLE_CHOICE = 0;
+    public static final int TYPE_MULTIPLE_CHOICE = 1;
+
     private int questionID, type;
     private String text;
     private ArrayList<prozAnswer> answers;

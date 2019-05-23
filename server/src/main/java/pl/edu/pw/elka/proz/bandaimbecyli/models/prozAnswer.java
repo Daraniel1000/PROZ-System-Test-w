@@ -2,7 +2,9 @@ package pl.edu.pw.elka.proz.bandaimbecyli.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class prozAnswer {
+import java.io.Serializable;
+
+public class prozAnswer implements Serializable {
     private int answerID;
     private boolean correct;
     private String text;

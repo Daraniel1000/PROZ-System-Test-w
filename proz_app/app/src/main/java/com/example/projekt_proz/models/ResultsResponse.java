@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.proz.bandaimbecyli.models;
+package com.example.projekt_proz.models;
 
 import java.io.Serializable;
 import java.util.List;

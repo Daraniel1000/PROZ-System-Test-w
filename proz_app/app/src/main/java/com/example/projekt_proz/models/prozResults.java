@@ -46,6 +46,15 @@ public class prozResults implements Serializable {
         return answerID.get(i);
     }
 
+    public Integer getAnswerIDSize()
+    {
+        return answerID.size();
+    }
+
+    public ArrayList<Integer> getAnswerID() {
+        return answerID;
+    }
+
     public int getResultsID() {
         return resultsID;
     }
@@ -60,6 +69,10 @@ public class prozResults implements Serializable {
 
     public int getPoints() {
         return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public Timestamp getSentDate() {

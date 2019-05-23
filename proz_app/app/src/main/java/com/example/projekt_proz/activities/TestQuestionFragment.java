@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -66,15 +68,28 @@ public class TestQuestionFragment extends Fragment {
         tvQuestion.setText("Pytanie " + questionNumber + ": " + question.getText());
 
         for (int i = 0; i < question.getAnswersSize(); i++) {
-            RadioButton radioButton = new RadioButton(getActivity());
-            radioButton.setId(View.generateViewId());
+            CompoundButton button;
+            switch(question.getType()) {
+                case prozQuestion.TYPE_SINGLE_CHOICE:
+                    button = new RadioButton(getActivity());
+                    break;
 
-            radioButton.setText(question.getAnswer(i).getText());
+                case prozQuestion.TYPE_MULTIPLE_CHOICE:
+                    button = new CheckBox(getActivity());
+                    break;
 
-            radioButton.setLayoutParams(new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, RadioGroup.LayoutParams.WRAP_CONTENT, 1f));
-            radioButton.setTextSize(20);
-            radioButton.setBackgroundColor(Color.parseColor("#E8D233"));
-            radioGroup.addView(radioButton);
+                default:
+                    throw new UnsupportedOperationException("Invalid question type");
+            }
+
+            button.setId(View.generateViewId());
+
+            button.setText(question.getAnswer(i).getText());
+
+            button.setLayoutParams(new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, RadioGroup.LayoutParams.WRAP_CONTENT, 1f));
+            button.setTextSize(20);
+            button.setBackgroundColor(Color.parseColor("#E8D233"));
+            radioGroup.addView(button);
         }
 
         if (isLast) {
