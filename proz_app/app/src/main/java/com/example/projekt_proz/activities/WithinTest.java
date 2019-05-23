@@ -2,12 +2,10 @@ package com.example.projekt_proz.activities;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -41,6 +39,7 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
     private prozTest test;
 
     private HashMap<Integer, ArrayList<Integer>> questionsAnswers = new HashMap<>();
+    private ResultsResponse results;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewPager = findViewById(R.id.pager);
-        viewPager.setAdapter(new TestQuestionsPagerAdapter(getSupportFragmentManager(), test.getQuestions()));
+        viewPager.setAdapter(new TestQuestionsPagerAdapter(getSupportFragmentManager(), test.getQuestions(), results));
 
         TabLayout tabLayout = findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(viewPager, true);
@@ -61,6 +60,15 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
         if (savedInstanceState != null)
         {
             questionsAnswers = (HashMap<Integer, ArrayList<Integer>>) savedInstanceState.getSerializable("questionsAnswers");
+            results = (ResultsResponse) savedInstanceState.getSerializable("results");
+            if (results != null)
+            {
+                updateResultsUI();
+            }
+        }
+        else
+        {
+            new DownloadAnswers().execute();
         }
     }
 
@@ -68,6 +76,7 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable("questionsAnswers", questionsAnswers);
+        outState.putSerializable("results", results);
     }
 
     @Override
@@ -88,19 +97,22 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
     }
 
     private void askAbortTest() {
-        new AlertDialog.Builder(this)
-            .setTitle("Wychodzenie z testu")
-            .setMessage("Czy na pewno chcesz wyjść z testu? Twoje odpowiedzi nie zostaną zapisane!")
-            .setPositiveButton("Tak", new DialogInterface.OnClickListener()
-            {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    supportFinishAfterTransition();
-                }
+        if (results == null) {
+            new AlertDialog.Builder(this)
+                .setTitle("Wychodzenie z testu")
+                .setMessage("Czy na pewno chcesz wyjść z testu? Twoje odpowiedzi nie zostaną zapisane!")
+                .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        supportFinishAfterTransition();
+                    }
 
-            })
-            .setNegativeButton("Nie", null)
-            .show();
+                })
+                .setNegativeButton("Nie", null)
+                .show();
+        } else {
+            supportFinishAfterTransition();
+        }
     }
 
     @Override
@@ -123,17 +135,33 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
         questionsAnswers.put(question, answers);
     }
 
+    @Override
+    public void returnToMenu() {
+        supportFinishAfterTransition();
+    }
+
     private class TestQuestionsPagerAdapter extends FragmentStatePagerAdapter {
         private final List<prozQuestion> questionList;
+        private ResultsResponse results;
 
-        TestQuestionsPagerAdapter(FragmentManager fm, List<prozQuestion> questionList) {
+        TestQuestionsPagerAdapter(FragmentManager fm, List<prozQuestion> questionList, ResultsResponse results) {
             super(fm);
             this.questionList = questionList;
+            this.results = results;
         }
 
         @Override
         public Fragment getItem(int i) {
-            return TestQuestionFragment.newInstance(i + 1, questionList.get(i), i == getCount() - 1);
+            return TestQuestionFragment.newInstance(
+                i + 1, questionList.get(i), i == getCount() - 1,
+                results != null ? results.getResults().getAnswerID() : null,
+                results != null ? results.getCorrectAnswers() : null);
+        }
+
+        @Override
+        public int getItemPosition(@NonNull Object object) {
+            // Force the fragments to update
+            return POSITION_NONE;
         }
 
         @Override
@@ -144,6 +172,39 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
         @Override
         public CharSequence getPageTitle(int position) {
             return "";
+        }
+
+        public void setResults(ResultsResponse results) {
+            this.results = results;
+            notifyDataSetChanged();
+        }
+    }
+
+    private class DownloadAnswers extends AsyncTask<Void, Void, ResultsResponse> {
+        private ProgressDialog dialog;
+
+        @Override
+        protected void onPreExecute() {
+            dialog = ProgressDialog.show(WithinTest.this, "", "Wczytywanie", true);
+        }
+
+        @Override
+        protected ResultsResponse doInBackground(Void... voids) {
+            try {
+                return new MyClient().tests().getResults(test.getTestID(), Credentials.basic(login, password)).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(ResultsResponse results) {
+            dialog.cancel();
+            if (results != null) {
+                WithinTest.this.results = results;
+                WithinTest.this.updateResultsUI();
+            }
         }
     }
 
@@ -175,10 +236,15 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
             dialog.cancel();
             if (results != null) {
                 Toast.makeText(WithinTest.this, "Gratulacje! Twój wynik to " + results.getResults().getPoints() + " punktów", Toast.LENGTH_SHORT).show();
-                supportFinishAfterTransition();
+                WithinTest.this.results = results;
+                WithinTest.this.updateResultsUI();
             } else {
                 Toast.makeText(WithinTest.this, "Nie udało się wysłać odpowiedzi!", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    private void updateResultsUI() {
+        ((TestQuestionsPagerAdapter) viewPager.getAdapter()).setResults(results);
     }
 }

@@ -10,15 +10,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class prozDatabaseConnection implements TestsDAO {
-    private final Connection databaseConn;
+    private Connection databaseConn;
 
-    public prozDatabaseConnection() throws SQLException {
-        databaseConn = DriverManager.getConnection("jdbc:oracle:thin:@ora3.elka.pw.edu.pl:1521:ora3inf","mkapusci","mkapusci");
+    private boolean testConnection() throws SQLException {
+        if (databaseConn == null)
+            return false;
+
+        try {
+            Statement stmt = databaseConn.createStatement();
+            stmt.executeQuery("select 1 from dual");
+            return true;
+        }
+        catch(SQLRecoverableException ex) {
+            return false;
+        }
+    }
+
+    private void checkConnection() throws SQLException {
+        if (!testConnection())
+            databaseConn = DriverManager.getConnection("jdbc:oracle:thin:@ora3.elka.pw.edu.pl:1521:ora3inf","mkapusci","mkapusci");
     }
 
     @Override
     public int CheckUserLogin(String username, String password) throws SQLException
     {
+        checkConnection();
         PreparedStatement stmt = databaseConn.prepareStatement(prozQueryGenerator.CheckUserQuery());
         stmt.setString(1, username);
         stmt.setString(2, password);
@@ -33,6 +49,7 @@ public class prozDatabaseConnection implements TestsDAO {
     @Override
     public List<prozTest> GetTestsAvailableForUser(int uID) throws SQLException
     {
+        checkConnection();
         ArrayList<prozTest> testList = new ArrayList<>();
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.TestsForUserQuery(uID));
@@ -56,6 +73,7 @@ public class prozDatabaseConnection implements TestsDAO {
 
     private ArrayList<prozQuestion> GetTestQuestions(int tID) throws SQLException
     {
+        checkConnection();
         ArrayList<prozQuestion> qList = new ArrayList<>();
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.QuestionsForTestQuery(tID));
@@ -76,6 +94,7 @@ public class prozDatabaseConnection implements TestsDAO {
 
     private ArrayList<prozAnswer> GetQuestionAnswers(int qID) throws SQLException
     {
+        checkConnection();
         ArrayList<prozAnswer> aList = new ArrayList<>();
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.AnswersForQuestionQuery(qID));
@@ -91,6 +110,7 @@ public class prozDatabaseConnection implements TestsDAO {
 
     @Override
     public prozTest GetTest(int tID) throws SQLException {
+        checkConnection();
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.GetTestQuery(tID));
         while (rs.next()) {
@@ -108,6 +128,7 @@ public class prozDatabaseConnection implements TestsDAO {
     @Override
     public void SendResults(prozResults Results) throws SQLException
     {
+        checkConnection();
         PreparedStatement preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.InsertResultsQuery());
         preparedStmt.setInt(1, Results.getTestID());
         preparedStmt.setInt(2, Results.getUserID());
@@ -129,6 +150,7 @@ public class prozDatabaseConnection implements TestsDAO {
 
     public Boolean isTestDoneByUser(int tID, int uID) throws SQLException
     {
+        checkConnection();
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.ResultsForUserTestQuery(tID, uID));
         return rs.next();
@@ -137,6 +159,7 @@ public class prozDatabaseConnection implements TestsDAO {
     @Override
     public prozResults GetResults(int tID, int uID) throws SQLException
     {
+        checkConnection();
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.ResultsForUserTestQuery(tID, uID));
         while (rs.next())

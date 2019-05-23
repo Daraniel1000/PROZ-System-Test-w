@@ -20,26 +20,33 @@ import com.example.projekt_proz.R;
 import com.example.projekt_proz.models.prozQuestion;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TestQuestionFragment extends Fragment {
     private static final String ARG_QUESTION = "question";
     private static final String ARG_QUESTION_NUMBER = "questionNumber";
     private static final String ARG_IS_LAST = "isLast";
+    private static final String ARG_SELECTED_ANSWERS = "selectedAnswers";
+    private static final String ARG_CORRECT_ANSWERS = "correctAnswers";
 
     private prozQuestion question;
     private int questionNumber;
     private boolean isLast;
+    private ArrayList<Integer> selectedAnswers;
+    private ArrayList<Integer> correctAnswers;
 
     private boolean[] answers;
 
     private OnFragmentInteractionListener mListener;
 
-    public static TestQuestionFragment newInstance(int questionNumber, prozQuestion question, boolean isLast) {
+    public static TestQuestionFragment newInstance(int questionNumber, prozQuestion question, boolean isLast, ArrayList<Integer> selectedAnswers, ArrayList<Integer> correctAnswers) {
         TestQuestionFragment fragment = new TestQuestionFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_QUESTION, question);
         args.putInt(ARG_QUESTION_NUMBER, questionNumber);
         args.putBoolean(ARG_IS_LAST, isLast);
+        args.putSerializable(ARG_SELECTED_ANSWERS, selectedAnswers);
+        args.putSerializable(ARG_CORRECT_ANSWERS, correctAnswers);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,7 +58,14 @@ public class TestQuestionFragment extends Fragment {
             question = (prozQuestion) getArguments().getSerializable(ARG_QUESTION);
             questionNumber = getArguments().getInt(ARG_QUESTION_NUMBER);
             isLast = getArguments().getBoolean(ARG_IS_LAST);
+            selectedAnswers = (ArrayList<Integer>) getArguments().getSerializable(ARG_SELECTED_ANSWERS);
+            correctAnswers = (ArrayList<Integer>) getArguments().getSerializable(ARG_CORRECT_ANSWERS);
             answers = new boolean[question.getAnswersSize()];
+            if (selectedAnswers != null) {
+                for(int i = 0; i < question.getAnswersSize(); i++) {
+                    answers[i] = selectedAnswers.contains(question.getAnswer(i).getAnswerID());
+                }
+            }
         }
         if (savedInstanceState != null) {
             answers = savedInstanceState.getBooleanArray("answers");
@@ -117,12 +131,28 @@ public class TestQuestionFragment extends Fragment {
 
             button.setLayoutParams(new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, RadioGroup.LayoutParams.WRAP_CONTENT, 1f));
             button.setTextSize(20);
-            button.setBackgroundColor(Color.parseColor("#E8D233"));
+            button.setBackgroundColor(getResources().getColor(R.color.colorTestQuestion));
+            if (correctAnswers != null)
+            {
+                button.setEnabled(false);
+                if (correctAnswers.contains(question.getAnswer(i).getAnswerID()))
+                {
+                    if (selectedAnswers != null && selectedAnswers.contains(question.getAnswer(i).getAnswerID()))
+                        button.setTextColor(getResources().getColor(R.color.colorAnswerCorrect)); // zaznaczył dobrze
+                    else
+                        button.setTextColor(getResources().getColor(R.color.colorAnswerIncorrect)); // nie zaznaczył
+                }
+                else if (selectedAnswers != null && selectedAnswers.contains(question.getAnswer(i).getAnswerID()))
+                    button.setTextColor(getResources().getColor(R.color.colorAnswerIncorrect)); // zaznaczył ale nie powinien
+            }
             radioGroup.addView(button);
         }
 
         if (isLast) {
-            btnNext.setText("Zakończ Test");
+            if (correctAnswers != null)
+                btnNext.setText("Powrót do menu");
+            else
+                btnNext.setText("Zakończ Test");
         }
 
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -130,7 +160,11 @@ public class TestQuestionFragment extends Fragment {
             public void onClick(View view) {
                 if (isLast)
                 {
-                    mListener.finishTest();
+                    if (correctAnswers != null)
+                        mListener.returnToMenu();
+                    else
+                        mListener.finishTest();
+
                 }
                 else
                 {
@@ -161,5 +195,6 @@ public class TestQuestionFragment extends Fragment {
         void nextQuestion();
         void finishTest();
         void answersChanged(int question, ArrayList<Integer> answers);
+        void returnToMenu();
     }
 }

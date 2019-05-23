@@ -1,5 +1,7 @@
 package com.example.projekt_proz.net;
 
+import android.os.AsyncTask;
+
 import com.example.projekt_proz.models.ResultsResponse;
 import com.example.projekt_proz.models.prozTest;
 
@@ -21,4 +23,7 @@ public interface TestsAPI {
 
     @POST("tests/{testId}/submit")
     Call<ResultsResponse> submitTest(@Path("testId") int testId, @Body List<Integer> solutions, @Header("Authorization") String userCreds);
+
+    @GET("tests/{testId}/results")
+    Call<ResultsResponse> getResults(@Path("testId") int testID, @Header("Authorization")String basic);
 }
