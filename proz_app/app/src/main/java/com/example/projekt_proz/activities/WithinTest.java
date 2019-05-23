@@ -1,35 +1,53 @@
 package com.example.projekt_proz.activities;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.projekt_proz.R;
+import com.example.projekt_proz.models.ResultsResponse;
 import com.example.projekt_proz.models.prozQuestion;
 import com.example.projekt_proz.models.prozTest;
+import com.example.projekt_proz.net.MyClient;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import okhttp3.Credentials;
 
 public class WithinTest extends AppCompatActivity implements TestQuestionFragment.OnFragmentInteractionListener {
     private static final String TAG = "WithinTest";
 
     private ViewPager viewPager;
 
+    private String login;
+    private String password;
     private prozTest test;
+
+    private HashMap<Integer, ArrayList<Integer>> questionsAnswers = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_within_test);
+        login = getIntent().getStringExtra("login");
+        password = getIntent().getStringExtra("password");
         test = (prozTest) getIntent().getSerializableExtra("test");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -39,6 +57,17 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
 
         TabLayout tabLayout = findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(viewPager, true);
+
+        if (savedInstanceState != null)
+        {
+            questionsAnswers = (HashMap<Integer, ArrayList<Integer>>) savedInstanceState.getSerializable("questionsAnswers");
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("questionsAnswers", questionsAnswers);
     }
 
     @Override
@@ -83,13 +112,15 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
 
     @Override
     public void finishTest() {
-        //TODO
-        Toast.makeText(this, "Jeszcze nie zaimplementowane", Toast.LENGTH_LONG).show();
+        List<Integer> solutions = new ArrayList<>();
+        for(List<Integer> questionSolutions : questionsAnswers.values())
+            solutions.addAll(questionSolutions);
+        new SubmitTest(solutions).execute();
     }
 
     @Override
     public void answersChanged(int question, ArrayList<Integer> answers) {
-        // TODO
+        questionsAnswers.put(question, answers);
     }
 
     private class TestQuestionsPagerAdapter extends FragmentStatePagerAdapter {
@@ -113,6 +144,42 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
         @Override
         public CharSequence getPageTitle(int position) {
             return "";
+        }
+    }
+
+    private class SubmitTest extends AsyncTask<Void, Void, ResultsResponse> {
+        private final List<Integer> solutions;
+        private ProgressDialog dialog;
+
+        private SubmitTest(List<Integer> solutions) {
+            this.solutions = solutions;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            dialog = ProgressDialog.show(WithinTest.this, "", "Wysyłanie odpowiedzi", true);
+        }
+
+        @Override
+        protected ResultsResponse doInBackground(Void... voids) {
+            try {
+                return new MyClient().tests().submitTest(test.getTestID(), solutions, Credentials.basic(login, password)).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(ResultsResponse results) {
+            dialog.cancel();
+            if (results != null) {
+                Log.e(TAG, "POINTS: " + results.getResults().getPoints());
+                Toast.makeText(WithinTest.this, "Zapisano odpowiedzi", Toast.LENGTH_SHORT).show();
+                supportFinishAfterTransition();
+            } else {
+                Toast.makeText(WithinTest.this, "Nie udało się wysłać odpowiedzi!", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
