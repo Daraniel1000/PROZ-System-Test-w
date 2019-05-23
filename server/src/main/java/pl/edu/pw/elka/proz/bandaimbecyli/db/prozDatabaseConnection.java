@@ -186,4 +186,52 @@ public class prozDatabaseConnection implements TestsDAO {
         }
         return null;
     }
+
+    private void addQuestion(prozQuestion question) throws SQLException
+    {
+        //TODO
+    }
+
+    private void addTest(prozTest test) throws SQLException
+    {
+        //TODO
+    }
+
+    private ArrayList<prozQuestion> getAllQuestions() throws SQLException
+    {
+        ArrayList<prozQuestion> qList;
+        Statement stmt = databaseConn.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from Question");
+        qList = new ArrayList<>(rs.getFetchSize());
+        while(rs.next())
+        {
+            qList.add(new prozQuestion(
+                    rs.getInt(1),
+                    rs.getInt(3),
+                    rs.getString(2)
+            ));
+        }
+        rs.close();
+        return qList;
+    }
+
+    private ArrayList<prozTest> getAllTests() throws SQLException
+    {
+        ArrayList<prozTest> tList;
+        Statement stmt = databaseConn.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from Test");
+        tList = new ArrayList<>(rs.getFetchSize());
+        while(rs.next())
+        {
+            tList.add(new prozTest(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getTimestamp(3),
+                    rs.getTimestamp(4),
+                    rs.getInt(5)
+            ));
+        }
+        rs.close();
+        return tList;
+    }
 }
