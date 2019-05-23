@@ -82,8 +82,6 @@ public class TestsService
             throw new NotFoundException("No such test found");
         if (Calendar.getInstance().getTime().getTime() < test.getStartDate().getTime())
             throw new ForbiddenException("Test not started");
-        if (Calendar.getInstance().getTime().getTime() > test.getEndDate().getTime())
-            throw new ForbiddenException("Test already finished");
         dao.FillTestQuestions(test);
         for(prozQuestion q : test.getQuestions())
             dao.FillQuestionAnswers(q);
@@ -145,7 +143,7 @@ public class TestsService
         dao.SendResults(results);
 
         // TODO: show answers only after test finished to avoid cheating?
-        List<Integer> correctAnswers = ResultsResponse.correctAnswersForTest(test);
+        ArrayList<Integer> correctAnswers = ResultsResponse.correctAnswersForTest(test);
 
         return new ResultsResponse(results, correctAnswers);
     }
@@ -169,7 +167,7 @@ public class TestsService
         if (results == null)
             throw new NotFoundException("Test not solved yet");
 
-        List<Integer> correctAnswers = ResultsResponse.correctAnswersForTest(test);
+        ArrayList<Integer> correctAnswers = ResultsResponse.correctAnswersForTest(test);
         return new ResultsResponse(results, correctAnswers);
     }
 

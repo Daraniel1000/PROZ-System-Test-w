@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f61e7b6-e7c6-4289-833e-bf86be330dd0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/menu/score.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/menu/timer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/AfterLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/AfterLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/TestQuestionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/TestQuestionFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/WithinTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/WithinTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/models/ResultsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/models/ResultsResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/net/TestsAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/net/TestsAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/ResultsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/ResultsResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java" afterDir="false" />
     </list>
@@ -85,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="169" column="63" selection-start-line="169" selection-start-column="63" selection-end-line="169" selection-end-column="63" />
+            <state relative-caret-position="373">
+              <caret line="83" column="61" selection-start-line="83" selection-start-column="61" selection-end-line="83" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,20 +98,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/ResultsResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+            <state relative-caret-position="268">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/ojdbc7.jar!/oracle/jdbc/driver/OracleStatement.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="632" selection-start-line="632" selection-end-line="632" />
             </state>
           </provider>
         </entry>
@@ -130,17 +122,8 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="das://8681c9a9-6a65-477a-87b9-26dc6b14226d/schema/MKAPUSCI/table/RESULTS">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://8681c9a9-6a65-477a-87b9-26dc6b14226d/schema/MKAPUSCI/table/RESULTS_ANSWERS">
+        <entry file="das://8681c9a9-6a65-477a-87b9-26dc6b14226d/schema/MKAPUSCI/table/RESULTS">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
               <filtering enabled="true" />
@@ -160,11 +143,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1320">
-              <caret line="42" column="9" lean-forward="true" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+            <state relative-caret-position="210">
+              <caret line="123" column="9" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -184,6 +167,15 @@
                 <element signature="e#1349#1350#0" expanded="true" />
                 <element signature="e#1385#1386#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://8681c9a9-6a65-477a-87b9-26dc6b14226d/schema/MKAPUSCI/table/TEST">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -270,9 +262,9 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/TestsDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/InMemoryTestsDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozQueryGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/ResultsResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java" />
       </list>
     </option>
   </component>
@@ -405,6 +397,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -467,12 +460,12 @@
       <workItem from="1555439646865" duration="9336000" />
       <workItem from="1555490561466" duration="1308000" />
       <workItem from="1558515913315" duration="21539000" />
-      <workItem from="1558603299802" duration="11664000" />
+      <workItem from="1558603299802" duration="14350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43847000" />
+    <option name="totallyTimeSpent" value="46533000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1062" extended-state="6" />
@@ -602,13 +595,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://8681c9a9-6a65-477a-87b9-26dc6b14226d/schema/MKAPUSCI/table/TEST">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -776,10 +762,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://8681c9a9-6a65-477a-87b9-26dc6b14226d/schema/MKAPUSCI/table/RESULTS_ANSWERS">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/ojdbc7.jar!/oracle/jdbc/driver/OracleStatement.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="632" selection-start-line="632" selection-end-line="632" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/ResultsResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -798,35 +801,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="169" column="63" selection-start-line="169" selection-start-column="63" selection-end-line="169" selection-end-column="63" />
+        <state relative-caret-position="373">
+          <caret line="83" column="61" selection-start-line="83" selection-start-column="61" selection-end-line="83" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/ResultsResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1320">
-          <caret line="42" column="9" lean-forward="true" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://8681c9a9-6a65-477a-87b9-26dc6b14226d/schema/MKAPUSCI/table/RESULTS_ANSWERS">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -834,6 +813,20 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://8681c9a9-6a65-477a-87b9-26dc6b14226d/schema/MKAPUSCI/table/TEST">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="123" column="9" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="9" />
         </state>
       </provider>
     </entry>

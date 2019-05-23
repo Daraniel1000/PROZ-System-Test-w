@@ -61,11 +61,6 @@ public class TestQuestionFragment extends Fragment {
             selectedAnswers = (ArrayList<Integer>) getArguments().getSerializable(ARG_SELECTED_ANSWERS);
             correctAnswers = (ArrayList<Integer>) getArguments().getSerializable(ARG_CORRECT_ANSWERS);
             answers = new boolean[question.getAnswersSize()];
-            if (selectedAnswers != null) {
-                for(int i = 0; i < question.getAnswersSize(); i++) {
-                    answers[i] = selectedAnswers.contains(question.getAnswer(i).getAnswerID());
-                }
-            }
         }
         if (savedInstanceState != null) {
             answers = savedInstanceState.getBooleanArray("answers");
@@ -112,7 +107,10 @@ public class TestQuestionFragment extends Fragment {
 
             button.setId(View.generateViewId());
             button.setText(question.getAnswer(i).getText());
-            button.setChecked(answers[i]);
+            if (selectedAnswers == null)
+                button.setChecked(answers[i]);
+            else
+                button.setChecked(selectedAnswers.contains(question.getAnswer(i).getAnswerID()));
             final int finalI = i;
             button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -140,9 +138,9 @@ public class TestQuestionFragment extends Fragment {
                     if (selectedAnswers != null && selectedAnswers.contains(question.getAnswer(i).getAnswerID()))
                         button.setTextColor(getResources().getColor(R.color.colorAnswerCorrect)); // zaznaczył dobrze
                     else
-                        button.setTextColor(getResources().getColor(R.color.colorAnswerIncorrect)); // nie zaznaczył
+                        button.setTextColor(getResources().getColor(R.color.colorAnswerIncorrect)); // nie zaznaczył a powinien
                 }
-                else if (selectedAnswers != null && selectedAnswers.contains(question.getAnswer(i).getAnswerID()))
+                else if (selectedAnswers != null && selectedAnswers.contains(question.getAnswer(i).getAnswerID()) && question.getType() != prozQuestion.TYPE_SINGLE_CHOICE)
                     button.setTextColor(getResources().getColor(R.color.colorAnswerIncorrect)); // zaznaczył ale nie powinien
             }
             radioGroup.addView(button);

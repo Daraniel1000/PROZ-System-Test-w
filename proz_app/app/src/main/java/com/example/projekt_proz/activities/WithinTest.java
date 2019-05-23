@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import com.example.projekt_proz.net.MyClient;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,6 +43,8 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
 
     private HashMap<Integer, ArrayList<Integer>> questionsAnswers = new HashMap<>();
     private ResultsResponse results;
+
+    private Handler timerHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +75,27 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
         {
             new DownloadAnswers().execute();
         }
+
+        Runnable timerRunnable = new Runnable() {
+            @Override
+            public void run() {
+                invalidateOptionsMenu();
+
+                long endTime = test.getEndDate().getTime();
+                long currentTime = Calendar.getInstance().getTime().getTime();
+                if (currentTime > endTime && results == null)
+                {
+                    // Out of time - send results now
+                    sendTestResults();
+                }
+                else
+                {
+                    timerHandler.postDelayed(this, 1000);
+                }
+            }
+        };
+
+        timerHandler.postDelayed(timerRunnable, 1000);
     }
 
     @Override
@@ -85,11 +111,36 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (results == null)
+        {
+            getMenuInflater().inflate(R.menu.timer, menu);
+
+            long endTime = test.getEndDate().getTime();
+            long currentTime = Calendar.getInstance().getTime().getTime();
+            long remainingTime = (endTime - currentTime) / 1000;
+
+            menu.findItem(R.id.countdown).setTitle(String.format("%02d:%02d", remainingTime / 60, remainingTime % 60));
+        }
+        else
+        {
+            getMenuInflater().inflate(R.menu.score, menu);
+            menu.findItem(R.id.score).setTitle("Wynik: " + results.getResults().getPoints() + " pkt");
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
             askAbortTest();
+            return true;
+        }
+
+        if (id == R.id.end_test) {
+            finishTest();
             return true;
         }
 
@@ -124,6 +175,21 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
 
     @Override
     public void finishTest() {
+        new AlertDialog.Builder(this)
+            .setTitle("Kończenie testu")
+            .setMessage("Czy na pewno chcesz zakończyć test?")
+            .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    sendTestResults();
+                }
+
+            })
+            .setNegativeButton("Nie", null)
+            .show();
+    }
+
+    private void sendTestResults() {
         List<Integer> solutions = new ArrayList<>();
         for(List<Integer> questionSolutions : questionsAnswers.values())
             solutions.addAll(questionSolutions);
@@ -246,5 +312,6 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
 
     private void updateResultsUI() {
         ((TestQuestionsPagerAdapter) viewPager.getAdapter()).setResults(results);
+        invalidateOptionsMenu();
     }
 }

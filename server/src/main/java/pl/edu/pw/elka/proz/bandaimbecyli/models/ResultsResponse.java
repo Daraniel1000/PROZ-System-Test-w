@@ -24,9 +24,9 @@ public class ResultsResponse implements Serializable {
         return correctAnswers;
     }
 
-    public static List<Integer> correctAnswersForTest(prozTest test)
+    public static ArrayList<Integer> correctAnswersForTest(prozTest test)
     {
-        List<Integer> correctAnswers = new ArrayList<>();
+        ArrayList<Integer> correctAnswers = new ArrayList<>();
         for(prozQuestion question : test.getQuestions()) {
             for(prozAnswer answer : question.getAnswers()) {
                 if (answer.isCorrect()) {

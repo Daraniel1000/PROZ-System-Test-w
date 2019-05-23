@@ -127,7 +127,7 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
         {
             Toast.makeText(this, "Ten test jeszcze się nie rozpoczął!", Toast.LENGTH_SHORT).show();
         }
-        else if (currentTime > endTime)
+        else if (currentTime > endTime && !test.isFinished())
         {
             Toast.makeText(this, "Ten test już się zakończył!", Toast.LENGTH_SHORT).show();
         }
