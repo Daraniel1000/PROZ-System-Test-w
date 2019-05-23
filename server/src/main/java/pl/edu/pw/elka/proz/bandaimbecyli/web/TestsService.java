@@ -56,11 +56,7 @@ public class TestsService
         tests.add(t2);
         dao = new InMemoryTestsDAO(tests);*/
 
-        try {
-            dao = new prozDatabaseConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        dao = new prozDatabaseConnection();
     }
 
     @Path("/")
@@ -149,15 +145,31 @@ public class TestsService
         dao.SendResults(results);
 
         // TODO: show answers only after test finished to avoid cheating?
-        List<Integer> correctAnswers = new ArrayList<>();
-        for(prozQuestion question : test.getQuestions()) {
-            for(prozAnswer answer : question.getAnswers()) {
-                if (answer.isCorrect()) {
-                    correctAnswers.add(answer.getAnswerID());
-                }
-            }
-        }
+        List<Integer> correctAnswers = ResultsResponse.correctAnswersForTest(test);
 
+        return new ResultsResponse(results, correctAnswers);
+    }
+
+    @Path("/{testId}/results")
+    @GET
+    public ResultsResponse getResults(@PathParam("testId") int testId, @HeaderParam("Authorization") String auth) throws SQLException
+    {
+        int user = checkUser(auth);
+        if (user == -1)
+            throw new ForbiddenException("Invalid user");
+
+        prozTest test = dao.GetTest(testId);
+        if (test == null)
+            throw new NotFoundException("No such test found");
+        dao.FillTestQuestions(test);
+        for(prozQuestion q : test.getQuestions())
+            dao.FillQuestionAnswers(q);
+
+        prozResults results = dao.GetResults(test.getTestID(), user);
+        if (results == null)
+            throw new NotFoundException("Test not solved yet");
+
+        List<Integer> correctAnswers = ResultsResponse.correctAnswersForTest(test);
         return new ResultsResponse(results, correctAnswers);
     }
 
