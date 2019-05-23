@@ -1,6 +1,7 @@
 package com.example.projekt_proz.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -37,16 +38,17 @@ public class TestViewAdapter extends RecyclerView.Adapter<TestViewAdapter.MyView
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.recycler_item, parent, false);
-        MyViewHolder holder = new MyViewHolder(view, mOnTestClickListener);
-        return holder;
+        return new MyViewHolder(view, mOnTestClickListener);
     }
 
     @Override
     public void onBindViewHolder(TestViewAdapter.MyViewHolder holder, int position) {
         holder.tvTitle.setText(testList.get(position).getTitle());
+
         long startTime = testList.get(position).getStartDate().getTime();
         long endTime = testList.get(position).getEndDate().getTime();
         long currentTime = Calendar.getInstance().getTime().getTime();
@@ -60,7 +62,22 @@ public class TestViewAdapter extends RecyclerView.Adapter<TestViewAdapter.MyView
             holder.tvEndLabel.setText(currentTime < endTime ? "Kończy się: " : "Zakończył się: ");
             holder.tvEndCountdown.setText(DateUtils.getRelativeTimeSpanString(endTime, currentTime, 0, DateUtils.FORMAT_ABBREV_RELATIVE));
         }
-        holder.tvReadyToStartLabel.setVisibility(currentTime >= startTime && currentTime <= endTime ? View.VISIBLE : View.INVISIBLE);
+
+        if (testList.get(position).isFinished())
+        {
+            holder.tvReadyToStartLabel.setText("Wyniki >");
+        }
+        else
+        {
+            if (currentTime >= startTime && currentTime <= endTime)
+            {
+                holder.tvReadyToStartLabel.setText("Rozpocznij >"); // TODO: inne tło żeby wyróżnić
+            }
+            else
+            {
+                holder.tvReadyToStartLabel.setText("");
+            }
+        }
     }
 
     @Override
@@ -72,7 +89,7 @@ public class TestViewAdapter extends RecyclerView.Adapter<TestViewAdapter.MyView
         private CardView cardView;
         private TextView tvTitle, tvReadyToStartLabel, tvEndLabel, tvEndCountdown;
 
-        public MyViewHolder(View itemView, final OnTestClickListener onTestClickListener) {
+        MyViewHolder(View itemView, final OnTestClickListener onTestClickListener) {
             super(itemView);
 
             cardView = itemView.findViewById(R.id.card_view);

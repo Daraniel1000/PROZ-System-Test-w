@@ -19,4 +19,6 @@ public interface TestsDAO {
     void FillQuestionAnswers(prozQuestion question) throws SQLException;
 
     void SendResults(prozResults Results) throws SQLException;
+
+    prozResults GetResults(int tID, int uID) throws SQLException;
 }

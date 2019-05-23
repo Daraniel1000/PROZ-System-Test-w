@@ -45,7 +45,7 @@ class prozQueryGenerator {
 
     static String ResultsForUserTestQuery(int tID, int uID)
     {
-        return "select * from RESULTS where TEST_ID = " + tID + " AND USER_ID = " + uID +";";
+        return "select * from RESULTS where TEST_ID = " + tID + " AND USER_ID = " + uID;
     }
 
 }

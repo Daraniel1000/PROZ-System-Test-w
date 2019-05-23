@@ -2,8 +2,8 @@ package pl.edu.pw.elka.proz.bandaimbecyli.db;
 
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozAnswer;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozQuestion;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozTest;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozResults;
+import pl.edu.pw.elka.proz.bandaimbecyli.models.prozTest;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class prozDatabaseConnection implements TestsDAO {
                 rs.getTimestamp("START_DATE"),
                 rs.getTimestamp("FINISH_DATE"),
                 rs.getInt("TYPE"),
-                isTestDoneByUser(rs.getInt("TEST_ID"), uID)));
+                isTestDoneByUser(rs.getInt("TEST_ID"), uID))); // TODO: dlaczego to jest w oddzielnym zapytaniu
         }
         return testList;
     }
@@ -115,7 +115,7 @@ public class prozDatabaseConnection implements TestsDAO {
         preparedStmt.setInt(4, Results.getPoints());
         preparedStmt.execute();
         Statement stmt = databaseConn.createStatement();
-        ResultSet rs = stmt.executeQuery(prozQueryGenerator.ResultsForUserTestQuery(Results.getTestID(),Results.getUserID()));
+        ResultSet rs = stmt.executeQuery(prozQueryGenerator.ResultsForUserTestQuery(Results.getTestID(),Results.getUserID())); // TODO: brzydkie xd
         rs.next();
         Results.setResultsID(rs.getInt("RESULTS_ID"));
         for(int i=0; i<Results.getAnswerIDSize(); ++i)
@@ -134,6 +134,7 @@ public class prozDatabaseConnection implements TestsDAO {
         return rs.next();
     }
 
+    @Override
     public prozResults GetResults(int tID, int uID) throws SQLException
     {
         Statement stmt = databaseConn.createStatement();

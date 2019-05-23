@@ -13,6 +13,7 @@ public class prozTest implements Serializable {
     private String title;
     private Timestamp startDate, endDate;
     private ArrayList<prozQuestion> questions;
+    private Boolean Finished;
 
     public prozTest() {
     }
@@ -24,6 +25,17 @@ public class prozTest implements Serializable {
         startDate = sd;
         endDate = ed;
         type = ty;
+        Finished = false;
+    }
+
+    public prozTest(int id, String ti, Timestamp sd, Timestamp ed, int ty, Boolean fin)
+    {
+        testID = id;
+        title = ti;
+        startDate = sd;
+        endDate = ed;
+        type = ty;
+        Finished = fin;
     }
 
     public void setQuestions(ArrayList<prozQuestion> qList)
@@ -80,4 +92,11 @@ public class prozTest implements Serializable {
         return type;
     }
 
+    public Boolean isFinished() {
+        return Finished;
+    }
+
+    public void setFinished(Boolean b) {
+        Finished = b;
+    }
 }

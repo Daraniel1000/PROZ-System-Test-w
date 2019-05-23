@@ -87,6 +87,12 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        new FetchTests().execute();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 

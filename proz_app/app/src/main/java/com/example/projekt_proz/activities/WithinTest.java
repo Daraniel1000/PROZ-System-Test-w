@@ -174,8 +174,7 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
         protected void onPostExecute(ResultsResponse results) {
             dialog.cancel();
             if (results != null) {
-                Log.e(TAG, "POINTS: " + results.getResults().getPoints());
-                Toast.makeText(WithinTest.this, "Zapisano odpowiedzi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(WithinTest.this, "Gratulacje! Twój wynik to " + results.getResults().getPoints() + " punktów", Toast.LENGTH_SHORT).show();
                 supportFinishAfterTransition();
             } else {
                 Toast.makeText(WithinTest.this, "Nie udało się wysłać odpowiedzi!", Toast.LENGTH_LONG).show();

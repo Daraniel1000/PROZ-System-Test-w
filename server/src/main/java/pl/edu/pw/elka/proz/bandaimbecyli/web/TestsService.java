@@ -112,11 +112,13 @@ public class TestsService
             throw new ForbiddenException("Test not started");
         if (Calendar.getInstance().getTime().getTime() > test.getEndDate().getTime() + 60000) // a small window in case of network problems
             throw new ForbiddenException("Test already finished");
+        if (dao.GetResults(test.getTestID(), user) != null)
+            throw new ForbiddenException("Test already solved");
         dao.FillTestQuestions(test);
         for(prozQuestion q : test.getQuestions())
             dao.FillQuestionAnswers(q);
 
-        prozResults results = new prozResults(-1 /* TODO fix this */, test.getTestID(), user, new Timestamp(new Date().getTime()));
+        prozResults results = new prozResults(test.getTestID(), user, new Timestamp(new Date().getTime()), -1);
         results.initAnswers(solutions.size());
         PointsCalculator pointsCalculator = new PointsCalculator(test);
 
@@ -144,7 +146,7 @@ public class TestsService
             throw new BadRequestException("Invalid solution IDs found");
 
         results.setPoints(pointsCalculator.getPoints());
-        //dao.SendResults(results); // TODO: fix this
+        dao.SendResults(results);
 
         // TODO: show answers only after test finished to avoid cheating?
         List<Integer> correctAnswers = new ArrayList<>();

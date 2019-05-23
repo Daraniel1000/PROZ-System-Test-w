@@ -96,4 +96,9 @@ public class InMemoryTestsDAO implements TestsDAO {
     public void SendResults(prozResults Results) throws SQLException {
         throw new UnsupportedOperationException(); // TODO
     }
+
+    @Override
+    public prozResults GetResults(int tID, int uID) throws SQLException {
+        throw new UnsupportedOperationException(); // TODO
+    }
 }
