@@ -197,6 +197,8 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
             }
 
             Intent intent = new Intent(AfterLogin.this, WithinTest.class);
+            intent.putExtra("login", login);
+            intent.putExtra("password", password);
             intent.putExtra("test", test);
             ActivityOptionsCompat options =
                 ActivityOptionsCompat.makeSceneTransitionAnimation(AfterLogin.this,

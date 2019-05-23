@@ -1,5 +1,7 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -46,6 +48,7 @@ public class prozResults implements Serializable {
         return answerID.get(i);
     }
 
+    @JsonIgnore
     public Integer getAnswerIDSize()
     {
         return answerID.size();
