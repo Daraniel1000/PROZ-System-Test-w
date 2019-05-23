@@ -3,6 +3,7 @@ package com.example.projekt_proz.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -25,12 +26,23 @@ import okhttp3.Credentials;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
+    public EditText editLogin, editPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        editLogin = findViewById(R.id.input1);
+        editPassword = findViewById(R.id.input2);
+
+        if (savedInstanceState != null)
+        {
+            editLogin.setText(savedInstanceState.getString("login"));
+            editPassword.setText(savedInstanceState.getString("password"));
+        }
     }
 
     @Override
@@ -45,10 +57,16 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("login", editLogin.getText().toString());
+        outState.putString("password", editPassword.getText().toString());
+    }
 
     public void logInService(View view) {
-        String account = ((EditText) findViewById(R.id.input1)).getText().toString();
-        String password = ((EditText) findViewById(R.id.input2)).getText().toString();
+        String account = editLogin.getText().toString();
+        String password = editPassword.getText().toString();
 
         new LoginTask(view, account, password).execute();
     }
@@ -58,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         private final String login;
         private final String password;
         private ProgressDialog dialog;
-        private Exception e;
 
         LoginTask(View loginButton, String login, String password) {
             super();

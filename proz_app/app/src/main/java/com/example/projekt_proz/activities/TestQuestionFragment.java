@@ -19,6 +19,8 @@ import android.widget.TextView;
 import com.example.projekt_proz.R;
 import com.example.projekt_proz.models.prozQuestion;
 
+import java.util.ArrayList;
+
 public class TestQuestionFragment extends Fragment {
     private static final String ARG_QUESTION = "question";
     private static final String ARG_QUESTION_NUMBER = "questionNumber";
@@ -27,6 +29,8 @@ public class TestQuestionFragment extends Fragment {
     private prozQuestion question;
     private int questionNumber;
     private boolean isLast;
+
+    private boolean[] answers;
 
     private OnFragmentInteractionListener mListener;
 
@@ -47,7 +51,17 @@ public class TestQuestionFragment extends Fragment {
             question = (prozQuestion) getArguments().getSerializable(ARG_QUESTION);
             questionNumber = getArguments().getInt(ARG_QUESTION_NUMBER);
             isLast = getArguments().getBoolean(ARG_IS_LAST);
+            answers = new boolean[question.getAnswersSize()];
         }
+        if (savedInstanceState != null) {
+            answers = savedInstanceState.getBooleanArray("answers");
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBooleanArray("answers", answers);
     }
 
     @Override
@@ -83,8 +97,23 @@ public class TestQuestionFragment extends Fragment {
             }
 
             button.setId(View.generateViewId());
-
             button.setText(question.getAnswer(i).getText());
+            button.setChecked(answers[i]);
+            final int finalI = i;
+            button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    answers[finalI] = b;
+
+                    ArrayList<Integer> ans = new ArrayList<>();
+                    for(int j = 0; j < question.getAnswersSize(); j++) {
+                        if (answers[j]) {
+                            ans.add(question.getAnswer(j).getAnswerID());
+                        }
+                    }
+                    mListener.answersChanged(question.getQuestionID(), ans);
+                }
+            });
 
             button.setLayoutParams(new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, RadioGroup.LayoutParams.WRAP_CONTENT, 1f));
             button.setTextSize(20);
@@ -131,5 +160,6 @@ public class TestQuestionFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         void nextQuestion();
         void finishTest();
+        void answersChanged(int question, ArrayList<Integer> answers);
     }
 }

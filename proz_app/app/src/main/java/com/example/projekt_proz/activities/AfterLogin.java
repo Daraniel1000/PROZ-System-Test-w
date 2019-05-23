@@ -39,7 +39,7 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
     private RecyclerView recyclerView;
     private SwipeRefreshLayout refreshLayout;
 
-    private List<prozTest> testList;
+    private ArrayList<prozTest> testList;
 
     private Handler timerHandler = new Handler();
 
@@ -65,7 +65,15 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
             android.R.color.holo_orange_dark,
             android.R.color.holo_blue_dark);
 
-        new FetchTests().execute();
+        if (savedInstanceState != null)
+        {
+            testList = (ArrayList<prozTest>) savedInstanceState.getSerializable("tests");
+            ((TestViewAdapter) recyclerView.getAdapter()).setTestList(AfterLogin.this.testList);
+        }
+        else
+        {
+            new FetchTests().execute();
+        }
 
         Runnable timerRunnable = new Runnable() {
             @Override
@@ -88,6 +96,12 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("tests", testList);
     }
 
     @Override
@@ -141,9 +155,9 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
                 finish();
                 return;
             }
-            AfterLogin.this.testList = testList;
+            AfterLogin.this.testList = new ArrayList<>(testList);
             TestViewAdapter adapter = (TestViewAdapter) recyclerView.getAdapter();
-            adapter.setTestList(testList);
+            adapter.setTestList(AfterLogin.this.testList);
         }
     }
 

@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name="com.example.projekt_proz.activities.AfterLogin" />
         <activity android:name="com.example.projekt_proz.activities.WithinTest"/>
-        <activity android:name="com.example.projekt_proz.activities.MainActivity">
+        <activity android:name="com.example.projekt_proz.activities.MainActivity" android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

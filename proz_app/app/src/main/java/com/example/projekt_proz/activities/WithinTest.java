@@ -16,6 +16,7 @@ import com.example.projekt_proz.R;
 import com.example.projekt_proz.models.prozQuestion;
 import com.example.projekt_proz.models.prozTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WithinTest extends AppCompatActivity implements TestQuestionFragment.OnFragmentInteractionListener {
@@ -84,6 +85,11 @@ public class WithinTest extends AppCompatActivity implements TestQuestionFragmen
     public void finishTest() {
         //TODO
         Toast.makeText(this, "Jeszcze nie zaimplementowane", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void answersChanged(int question, ArrayList<Integer> answers) {
+        // TODO
     }
 
     private class TestQuestionsPagerAdapter extends FragmentStatePagerAdapter {
