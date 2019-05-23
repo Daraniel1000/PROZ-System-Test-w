@@ -41,6 +41,11 @@ public class prozResults implements Serializable {
         return answerID.add(ID);
     }
 
+    public void setResultsID(int r)
+    {
+        resultsID = r;
+    }
+
     public Integer getAnswerID(int i)
     {
         return answerID.get(i);
