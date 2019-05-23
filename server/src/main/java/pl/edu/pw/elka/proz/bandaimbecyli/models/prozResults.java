@@ -14,6 +14,14 @@ public class prozResults implements Serializable {
     public prozResults() {
     }
 
+    public prozResults(int tID, int uID, Timestamp sent, int poi)
+    {
+        testID = tID;
+        userID = uID;
+        points = poi;
+        sentDate = sent;
+    }
+
     public prozResults(int resID, int tID, int uID, Timestamp sent, int poi)
     {
         resultsID = resID;

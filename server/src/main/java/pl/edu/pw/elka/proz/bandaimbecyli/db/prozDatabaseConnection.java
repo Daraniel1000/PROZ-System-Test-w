@@ -134,8 +134,20 @@ public class prozDatabaseConnection implements TestsDAO {
         return rs.next();
     }
 
-   // public prozResults GetResults(int tID, int uID) throws SQLException
-    //{
-
-    //}
+    public prozResults GetResults(int tID, int uID) throws SQLException
+    {
+        Statement stmt = databaseConn.createStatement();
+        ResultSet rs = stmt.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.ResultsForUserTestQuery(tID, uID));
+        while (rs.next())
+        {
+            return new prozResults(
+                    rs.getInt("RESULTS_ID"),
+                    tID,
+                    uID,
+                    rs.getTimestamp("SENT_DATE"),
+                    rs.getInt("POINTS")
+            );
+        }
+        return null;
+    }
 }
