@@ -105,6 +105,7 @@ public class prozDatabaseConnection implements TestsDAO {
         return null;
     }
 
+    @Override
     public void SendResults(prozResults Results) throws SQLException
     {
         PreparedStatement preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.InsertResultsQuery());

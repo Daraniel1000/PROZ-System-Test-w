@@ -4,16 +4,14 @@ import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import pl.edu.pw.elka.proz.bandaimbecyli.db.InMemoryTestsDAO;
 import pl.edu.pw.elka.proz.bandaimbecyli.db.TestsDAO;
 import pl.edu.pw.elka.proz.bandaimbecyli.db.prozDatabaseConnection;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozAnswer;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozQuestion;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozTest;
+import pl.edu.pw.elka.proz.bandaimbecyli.logic.PointsCalculator;
+import pl.edu.pw.elka.proz.bandaimbecyli.models.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.sql.Timestamp;
+import java.util.*;
 import java.util.logging.Logger;
 
 @Path("/tests")
@@ -99,7 +97,7 @@ public class TestsService
     @Path("/{testId}/submit")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public String submitAnswers(@PathParam("testId") int testId, List<String> solutions, @HeaderParam("Authorization") String auth) throws SQLException
+    public ResultsResponse submitAnswers(@PathParam("testId") int testId, List<Integer> solutions, @HeaderParam("Authorization") String auth) throws SQLException
     {
         int user = checkUser(auth);
         if (user == -1)
@@ -110,10 +108,55 @@ public class TestsService
         prozTest test = dao.GetTest(testId);
         if (test == null)
             throw new NotFoundException("No such test found");
+        if (Calendar.getInstance().getTime().getTime() < test.getStartDate().getTime())
+            throw new ForbiddenException("Test not started");
+        if (Calendar.getInstance().getTime().getTime() > test.getEndDate().getTime() + 60000) // a small window in case of network problems
+            throw new ForbiddenException("Test already finished");
         dao.FillTestQuestions(test);
         for(prozQuestion q : test.getQuestions())
             dao.FillQuestionAnswers(q);
-        return "good job"; // TODO
+
+        prozResults results = new prozResults(-1 /* TODO fix this */, test.getTestID(), user, new Timestamp(new Date().getTime()));
+        results.initAnswers(solutions.size());
+        PointsCalculator pointsCalculator = new PointsCalculator(test);
+
+        for(prozQuestion question : test.getQuestions()) {
+            List<prozAnswer> answers = new ArrayList<>();
+            for(int aID : solutions) {
+                prozAnswer answer = null;
+                for(prozAnswer a : question.getAnswers()) {
+                    if (a.getAnswerID() == aID) {
+                        answer = a;
+                        break;
+                    }
+                }
+                if (answer == null)
+                    continue;
+
+                results.addAnswerID(answer.getAnswerID());
+                answers.add(answer);
+            }
+
+            pointsCalculator.addPointsForQuestion(question, answers);
+        }
+
+        if (!results.getAnswerID().containsAll(solutions))
+            throw new BadRequestException("Invalid solution IDs found");
+
+        results.setPoints(pointsCalculator.getPoints());
+        //dao.SendResults(results); // TODO: fix this
+
+        // TODO: show answers only after test finished to avoid cheating?
+        List<Integer> correctAnswers = new ArrayList<>();
+        for(prozQuestion question : test.getQuestions()) {
+            for(prozAnswer answer : question.getAnswers()) {
+                if (answer.isCorrect()) {
+                    correctAnswers.add(answer.getAnswerID());
+                }
+            }
+        }
+
+        return new ResultsResponse(results, correctAnswers);
     }
 
     private int checkUser(String authString) throws SQLException

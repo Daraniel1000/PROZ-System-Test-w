@@ -2,6 +2,7 @@ package pl.edu.pw.elka.proz.bandaimbecyli.db;
 
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozAnswer;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozQuestion;
+import pl.edu.pw.elka.proz.bandaimbecyli.models.prozResults;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozTest;
 
 import java.sql.SQLException;
@@ -89,5 +90,10 @@ public class InMemoryTestsDAO implements TestsDAO {
         {
             question.addAnswer(new prozAnswer(answer.getAnswerID(), answer.isCorrect(), answer.getText()));
         }
+    }
+
+    @Override
+    public void SendResults(prozResults Results) throws SQLException {
+        throw new UnsupportedOperationException(); // TODO
     }
 }

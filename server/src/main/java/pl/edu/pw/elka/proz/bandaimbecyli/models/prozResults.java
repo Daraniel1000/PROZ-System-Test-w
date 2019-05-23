@@ -50,6 +50,10 @@ public class prozResults {
         return answerID.size();
     }
 
+    public ArrayList<Integer> getAnswerID() {
+        return answerID;
+    }
+
     public int getResultsID() {
         return resultsID;
     }
@@ -64,6 +68,10 @@ public class prozResults {
 
     public int getPoints() {
         return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public Timestamp getSentDate() {

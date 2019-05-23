@@ -1,6 +1,7 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.db;
 
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozQuestion;
+import pl.edu.pw.elka.proz.bandaimbecyli.models.prozResults;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozTest;
 
 import java.sql.SQLException;
@@ -16,4 +17,6 @@ public interface TestsDAO {
     void FillTestQuestions(prozTest test) throws SQLException;
 
     void FillQuestionAnswers(prozQuestion question) throws SQLException;
+
+    void SendResults(prozResults Results) throws SQLException;
 }
