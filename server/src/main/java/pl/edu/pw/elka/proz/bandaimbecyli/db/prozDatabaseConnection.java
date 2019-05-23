@@ -127,7 +127,7 @@ public class prozDatabaseConnection implements TestsDAO {
         }
     }
 
-    public Boolean isTestDoneByUser(int tID, int uID)
+    public Boolean isTestDoneByUser(int tID, int uID) throws SQLException
     {
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.IsTestFinishedQuery(tID, uID));
