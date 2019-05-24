@@ -63,7 +63,7 @@ public class prozDatabaseConnection implements TestsDAO {
                 rs.getTimestamp("START_DATE"),
                 rs.getTimestamp("FINISH_DATE"),
                 rs.getInt("TYPE"),
-                isTestDoneByUser(rs.getInt("TEST_ID"), uID))); // TODO: dlaczego to jest w oddzielnym zapytaniu
+                rs.getBoolean("isComplete")));
         }
         rs.close();
         return testList;
@@ -142,8 +142,6 @@ public class prozDatabaseConnection implements TestsDAO {
         preparedStmt.setTimestamp(3, Results.getSentDate());
         preparedStmt.setInt(4, Results.getPoints());
         preparedStmt.execute();
-        //Statement stmt = databaseConn.createStatement();
-        //ResultSet rs = stmt.executeQuery(prozQueryGenerator.ResultsForUserTestQuery(Results.getTestID(),Results.getUserID())); // TODO: brzydkie xd
         ResultSet rs = preparedStmt.getGeneratedKeys();
         rs.next();
         Results.setResultsID(rs.getInt(1));

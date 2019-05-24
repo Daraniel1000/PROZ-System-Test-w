@@ -8,9 +8,9 @@ class prozQueryGenerator {
 
     static String TestsForUserQuery(int uID)
     {
-        return "select * from test\n" +
-                "where test_id in\n" +
-                "    (select test_id from users_tests\n" +
+        return "select test_id, title, start_date, finish_date, type, isTestComplete(" + uID + ",test_id) as isComplete from test \n" +
+                "where test_id in \n" +
+                "    (select test_id from users_tests \n" +
                 "    where users_tests.user_id = " + uID + ")";
     }
 
