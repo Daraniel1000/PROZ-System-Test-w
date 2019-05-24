@@ -208,6 +208,7 @@ public class prozDatabaseConnection implements TestsDAO {
         ResultSet rs = preparedStmt.getGeneratedKeys();
         rs.next();
         question.setQuestionID(rs.getInt(1));
+        rs.close();
         preparedStmt.close();
         for(int i=0; i<question.getAnswersSize(); ++i)
         {
@@ -224,7 +225,25 @@ public class prozDatabaseConnection implements TestsDAO {
     private void addTest(prozTest test) throws SQLException
     {
         checkConnection();
-        //TODO
+        PreparedStatement preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.InsertTestQuery());
+        preparedStmt.setString(1, test.getTitle());
+        preparedStmt.setTimestamp(2, test.getStartDate());
+        preparedStmt.setTimestamp(3, test.getEndDate());
+        preparedStmt.setInt(4,test.getType());
+        preparedStmt.execute();
+        ResultSet rs = preparedStmt.getGeneratedKeys();
+        rs.next();
+        test.setTestID(rs.getInt(1));
+        rs.close();
+        preparedStmt.close();
+        for(int i=0; i<test.getQuestionsSize(); ++i)
+        {
+            preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.insertTestQuestionsQuery());
+            preparedStmt.setInt(1, test.getQuestion(i).getQuestionID());
+            preparedStmt.setInt(2, test.getTestID());
+            preparedStmt.execute();
+            preparedStmt.close();
+        }
     }
 
     private ArrayList<prozQuestion> getAllQuestions() throws SQLException
