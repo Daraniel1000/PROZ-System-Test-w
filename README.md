@@ -10,9 +10,6 @@ wykładowca czy coś - tworzy nowe testy i wysyła do serwera, który dodaje do 
 
 zbigniew stonoga - gnije w pierdlu
 
-# UI?
-
-zaznaczyłem przy pomocy TODO sekcje gdzie potrzebuję połączenia z serwerem( w /proz_app/app/src/main/java/com/example/projekt_proz/activities/ )
 
 ## Server install
 
