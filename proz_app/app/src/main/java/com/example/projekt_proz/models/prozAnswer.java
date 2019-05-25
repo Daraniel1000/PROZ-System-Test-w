@@ -9,6 +9,17 @@ public class prozAnswer implements Serializable {
     private boolean correct;
     private String text;
 
+    public void setText(String text) {
+        this.text = text;
+    }
+
+
+
+    public void setCorrect(boolean correct) {
+        this.correct = correct;
+    }
+
+
     public prozAnswer() {
     }
 
@@ -19,6 +30,12 @@ public class prozAnswer implements Serializable {
         text = t;
     }
 
+    public prozAnswer( boolean c, String t)
+    {
+
+        correct = c;
+        text = t;
+    }
 
     public int getAnswerID() {
         return answerID;

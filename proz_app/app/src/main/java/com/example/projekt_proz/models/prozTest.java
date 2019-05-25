@@ -10,6 +10,11 @@ public class prozTest implements Serializable {
     public static final int TYPE_TEST = 0; // TODO: ankiety czy cokolwiek to miało być?
 
     private int testID, type;
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     private String title;
     private Timestamp startDate, endDate;
     private ArrayList<prozQuestion> questions;

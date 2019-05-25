@@ -23,6 +23,12 @@ public class prozQuestion implements Serializable {
         text = te;
     }
 
+    public prozQuestion(String te, int an_number){
+
+        text=te;
+        this.initAnswers(an_number);
+    }
+
     public void setAnswers(ArrayList<prozAnswer> aList)
     {
         answers = new ArrayList<>(aList);
@@ -62,4 +68,10 @@ public class prozQuestion implements Serializable {
     public String getText() {
         return text;
     }
+
+    public void setText(String text){this.text=text;}
+
+    public void setQuestionID(int questionID){this.questionID=questionID;}
+
+    public void setType(int type){this.type=type;}
 }

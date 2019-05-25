@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#fd5310</color>
-    <color name="colorPrimaryDark">#d73f01</color>
-    <color name="colorAccent">@color/colorPrimary</color>
-    <color name="colorBackground">#FFB74D</color>
-    <color name="colorTest">#fdca10</color>
-    <color name="colorTestQuestion">#E8D233</color>
-    <color name="colorAnswerCorrect">#1B5E20</color>
-    <color name="colorAnswerIncorrect">#B71C1C</color>
+<color name="colorPrimary">#fd5310</color>
+<color name="colorPrimaryDark">#d73f01</color>
+<color name="colorAccent">@color/colorPrimary</color>
+<color name="colorBackground">#FFB74D</color>
+<color name="colorTest">#fdca10</color>
+<color name="colorTestQuestion">#E8D233</color>
+<color name="colorAnswerCorrect">#1B5E20</color>
+<color name="colorAnswerIncorrect">#B71C1C</color>
 </resources>

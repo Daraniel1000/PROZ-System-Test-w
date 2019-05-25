@@ -13,7 +13,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name="com.example.projekt_proz.activities.AfterLogin" />
-        <activity android:name="com.example.projekt_proz.activities.AdminHomeScreen" />
+        <activity android:name="com.example.projekt_proz.activities.admin.a.AdminHomeScreen" />
+        <activity android:name="com.example.projekt_proz.activities.admin.a.TestCreationQuestion" />
+        <activity android:name="com.example.projekt_proz.activities.admin.a.TestCreation" />
+        <activity android:name="com.example.projekt_proz.activities.admin.a.TestView" />
+        <activity android:name="com.example.projekt_proz.activities.admin.a.ResultsView" />
+        <activity android:name="com.example.projekt_proz.activities.admin.a.TestQuestionView" />
+        <activity android:name="com.example.projekt_proz.activities.admin.a.TestQuestionAnswerView" />
         <activity android:name="com.example.projekt_proz.activities.WithinTest"/>
         <activity android:name="com.example.projekt_proz.activities.MainActivity" android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
