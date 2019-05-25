@@ -8,9 +8,9 @@ class prozQueryGenerator {
 
     static String TestsForUserQuery(int uID)
     {
-        return "select * from test\n" +
-                "where test_id in\n" +
-                "    (select test_id from users_tests\n" +
+        return "select test_id, title, start_date, finish_date, type, isTestComplete(" + uID + ",test_id) as isComplete from test \n" +
+                "where test_id in \n" +
+                "    (select test_id from users_tests \n" +
                 "    where users_tests.user_id = " + uID + ")";
     }
 
@@ -36,6 +36,26 @@ class prozQueryGenerator {
     static String InsertResultsQuery()
     {
         return "insert into Results (TEST_ID, USER_ID, SENT_DATE, POINTS) values (?, ?, ?, ?)";
+    }
+
+    static String InsertQuestionQuery()
+    {
+        return "insert into Question (TEXT, TYPE) values (?, ?)";
+    }
+
+    static String insertAnswerQuery()
+    {
+        return "insert into Answers (TEXT, QUESTION_ID, CORRECT) values (?, ?, ?)";
+    }
+
+    static String InsertTestQuery()
+    {
+        return "insert into Test (TITLE, START_DATE, FINISH_DATE, TYPE) values (?, ?, ?, ?)";
+    }
+
+    static String insertTestQuestionsQuery()
+    {
+        return "insert into Test_Questions (QUESTION_ID, TEST_ID) values (?, ?)";
     }
 
     static String InsertResultsAnswersQuery()

@@ -2,6 +2,7 @@ package pl.edu.pw.elka.proz.bandaimbecyli.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import pl.edu.pw.elka.proz.bandaimbecyli.models.prozAnswer;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -61,5 +62,10 @@ public class prozQuestion implements Serializable {
 
     public String getText() {
         return text;
+    }
+
+    public void setQuestionID(int id)
+    {
+        questionID = id;
     }
 }

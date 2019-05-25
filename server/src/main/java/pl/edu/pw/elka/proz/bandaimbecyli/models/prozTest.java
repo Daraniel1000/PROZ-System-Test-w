@@ -2,6 +2,7 @@ package pl.edu.pw.elka.proz.bandaimbecyli.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import pl.edu.pw.elka.proz.bandaimbecyli.models.prozQuestion;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -98,5 +99,10 @@ public class prozTest implements Serializable {
 
     public void setFinished(Boolean b) {
         Finished = b;
+    }
+
+    public void setTestID(int id)
+    {
+        testID = id;
     }
 }

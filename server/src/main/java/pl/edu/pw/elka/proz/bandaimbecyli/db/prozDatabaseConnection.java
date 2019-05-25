@@ -63,7 +63,7 @@ public class prozDatabaseConnection implements TestsDAO {
                 rs.getTimestamp("START_DATE"),
                 rs.getTimestamp("FINISH_DATE"),
                 rs.getInt("TYPE"),
-                isTestDoneByUser(rs.getInt("TEST_ID"), uID))); // TODO: dlaczego to jest w oddzielnym zapytaniu
+                rs.getBoolean("isComplete")));
         }
         rs.close();
         return testList;
@@ -142,8 +142,6 @@ public class prozDatabaseConnection implements TestsDAO {
         preparedStmt.setTimestamp(3, Results.getSentDate());
         preparedStmt.setInt(4, Results.getPoints());
         preparedStmt.execute();
-        //Statement stmt = databaseConn.createStatement();
-        //ResultSet rs = stmt.executeQuery(prozQueryGenerator.ResultsForUserTestQuery(Results.getTestID(),Results.getUserID())); // TODO: brzydkie xd
         ResultSet rs = preparedStmt.getGeneratedKeys();
         rs.next();
         Results.setResultsID(rs.getInt(1));
@@ -183,11 +181,11 @@ public class prozDatabaseConnection implements TestsDAO {
                     rs.getTimestamp("SENT_DATE"),
                     rs.getInt("POINTS")
             );
+            Results.initAnswers(rs.getFetchSize());
             stmt.close();
             stmt = databaseConn.createStatement();
             rs.close();
             rs = stmt.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.AnswerIDsForResultsQuery(Results.getResultsID()));
-            Results.initAnswers(rs.getFetchSize());
             while(rs.next())
             {
                 Results.addAnswerID(rs.getInt("ANSWER_ID"));
@@ -201,16 +199,56 @@ public class prozDatabaseConnection implements TestsDAO {
 
     private void addQuestion(prozQuestion question) throws SQLException
     {
-        //TODO
+        checkConnection();
+        //char c;
+        PreparedStatement preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.InsertQuestionQuery());
+        preparedStmt.setString(1, question.getText());
+        preparedStmt.setInt(2, question.getType());
+        preparedStmt.execute();
+        ResultSet rs = preparedStmt.getGeneratedKeys();
+        rs.next();
+        question.setQuestionID(rs.getInt(1));
+        rs.close();
+        preparedStmt.close();
+        for(int i=0; i<question.getAnswersSize(); ++i)
+        {
+            //c = question.getAnswer(i).isCorrect()? 'y':'n';
+            preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.insertAnswerQuery());
+            preparedStmt.setString(1, question.getAnswer(i).getText());
+            preparedStmt.setInt(2, question.getQuestionID());
+            preparedStmt.setBoolean(3,question.getAnswer(i).isCorrect());
+            preparedStmt.execute();
+            preparedStmt.close();
+        }
     }
 
     private void addTest(prozTest test) throws SQLException
     {
-        //TODO
+        checkConnection();
+        PreparedStatement preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.InsertTestQuery());
+        preparedStmt.setString(1, test.getTitle());
+        preparedStmt.setTimestamp(2, test.getStartDate());
+        preparedStmt.setTimestamp(3, test.getEndDate());
+        preparedStmt.setInt(4,test.getType());
+        preparedStmt.execute();
+        ResultSet rs = preparedStmt.getGeneratedKeys();
+        rs.next();
+        test.setTestID(rs.getInt(1));
+        rs.close();
+        preparedStmt.close();
+        for(int i=0; i<test.getQuestionsSize(); ++i)
+        {
+            preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.insertTestQuestionsQuery());
+            preparedStmt.setInt(1, test.getQuestion(i).getQuestionID());
+            preparedStmt.setInt(2, test.getTestID());
+            preparedStmt.execute();
+            preparedStmt.close();
+        }
     }
 
     private ArrayList<prozQuestion> getAllQuestions() throws SQLException
     {
+        checkConnection();
         ArrayList<prozQuestion> qList;
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery("select * from Question");
