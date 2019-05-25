@@ -3,7 +3,6 @@ package com.example.projekt_proz.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 
-import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -17,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projekt_proz.R;
+import com.example.projekt_proz.activities.admin.a.AdminHomeScreen;
 import com.example.projekt_proz.net.MyClient;
 
 import java.io.IOException;
@@ -67,9 +67,15 @@ public class MainActivity extends AppCompatActivity {
     public void logInService(View view) {
         String account = editLogin.getText().toString();
         String password = editPassword.getText().toString();
+        /*TODO: adminlogin*/
+        if(account.equals("admin")){
 
+            Intent intent = new Intent(MainActivity.this, AdminHomeScreen.class);
+            startActivity(intent);
+        }
+else{
         new LoginTask(view, account, password).execute();
-    }
+    }}
 
     private class LoginTask extends AsyncTask<Void, Void, Boolean> {
         private final View loginButton;
@@ -86,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+
             dialog = ProgressDialog.show(MainActivity.this, "", "Logowanie", true);
         }
 

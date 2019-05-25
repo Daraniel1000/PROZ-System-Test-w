@@ -41,7 +41,7 @@ public class TestViewAdapter extends RecyclerView.Adapter<TestViewAdapter.MyView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.recycler_item, parent, false);
+        View view = inflater.inflate(R.layout.recycler_item_test, parent, false);
         return new MyViewHolder(view, mOnTestClickListener);
     }
 
