@@ -23,8 +23,11 @@ public interface TestsAPI {
     Call<ResultsResponse> submitTest(@Path("testId") int testId, @Body List<Integer> solutions, @Header("Authorization") String userCreds);
 
     @GET("tests/{testId}/results")
-    Call<ResultsResponse> getResults(@Path("testId") int testID, @Header("Authorization") String userCreds);
+    Call<ResultsResponse> getResults(@Path("testId") int testId, @Header("Authorization") String userCreds);
 
     @POST("tests")
     Call<prozTest> addTest(@Body prozTest test, @Header("Authorization") String userCreds);
+
+    @POST("tests/{testId}/users")
+    Call<prozTest> addTest(@Path("testId") int testId, @Body List<Integer> users, @Header("Authorization") String userCreds);
 }

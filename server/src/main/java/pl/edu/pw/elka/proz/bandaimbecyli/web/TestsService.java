@@ -1,7 +1,6 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.web;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
-import pl.edu.pw.elka.proz.bandaimbecyli.db.InMemoryTestsDAO;
 import pl.edu.pw.elka.proz.bandaimbecyli.db.TestsDAO;
 import pl.edu.pw.elka.proz.bandaimbecyli.db.prozDatabaseConnection;
 import pl.edu.pw.elka.proz.bandaimbecyli.logic.PointsCalculator;
@@ -11,8 +10,10 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.*;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
@@ -66,6 +67,17 @@ public class TestsService {
         return user;
     }
 
+    @Path("/users")
+    @GET
+    public List<prozUser> getAllUsers(@HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
+            throw new ForbiddenException("Invalid user");
+        if (!user.isAdmin())
+            throw new ForbiddenException("Not an admin");
+        return dao.getAllUsers();
+    }
+
     @Path("/tests")
     @GET
     public List<prozTest> listAvailableTests(@HeaderParam("Authorization") String auth) throws SQLException {
@@ -114,6 +126,21 @@ public class TestsService {
             throw new ForbiddenException("Not an admin");
         dao.addTest(test);
         return test;
+    }
+
+    @Path("/tests/{testId}/users")
+    @POST
+    public void addTestUsers(@PathParam("testId") int testId, List<Integer> users, @HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
+            throw new ForbiddenException("Invalid user");
+        if (!user.isAdmin())
+            throw new ForbiddenException("Not an admin");
+        prozTest test = dao.GetTest(testId);
+        if (test == null)
+            throw new NotFoundException("No such test found");
+        for(int uID : users)
+            dao.addUserToTest(uID, testId);
     }
 
     @Path("/questions")

@@ -311,10 +311,11 @@ public class prozDatabaseConnection implements TestsDAO {
         return null;
     }
 
-    public ArrayList<pl.edu.pw.elka.proz.bandaimbecyli.models.prozUser> getAllQuestions() throws SQLException
+    @Override
+    public ArrayList<prozUser> getAllUsers() throws SQLException
     {
         checkConnection();
-        ArrayList<pl.edu.pw.elka.proz.bandaimbecyli.models.prozUser> uList;
+        ArrayList<prozUser> uList;
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery("select * from Users");
         uList = new ArrayList<>(rs.getFetchSize());
@@ -332,10 +333,11 @@ public class prozDatabaseConnection implements TestsDAO {
         return uList;
     }
 
+    @Override
     public void addUserToTest(int uID, int tID) throws SQLException
     {
         PreparedStatement preparedStmt;
-        preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.InsertUsersTestsQuery());
+        preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.InsertUsersTestsQuery());
         preparedStmt.setInt(1, uID);
         preparedStmt.setInt(2, tID);
         preparedStmt.execute();

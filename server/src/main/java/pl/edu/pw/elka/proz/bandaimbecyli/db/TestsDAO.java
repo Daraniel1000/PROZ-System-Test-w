@@ -33,4 +33,8 @@ public interface TestsDAO {
     void addQuestion(prozQuestion question) throws SQLException;
 
     prozQuestion GetQuestion(int questionId) throws SQLException;
+
+    ArrayList<prozUser> getAllUsers() throws SQLException;
+
+    void addUserToTest(int uID, int tID) throws SQLException;
 }
