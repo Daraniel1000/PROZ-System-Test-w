@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -34,34 +35,42 @@ public class FragmentAdminQuestionList extends Fragment implements AdminQuestion
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        prozQuestions=populateTestingData();
+        prozQuestions = populateTestingData();
 
         recyclerView = view.findViewById(R.id.recycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(new AdminQuestionsViewAdapter(getActivity(), this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         ((AdminQuestionsViewAdapter) recyclerView.getAdapter()).setQuestionList(prozQuestions);
+
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), QuestionEditActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
-    private ArrayList<prozQuestion> populateTestingData(){
-        ArrayList<prozQuestion> questionList= new ArrayList<>();
-        prozAnswer yay = new prozAnswer(true,"Prawidłowa odpowiedź");
-        prozAnswer nay = new prozAnswer(false,"Niepoprawna odpowiedź");
+    private ArrayList<prozQuestion> populateTestingData() {
+        ArrayList<prozQuestion> questionList = new ArrayList<>();
+        prozAnswer yay = new prozAnswer(true, "Prawidłowa odpowiedź");
+        prozAnswer nay = new prozAnswer(false, "Niepoprawna odpowiedź");
 
-        prozQuestion dummy1= new prozQuestion("Przykładowe pytanie "+(questionList.size()+1),10);
+        prozQuestion dummy1 = new prozQuestion("Przykładowe pytanie " + (questionList.size() + 1), 10);
         dummy1.addAnswer(yay);
         dummy1.addAnswer(nay);
-        prozQuestion dummy2= new prozQuestion("Przykładowe pytanie "+(questionList.size()+1),10);
+        prozQuestion dummy2 = new prozQuestion("Przykładowe pytanie " + (questionList.size() + 1), 10);
         questionList.add(dummy1);
         questionList.add(dummy2);
         return questionList;
     }
 
     @Override
-    public void onQuestionClick(CardView view, int position){
+    public void onQuestionClick(CardView view, int position) {
         Intent i = new Intent(getActivity(), QuestionEditActivity.class);
-        i.putExtra("cur_question",prozQuestions.get(position));
+        i.putExtra("cur_question", prozQuestions.get(position));
         startActivity(i);
-        return;
     }
 }

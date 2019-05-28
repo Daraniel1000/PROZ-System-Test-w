@@ -34,7 +34,7 @@ public class FragmentAdminTestList extends Fragment implements AdminTestViewAdap
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        testList= populateTestingData();
+        testList = populateTestingData();
         recyclerView = view.findViewById(R.id.recycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(new AdminTestViewAdapter(getActivity(), this));
@@ -50,19 +50,20 @@ public class FragmentAdminTestList extends Fragment implements AdminTestViewAdap
             }
         });
     }
-    private ArrayList<prozTest> populateTestingData(){
-        ArrayList<prozTest> prozTests = new ArrayList<>();
-        ArrayList<prozQuestion> questionList= new ArrayList<>();
-        prozAnswer yay = new prozAnswer(true,"Prawidłowa odpowiedź");
-        prozAnswer nay = new prozAnswer(false,"Niepoprawna odpowiedź");
 
-        prozQuestion dummy1= new prozQuestion("Przykładowe pytanie "+(questionList.size()+1),10);
+    private ArrayList<prozTest> populateTestingData() {
+        ArrayList<prozTest> prozTests = new ArrayList<>();
+        ArrayList<prozQuestion> questionList = new ArrayList<>();
+        prozAnswer yay = new prozAnswer(true, "Prawidłowa odpowiedź");
+        prozAnswer nay = new prozAnswer(false, "Niepoprawna odpowiedź");
+
+        prozQuestion dummy1 = new prozQuestion("Przykładowe pytanie " + (questionList.size() + 1), 10);
         dummy1.addAnswer(yay);
         dummy1.addAnswer(nay);
-        prozQuestion dummy2= new prozQuestion("Przykładowe pytanie "+(questionList.size()+1),10);
+        prozQuestion dummy2 = new prozQuestion("Przykładowe pytanie " + (questionList.size() + 1), 10);
         questionList.add(dummy1);
         questionList.add(dummy2);
-        prozTest pt= new prozTest();
+        prozTest pt = new prozTest();
         pt.setQuestions(questionList);
         pt.setTitle("sdasdasfasfa");
         prozTests.add(pt);
@@ -70,10 +71,9 @@ public class FragmentAdminTestList extends Fragment implements AdminTestViewAdap
     }
 
     @Override
-    public void onAdminTestClick(CardView view, int position){
+    public void onAdminTestClick(CardView view, int position) {
         Intent i = new Intent(getActivity(), TestEditActivity.class);
-        i.putExtra("cur_test",testList.get(position));
+        i.putExtra("cur_test", testList.get(position));
         startActivity(i);
-        return;
     }
 }

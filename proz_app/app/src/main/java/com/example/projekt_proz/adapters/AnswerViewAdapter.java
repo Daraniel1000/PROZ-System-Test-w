@@ -47,11 +47,9 @@ public class AnswerViewAdapter extends RecyclerView.Adapter<AnswerViewAdapter.My
 
     }
 
-    public void setAnswerList(List<prozAnswer> answerList, boolean ins, boolean del) {
+    public void setAnswerList(List<prozAnswer> answerList) {
         this.answerList=answerList;
-       if(ins)notifyItemInserted(answerList.size()-1);
-       else if(del){notifyItemRemoved(answerList.size());}
-
+        notifyDataSetChanged();
     }
 
     @Override
