@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.projekt_proz.R;
 import com.example.projekt_proz.activities.admin.AdminPanelActivity;
+import com.example.projekt_proz.models.prozUser;
 import com.example.projekt_proz.net.MyClient;
 
 import java.io.IOException;
@@ -67,17 +68,10 @@ public class MainActivity extends AppCompatActivity {
     public void logInService(View view) {
         String account = editLogin.getText().toString();
         String password = editPassword.getText().toString();
-        /*TODO: adminlogin*/
-        if(account.equals("admin")){
-
-            Intent intent = new Intent(MainActivity.this, AdminPanelActivity.class);
-            startActivity(intent);
-        }
-else{
         new LoginTask(view, account, password).execute();
-    }}
+    }
 
-    private class LoginTask extends AsyncTask<Void, Void, Boolean> {
+    private class LoginTask extends AsyncTask<Void, Void, prozUser> {
         private final View loginButton;
         private final String login;
         private final String password;
@@ -97,20 +91,20 @@ else{
         }
 
         @Override
-        protected Boolean doInBackground(Void... voids) {
+        protected prozUser doInBackground(Void... voids) {
             try {
-                return new MyClient().tests().getAvailableTests(Credentials.basic(login, password)).execute().isSuccessful();
+                return new MyClient().users().getMe(Credentials.basic(login, password)).execute().body();
             } catch (IOException e) {
                 e.printStackTrace();
-                return false;
+                return null;
             }
         }
 
         @Override
-        protected void onPostExecute(Boolean success) {
+        protected void onPostExecute(prozUser user) {
             dialog.cancel();
-            if (success) {
-                Intent intent = new Intent(MainActivity.this, AfterLogin.class);
+            if (user != null) {
+                Intent intent = new Intent(MainActivity.this, user.isAdmin() ? AdminPanelActivity.class : AfterLogin.class);
                 intent.putExtra("login", login);
                 intent.putExtra("password", password);
 
