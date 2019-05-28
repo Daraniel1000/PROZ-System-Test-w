@@ -311,7 +311,7 @@ public class prozDatabaseConnection implements TestsDAO {
         return null;
     }
 
-    public ArrayList<pl.edu.pw.elka.proz.bandaimbecyli.models.prozUser> getAllQuestions() throws SQLException
+    public ArrayList<pl.edu.pw.elka.proz.bandaimbecyli.models.prozUser> getAllUsers() throws SQLException
     {
         checkConnection();
         ArrayList<pl.edu.pw.elka.proz.bandaimbecyli.models.prozUser> uList;
