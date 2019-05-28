@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.projekt_proz.R;
+import com.example.projekt_proz.adapters.AdminResultsViewAdapter;
 import com.example.projekt_proz.adapters.AdminTestViewAdapter;
 import com.example.projekt_proz.models.prozAnswer;
 import com.example.projekt_proz.models.prozQuestion;
