@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f61e7b6-e7c6-4289-833e-bf86be330dd0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/admin/a/AdminPanelActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/drawable/ic_menu_camera.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/drawable/ic_menu_gallery.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/drawable/ic_menu_manage.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/drawable/ic_menu_send.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/drawable/ic_menu_share.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/drawable/ic_menu_slideshow.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/drawable/side_nav_bar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/layout/activity_admin_panel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/layout/nav_header_admin_panel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/menu/admin_panel_drawer.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/values-v21/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/admin/AdminPanelActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/admin/AdminPanelActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/admin/FragmentAdminStats.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/res/drawable/ic_menu_stats.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/res/menu/admin_panel_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/menu/admin_panel_drawer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -154,8 +140,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="247" lean-forward="true" selection-start-line="247" selection-end-line="247" />
+            <state relative-caret-position="345">
+              <caret line="254" column="51" lean-forward="true" selection-start-line="254" selection-start-column="51" selection-end-line="254" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -465,12 +451,12 @@
       <workItem from="1555490561466" duration="1308000" />
       <workItem from="1558515913315" duration="21539000" />
       <workItem from="1558603299802" duration="14871000" />
-      <workItem from="1559037252881" duration="1312000" />
+      <workItem from="1559037252881" duration="3266000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48366000" />
+    <option name="totallyTimeSpent" value="50320000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1062" extended-state="6" />
@@ -823,8 +809,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="247" lean-forward="true" selection-start-line="247" selection-end-line="247" />
+        <state relative-caret-position="345">
+          <caret line="254" column="51" lean-forward="true" selection-start-line="254" selection-start-column="51" selection-end-line="254" selection-end-column="51" />
         </state>
       </provider>
     </entry>
