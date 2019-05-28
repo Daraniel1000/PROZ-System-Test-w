@@ -12,22 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.projekt_proz.activities.AfterLogin" />
-        <activity android:name="com.example.projekt_proz.activities.admin.a.AdminHomeScreen" />
-        <activity android:name="com.example.projekt_proz.activities.admin.a.TestCreationQuestion" />
-        <activity android:name="com.example.projekt_proz.activities.admin.a.TestCreation" />
-        <activity android:name="com.example.projekt_proz.activities.admin.a.TestView" />
-        <activity android:name="com.example.projekt_proz.activities.admin.a.ResultsView" />
-        <activity android:name="com.example.projekt_proz.activities.admin.a.TestQuestionView" />
-        <activity android:name="com.example.projekt_proz.activities.admin.a.TestQuestionAnswerView" />
-        <activity android:name="com.example.projekt_proz.activities.WithinTest"/>
-        <activity android:name="com.example.projekt_proz.activities.MainActivity" android:windowSoftInputMode="stateVisible|adjustResize">
+        <activity
+            android:name=".activities.admin.AdminPanelActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.admin.QuestionEditActivity" />
+        <activity android:name=".activities.admin.TestEditActivity" />
+        <activity android:name=".activities.admin.ResultsActivity" />
+        <activity android:name=".activities.AfterLogin" />
+        <activity android:name=".activities.WithinTest" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

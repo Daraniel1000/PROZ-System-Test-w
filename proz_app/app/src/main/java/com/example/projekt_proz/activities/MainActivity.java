@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projekt_proz.R;
-import com.example.projekt_proz.activities.admin.a.AdminHomeScreen;
+import com.example.projekt_proz.activities.admin.AdminPanelActivity;
 import com.example.projekt_proz.net.MyClient;
 
 import java.io.IOException;
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         /*TODO: adminlogin*/
         if(account.equals("admin")){
 
-            Intent intent = new Intent(MainActivity.this, AdminHomeScreen.class);
+            Intent intent = new Intent(MainActivity.this, AdminPanelActivity.class);
             startActivity(intent);
         }
 else{

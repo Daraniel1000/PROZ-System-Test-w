@@ -1,4 +1,4 @@
-package com.example.projekt_proz.activities.admin.a;
+package com.example.projekt_proz.activities.admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ import com.example.projekt_proz.models.prozTest;
 
 import java.util.ArrayList;
 
-public class TestCreation  extends AppCompatActivity implements QuestionViewAdapter.OnQuestionClickListener{
+public class TestEditActivity extends AppCompatActivity implements QuestionViewAdapter.OnQuestionClickListener{
     private RecyclerView recyclerView;
     private ArrayList<prozQuestion> questionList;
 
@@ -30,7 +30,7 @@ public class TestCreation  extends AppCompatActivity implements QuestionViewAdap
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a_activity_test_creation);
+        setContentView(R.layout.a_activity_test_edit);
         text=findViewById(R.id.text_input_test_name);
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -39,9 +39,17 @@ public class TestCreation  extends AppCompatActivity implements QuestionViewAdap
 
         boolean edited=getIntent().getBooleanExtra("edited",false);
         if(edited==false){
-
-        questionList = new ArrayList<prozQuestion>();
-        populate(questionList);
+            prozTest test = (prozTest) getIntent().getSerializableExtra("cur_test");
+            if (test != null)
+            {
+                // Editing an existing test
+                questionList = test.getQuestions();
+            }
+            else
+            {
+                // Starting a new test creation
+                questionList = new ArrayList<>();
+            }
         }
         else{
             QuestionListWrapper qlw =(QuestionListWrapper)getIntent().getSerializableExtra("qlw");
@@ -51,19 +59,9 @@ public class TestCreation  extends AppCompatActivity implements QuestionViewAdap
             text.setText(s);
 
         }
-        ((QuestionViewAdapter) recyclerView.getAdapter()).setQuestionList(TestCreation.this.questionList);
+        ((QuestionViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
     }
 
-    void populate(ArrayList<prozQuestion> questionList){
-        prozAnswer yay = new prozAnswer(true,"Prawidłowa odpowiedź");
-        prozAnswer nay = new prozAnswer(false,"Niepoprawna odpowiedź");
-
-        prozQuestion dummy1= new prozQuestion("Przykładowe pytanie "+(questionList.size()+1),10);
-        dummy1.addAnswer(yay);
-        dummy1.addAnswer(nay);
-        questionList.add(dummy1);
-
-    }
     public void addQuestion(View view){
         prozAnswer yay = new prozAnswer(1,true,"Prawidłowa odpowiedź");
         prozAnswer nay = new prozAnswer(2,false,"Niepoprawna odpowiedź");
@@ -72,23 +70,19 @@ public class TestCreation  extends AppCompatActivity implements QuestionViewAdap
         dummy1.addAnswer(yay);
         dummy1.addAnswer(nay);
         questionList.add(dummy1);
-        ((QuestionViewAdapter) recyclerView.getAdapter()).setQuestionList(TestCreation.this.questionList);
+        ((QuestionViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
         recyclerView.scrollToPosition(questionList.size()-1);
     }
     public void deleteQuestion(View view){
         if(questionList.isEmpty())return;
         questionList.remove(questionList.size()-1);
-        ((QuestionViewAdapter) recyclerView.getAdapter()).setQuestionList(TestCreation.this.questionList);
+        ((QuestionViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
         recyclerView.scrollToPosition(questionList.size()-1);
-    }
-    public void onBackPressed() {
-        Intent i = new Intent(TestCreation.this, AdminHomeScreen.class);
-        startActivity(i);
     }
     public void saveTest(View view){
         String title= text.getText().toString();
         if(title.length()==0){
-            Toast.makeText(TestCreation.this, "Nie podano nazwy testu!", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(TestEditActivity.this, "Nie podano nazwy testu!", Toast.LENGTH_LONG).show();return;}
         prozTest pTest = new prozTest();
         pTest.setQuestions(questionList);
         pTest.setTitle(title);
@@ -101,7 +95,7 @@ public class TestCreation  extends AppCompatActivity implements QuestionViewAdap
         Editable e= text.getText();
         String s = e.toString();
 
-        Intent i = new Intent(TestCreation.this, TestCreationQuestion.class);
+        Intent i = new Intent(TestEditActivity.this, QuestionEditActivity.class);
         QuestionListWrapper questionListWrapper = new QuestionListWrapper(questionList,position,s);
 
         i.putExtra("qlw",questionListWrapper);

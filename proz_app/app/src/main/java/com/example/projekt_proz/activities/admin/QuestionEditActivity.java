@@ -1,4 +1,4 @@
-package com.example.projekt_proz.activities.admin.a;
+package com.example.projekt_proz.activities.admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ import com.example.projekt_proz.models.prozQuestion;
 import java.util.ArrayList;
 
 
-public class TestCreationQuestion  extends AppCompatActivity {
+public class QuestionEditActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<prozAnswer> answerList;
 
@@ -34,7 +34,7 @@ public class TestCreationQuestion  extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a_activity_test_creation_question);
+        setContentView(R.layout.a_activity_question_edit);
 
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setItemViewCacheSize(10);
@@ -45,13 +45,18 @@ public class TestCreationQuestion  extends AppCompatActivity {
 
         answerList = new ArrayList<>();
         qlw = (QuestionListWrapper) getIntent().getSerializableExtra("qlw");
+        if (qlw == null)
+        {
+            prozQuestion q = (prozQuestion) getIntent().getSerializableExtra("cur_question");
+            // TODO: fix this mess
+        }
         cq=qlw.getCurQuestion();
         currentQuestion=qlw.getProzQuestionArrayList().get(cq);
 
         editText.setText(currentQuestion.getText());
         answerList= currentQuestion.getAnswers();
 
-        ((AnswerViewAdapter) recyclerView.getAdapter()).setAnswerList(TestCreationQuestion.this.answerList,false,false);
+        ((AnswerViewAdapter) recyclerView.getAdapter()).setAnswerList(QuestionEditActivity.this.answerList,false,false);
     }
     public void updateAnswers(View view){
         for(int x=0;x<answerList.size();x++){
@@ -66,11 +71,11 @@ public class TestCreationQuestion  extends AppCompatActivity {
 
     public void addAnswer(View view){
 /*TODO: fix crashes for 6+ items for del+ins+del sequence */
-        if(answerList.size()==5){Toast.makeText(TestCreationQuestion.this, "Nie da się dodać więcej odpowiedzi!", Toast.LENGTH_LONG).show();return;}
+        if(answerList.size()==5){Toast.makeText(QuestionEditActivity.this, "Nie da się dodać więcej odpowiedzi!", Toast.LENGTH_LONG).show();return;}
         updateAnswers(view);
         prozAnswer pa = new prozAnswer(false,"Nowa odpowiedź "+(answerList.size()+1));
         answerList.add(pa);
-        ((AnswerViewAdapter) recyclerView.getAdapter()).setAnswerList(TestCreationQuestion.this.answerList,true,false);
+        ((AnswerViewAdapter) recyclerView.getAdapter()).setAnswerList(QuestionEditActivity.this.answerList,true,false);
 
 
         recyclerView.scrollToPosition(answerList.size()-1);
@@ -80,7 +85,7 @@ public class TestCreationQuestion  extends AppCompatActivity {
         if(answerList.isEmpty())return;
         updateAnswers(view);
         answerList.remove(answerList.size()-1);
-        ((AnswerViewAdapter) recyclerView.getAdapter()).setAnswerList(TestCreationQuestion.this.answerList,false,true);
+        ((AnswerViewAdapter) recyclerView.getAdapter()).setAnswerList(QuestionEditActivity.this.answerList,false,true);
 
 
 
@@ -91,7 +96,7 @@ public class TestCreationQuestion  extends AppCompatActivity {
     }
     public void saveQuestion(View view){
         updateAnswers(view);
-        Intent i = new Intent(TestCreationQuestion.this, TestCreation.class);
+        Intent i = new Intent(QuestionEditActivity.this, TestEditActivity.class);
         currentQuestion.setAnswers(answerList);
         currentQuestion.setText(editText.getText().toString());
         int correctAns=0;
@@ -99,9 +104,9 @@ public class TestCreationQuestion  extends AppCompatActivity {
             CheckBox cb = findViewById(300+x).findViewById(R.id.cbCorrect);
             if(cb.isChecked())correctAns++;
         }
-        Log.d("TestCreationQuestion","correct answers "+correctAns);
+        Log.d("QuestionEditActivity","correct answers "+correctAns);
         if(correctAns==0){
-            Toast.makeText(TestCreationQuestion.this, "Nie zaznaczono poprawnych odpowiedzi!", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(QuestionEditActivity.this, "Nie zaznaczono poprawnych odpowiedzi!", Toast.LENGTH_LONG).show();return;}
        else if(correctAns==1){currentQuestion.setType(prozQuestion.TYPE_SINGLE_CHOICE);}
        else {currentQuestion.setType(prozQuestion.TYPE_MULTIPLE_CHOICE);}
        qlw.replaceQuestion(cq,currentQuestion);

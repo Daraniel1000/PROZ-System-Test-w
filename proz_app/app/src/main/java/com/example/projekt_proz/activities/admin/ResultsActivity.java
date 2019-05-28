@@ -1,4 +1,4 @@
-package com.example.projekt_proz.activities.admin.a;
+package com.example.projekt_proz.activities.admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class ResultsView extends AppCompatActivity  {
+public class ResultsActivity extends AppCompatActivity  {
     private RecyclerView recyclerView;
     private ArrayList<prozResults> pResults;
 
@@ -36,7 +36,7 @@ public class ResultsView extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_activity_results_view);
-        ResultsWrapper rw =(ResultsWrapper)getIntent().getSerializableExtra("resuts");
+        ResultsWrapper rw =(ResultsWrapper)getIntent().getSerializableExtra("resuts"); // TODO
         pResults=rw.getProzResultsArrayList();
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
