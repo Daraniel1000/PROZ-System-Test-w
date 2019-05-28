@@ -1,9 +1,6 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.db;
 
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozAnswer;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozQuestion;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozResults;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozTest;
+import pl.edu.pw.elka.proz.bandaimbecyli.models.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -32,7 +29,7 @@ public class prozDatabaseConnection implements TestsDAO {
     }
 
     @Override
-    public int CheckUserLogin(String username, String password) throws SQLException
+    public prozUser CheckUserLogin(String username, String password) throws SQLException
     {
         checkConnection();
         PreparedStatement stmt = databaseConn.prepareStatement(prozQueryGenerator.CheckUserQuery());
@@ -41,11 +38,18 @@ public class prozDatabaseConnection implements TestsDAO {
         ResultSet rs = stmt.executeQuery();
         while(rs.next())
         {
+            prozUser user = new prozUser(
+                    rs.getInt("USER_ID"),
+                    rs.getString("LOGIN"),
+                    rs.getString("FIRST_NAME"),
+                    rs.getString("LAST_NAME"),
+                    rs.getBoolean("ADMIN")
+            );
             rs.close();
-            return rs.getInt("USER_ID");
+            return user;
         }
         rs.close();
-        return -1;
+        return null;
     }
 
     @Override
@@ -136,7 +140,7 @@ public class prozDatabaseConnection implements TestsDAO {
     public void SendResults(prozResults Results) throws SQLException
     {
         checkConnection();
-        PreparedStatement preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.InsertResultsQuery());
+        PreparedStatement preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.InsertResultsQuery(), new String[] { "RESULTS_ID" });
         preparedStmt.setInt(1, Results.getTestID());
         preparedStmt.setInt(2, Results.getUserID());
         preparedStmt.setTimestamp(3, Results.getSentDate());
@@ -148,7 +152,7 @@ public class prozDatabaseConnection implements TestsDAO {
         preparedStmt.close();
         for(int i=0; i<Results.getAnswerIDSize(); ++i)
         {
-            preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.InsertResultsAnswersQuery());
+            preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.InsertResultsAnswersQuery());
             preparedStmt.setInt(1, Results.getAnswerID(i));
             preparedStmt.setInt(2, Results.getResultsID());
             preparedStmt.execute();
@@ -171,7 +175,7 @@ public class prozDatabaseConnection implements TestsDAO {
     {
         checkConnection();
         Statement stmt = databaseConn.createStatement();
-        ResultSet rs = stmt.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.ResultsForUserTestQuery(tID, uID));
+        ResultSet rs = stmt.executeQuery(prozQueryGenerator.ResultsForUserTestQuery(tID, uID));
         while (rs.next())
         {
             prozResults Results = new prozResults(
@@ -185,7 +189,7 @@ public class prozDatabaseConnection implements TestsDAO {
             stmt.close();
             stmt = databaseConn.createStatement();
             rs.close();
-            rs = stmt.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.AnswerIDsForResultsQuery(Results.getResultsID()));
+            rs = stmt.executeQuery(prozQueryGenerator.AnswerIDsForResultsQuery(Results.getResultsID()));
             while(rs.next())
             {
                 Results.addAnswerID(rs.getInt("ANSWER_ID"));
@@ -197,11 +201,12 @@ public class prozDatabaseConnection implements TestsDAO {
         return null;
     }
 
-    private void addQuestion(prozQuestion question) throws SQLException
+    @Override
+    public void addQuestion(prozQuestion question) throws SQLException
     {
         checkConnection();
         //char c;
-        PreparedStatement preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.InsertQuestionQuery());
+        PreparedStatement preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.InsertQuestionQuery(), new String[] { "QUESTION_ID" });
         preparedStmt.setString(1, question.getText());
         preparedStmt.setInt(2, question.getType());
         preparedStmt.execute();
@@ -213,7 +218,7 @@ public class prozDatabaseConnection implements TestsDAO {
         for(int i=0; i<question.getAnswersSize(); ++i)
         {
             //c = question.getAnswer(i).isCorrect()? 'y':'n';
-            preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.insertAnswerQuery());
+            preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.insertAnswerQuery());
             preparedStmt.setString(1, question.getAnswer(i).getText());
             preparedStmt.setInt(2, question.getQuestionID());
             preparedStmt.setBoolean(3,question.getAnswer(i).isCorrect());
@@ -222,10 +227,11 @@ public class prozDatabaseConnection implements TestsDAO {
         }
     }
 
-    private void addTest(prozTest test) throws SQLException
+    @Override
+    public void addTest(prozTest test) throws SQLException
     {
         checkConnection();
-        PreparedStatement preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.InsertTestQuery());
+        PreparedStatement preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.InsertTestQuery(), new String[] { "TEST_ID" });
         preparedStmt.setString(1, test.getTitle());
         preparedStmt.setTimestamp(2, test.getStartDate());
         preparedStmt.setTimestamp(3, test.getEndDate());
@@ -238,7 +244,7 @@ public class prozDatabaseConnection implements TestsDAO {
         preparedStmt.close();
         for(int i=0; i<test.getQuestionsSize(); ++i)
         {
-            preparedStmt = databaseConn.prepareStatement(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.insertTestQuestionsQuery());
+            preparedStmt = databaseConn.prepareStatement(prozQueryGenerator.insertTestQuestionsQuery());
             preparedStmt.setInt(1, test.getQuestion(i).getQuestionID());
             preparedStmt.setInt(2, test.getTestID());
             preparedStmt.execute();
@@ -246,7 +252,8 @@ public class prozDatabaseConnection implements TestsDAO {
         }
     }
 
-    private ArrayList<prozQuestion> getAllQuestions() throws SQLException
+    @Override
+    public ArrayList<prozQuestion> getAllQuestions() throws SQLException
     {
         checkConnection();
         ArrayList<prozQuestion> qList;
@@ -265,7 +272,8 @@ public class prozDatabaseConnection implements TestsDAO {
         return qList;
     }
 
-    private ArrayList<prozTest> getAllTests() throws SQLException
+    @Override
+    public ArrayList<prozTest> getAllTests() throws SQLException
     {
         ArrayList<prozTest> tList;
         Statement stmt = databaseConn.createStatement();
@@ -283,5 +291,22 @@ public class prozDatabaseConnection implements TestsDAO {
         }
         rs.close();
         return tList;
+    }
+
+    @Override
+    public prozQuestion GetQuestion(int questionId) throws SQLException {
+        Statement stmt = databaseConn.createStatement();
+        ResultSet rs = stmt.executeQuery(prozQueryGenerator.GetQuestionQuery(questionId));
+        while (rs.next())
+        {
+            prozQuestion q = new prozQuestion(
+                    rs.getInt("QUESTION_ID"),
+                    rs.getInt("TYPE"),
+                    rs.getString("TEXT"));
+            rs.close();
+            return q;
+        }
+        rs.close();
+        return null;
     }
 }

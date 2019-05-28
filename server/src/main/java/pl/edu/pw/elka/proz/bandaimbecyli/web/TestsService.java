@@ -14,14 +14,12 @@ import java.sql.Timestamp;
 import java.util.*;
 import java.util.logging.Logger;
 
-@Path("/tests")
+@Path("/")
 @Produces(MediaType.APPLICATION_JSON)
-public class TestsService
-{
+public class TestsService {
     public static TestsDAO dao;
 
-    static
-    {
+    static {
         /*prozQuestion q1 = new prozQuestion(1, 1, "Pamiętaj, zawsze B");
         q1.initAnswers(4);
         q1.addAnswer(new prozAnswer(1, false, "A"));
@@ -59,43 +57,106 @@ public class TestsService
         dao = new prozDatabaseConnection();
     }
 
-    @Path("/")
+    @Path("/me")
     @GET
-    public List<prozTest> listAvailableTests(@HeaderParam("Authorization") String auth) throws SQLException
-    {
-        int user = checkUser(auth);
-        if (user == -1)
+    public prozUser getMyAccount(@HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
             throw new ForbiddenException("Invalid user");
-        return dao.GetTestsAvailableForUser(user);
+        return user;
     }
 
-    @Path("/{testId}")
+    @Path("/tests")
     @GET
-    public prozTest startTest(@PathParam("testId") int testId, @HeaderParam("Authorization") String auth) throws SQLException
-    {
-        int user = checkUser(auth);
-        if (user == -1)
+    public List<prozTest> listAvailableTests(@HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
+            throw new ForbiddenException("Invalid user");
+        if (user.isAdmin())
+            return dao.getAllTests();
+        else
+            return dao.GetTestsAvailableForUser(user.getUserId());
+    }
+
+    @Path("/questions")
+    @GET
+    public List<prozQuestion> listAllQuestions(@HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
+            throw new ForbiddenException("Invalid user");
+        if (!user.isAdmin())
+            throw new ForbiddenException("Not an admin");
+        return dao.getAllQuestions();
+    }
+
+    @Path("/questions/{questionId}")
+    @GET
+    public prozQuestion getQuestion(@PathParam("questionId") int questionId, @HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
+            throw new ForbiddenException("Invalid user");
+        if (!user.isAdmin())
+            throw new ForbiddenException("Not an admin");
+        prozQuestion question = dao.GetQuestion(questionId);
+        if (question == null)
+            throw new NotFoundException("No such question found");
+        dao.FillQuestionAnswers(question);
+        return question;
+    }
+
+    @Path("/tests")
+    @POST
+    public prozTest addTest(prozTest test, @HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
+            throw new ForbiddenException("Invalid user");
+        if (!user.isAdmin())
+            throw new ForbiddenException("Not an admin");
+        dao.addTest(test);
+        return test;
+    }
+
+    @Path("/questions")
+    @POST
+    public prozQuestion addQuestion(prozQuestion question, @HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
+            throw new ForbiddenException("Invalid user");
+        if (!user.isAdmin())
+            throw new ForbiddenException("Not an admin");
+        dao.addQuestion(question);
+        return question;
+    }
+
+    @Path("/tests/{testId}")
+    @GET
+    public prozTest getTest(@PathParam("testId") int testId, @HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
             throw new ForbiddenException("Invalid user");
 
         prozTest test = dao.GetTest(testId);
         if (test == null)
             throw new NotFoundException("No such test found");
-        if (Calendar.getInstance().getTime().getTime() < test.getStartDate().getTime())
-            throw new ForbiddenException("Test not started");
+        if (!user.isAdmin()) {
+            if (Calendar.getInstance().getTime().getTime() < test.getStartDate().getTime())
+                throw new ForbiddenException("Test not started");
+        }
         dao.FillTestQuestions(test);
-        for(prozQuestion q : test.getQuestions())
+        for (prozQuestion q : test.getQuestions())
             dao.FillQuestionAnswers(q);
         return test;
     }
 
-    @Path("/{testId}/submit")
+    @Path("/tests/{testId}/submit")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public ResultsResponse submitAnswers(@PathParam("testId") int testId, List<Integer> solutions, @HeaderParam("Authorization") String auth) throws SQLException
-    {
-        int user = checkUser(auth);
-        if (user == -1)
+    public ResultsResponse submitAnswers(@PathParam("testId") int testId, List<Integer> solutions, @HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
             throw new ForbiddenException("Invalid user");
+        if (user.isAdmin())
+            throw new ForbiddenException("Admin can't solve tests");
 
         if (solutions == null)
             throw new BadRequestException("No solutions sent");
@@ -106,21 +167,21 @@ public class TestsService
             throw new ForbiddenException("Test not started");
         if (Calendar.getInstance().getTime().getTime() > test.getEndDate().getTime() + 60000) // a small window in case of network problems
             throw new ForbiddenException("Test already finished");
-        if (dao.GetResults(test.getTestID(), user) != null)
+        if (dao.GetResults(test.getTestID(), user.getUserId()) != null)
             throw new ForbiddenException("Test already solved");
         dao.FillTestQuestions(test);
-        for(prozQuestion q : test.getQuestions())
+        for (prozQuestion q : test.getQuestions())
             dao.FillQuestionAnswers(q);
 
-        prozResults results = new prozResults(test.getTestID(), user, new Timestamp(new Date().getTime()), -1);
+        prozResults results = new prozResults(test.getTestID(), user.getUserId(), new Timestamp(new Date().getTime()), -1);
         results.initAnswers(solutions.size());
         PointsCalculator pointsCalculator = new PointsCalculator(test);
 
-        for(prozQuestion question : test.getQuestions()) {
+        for (prozQuestion question : test.getQuestions()) {
             List<prozAnswer> answers = new ArrayList<>();
-            for(int aID : solutions) {
+            for (int aID : solutions) {
                 prozAnswer answer = null;
-                for(prozAnswer a : question.getAnswers()) {
+                for (prozAnswer a : question.getAnswers()) {
                     if (a.getAnswerID() == aID) {
                         answer = a;
                         break;
@@ -142,28 +203,28 @@ public class TestsService
         results.setPoints(pointsCalculator.getPoints());
         dao.SendResults(results);
 
-        // TODO: show answers only after test finished to avoid cheating?
         ArrayList<Integer> correctAnswers = ResultsResponse.correctAnswersForTest(test);
 
         return new ResultsResponse(results, correctAnswers);
     }
 
-    @Path("/{testId}/results")
+    @Path("/tests/{testId}/results")
     @GET
-    public ResultsResponse getResults(@PathParam("testId") int testId, @HeaderParam("Authorization") String auth) throws SQLException
-    {
-        int user = checkUser(auth);
-        if (user == -1)
+    public ResultsResponse getResults(@PathParam("testId") int testId, @HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
             throw new ForbiddenException("Invalid user");
+        if (user.isAdmin())
+            throw new ForbiddenException("Admin can't solve tests");
 
         prozTest test = dao.GetTest(testId);
         if (test == null)
             throw new NotFoundException("No such test found");
         dao.FillTestQuestions(test);
-        for(prozQuestion q : test.getQuestions())
+        for (prozQuestion q : test.getQuestions())
             dao.FillQuestionAnswers(q);
 
-        prozResults results = dao.GetResults(test.getTestID(), user);
+        prozResults results = dao.GetResults(test.getTestID(), user.getUserId());
         if (results == null)
             throw new NotFoundException("Test not solved yet");
 
@@ -171,20 +232,19 @@ public class TestsService
         return new ResultsResponse(results, correctAnswers);
     }
 
-    private int checkUser(String authString) throws SQLException
-    {
+    private prozUser checkUser(String authString) throws SQLException {
         if (authString == null)
-            return -1;
+            return null;
         String[] authParts = authString.split(" ");
         if (authParts.length != 2)
-            return -1;
+            return null;
         if (!authParts[0].equals("Basic"))
-            return -1;
+            return null;
 
         String decodedAuth = new String(Base64.decode(authParts[1]));
         String[] authData = decodedAuth.split(":");
         if (authData.length != 2)
-            return -1;
+            return null;
         String username = authData[0];
         String password = authData[1];
 

@@ -1,9 +1,6 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.db;
 
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozAnswer;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozQuestion;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozResults;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozTest;
+import pl.edu.pw.elka.proz.bandaimbecyli.models.*;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -27,8 +24,12 @@ public class InMemoryTestsDAO implements TestsDAO {
     }
 
     @Override
-    public int CheckUserLogin(String username, String password) throws SQLException {
-        return username.equals("test") && password.equals("123") ? 1 : -1;
+    public prozUser CheckUserLogin(String username, String password) throws SQLException {
+        if (username.equals("test") && password.equals("123"))
+        {
+            return new prozUser(1, "test", "Uzytkownik", "Testowy", false);
+        }
+        return null;
     }
 
     @Override
@@ -99,6 +100,31 @@ public class InMemoryTestsDAO implements TestsDAO {
 
     @Override
     public prozResults GetResults(int tID, int uID) throws SQLException {
+        throw new UnsupportedOperationException(); // TODO
+    }
+
+    @Override
+    public ArrayList<prozTest> getAllTests() throws SQLException {
+        throw new UnsupportedOperationException(); // TODO
+    }
+
+    @Override
+    public ArrayList<prozQuestion> getAllQuestions() throws SQLException {
+        throw new UnsupportedOperationException(); // TODO
+    }
+
+    @Override
+    public void addTest(prozTest test) throws SQLException {
+        throw new UnsupportedOperationException(); // TODO
+    }
+
+    @Override
+    public void addQuestion(prozQuestion question) throws SQLException {
+        throw new UnsupportedOperationException(); // TODO
+    }
+
+    @Override
+    public prozQuestion GetQuestion(int questionId) throws SQLException {
         throw new UnsupportedOperationException(); // TODO
     }
 }

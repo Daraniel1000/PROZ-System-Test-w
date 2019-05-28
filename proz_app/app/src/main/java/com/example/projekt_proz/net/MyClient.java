@@ -17,4 +17,10 @@ public class MyClient {
     public TestsAPI tests() {
         return retrofit.create(TestsAPI.class);
     }
+    public QuestionsAPI questions() {
+        return retrofit.create(QuestionsAPI.class);
+    }
+    public UsersAPI users() {
+        return retrofit.create(UsersAPI.class);
+    }
 }

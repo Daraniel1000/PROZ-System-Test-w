@@ -3,7 +3,7 @@ package pl.edu.pw.elka.proz.bandaimbecyli.db;
 class prozQueryGenerator {
     static String CheckUserQuery()
     {
-        return "select user_id from users where login = ? and password = ?";
+        return "select user_id, login, first_name, last_name, admin from users where login = ? and password = ?";
     }
 
     static String TestsForUserQuery(int uID)
@@ -73,4 +73,7 @@ class prozQueryGenerator {
         return "select ANSWER_ID from RESULTS_ANSWERS where RESULTS_ID = " + rID;
     }
 
+    static String GetQuestionQuery(int questionId) {
+        return "select * from question where question_id = " + questionId;
+    }
 }
