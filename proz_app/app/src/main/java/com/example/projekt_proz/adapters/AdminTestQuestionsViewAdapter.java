@@ -20,35 +20,33 @@ public class AdminTestQuestionsViewAdapter extends RecyclerView.Adapter<AdminTes
     private LayoutInflater inflater;
     private OnQuestionClickListener mOnQuestionClickListener;
 
-    private List<prozQuestion> questionList = new ArrayList<>();
+    private List<prozQuestion> questionList;
 
     public interface OnQuestionClickListener {
         void onQuestionClick(CardView view, int position);
     }
 
-    public AdminTestQuestionsViewAdapter(Context ctx, OnQuestionClickListener OnQuestionClickListener) {
+    public AdminTestQuestionsViewAdapter(Context ctx, OnQuestionClickListener OnQuestionClickListener, List<prozQuestion> questions) {
         inflater = LayoutInflater.from(ctx);
         mOnQuestionClickListener = OnQuestionClickListener;
+        this.questionList = questions;
     }
-    
+
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.a_recycler_item_question, parent, false);
         return new MyViewHolder(view, mOnQuestionClickListener);
     }
 
     @Override
-    public void onBindViewHolder(AdminTestQuestionsViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdminTestQuestionsViewAdapter.MyViewHolder holder, int position) {
         holder.tvTitle.setText(questionList.get(position).getText());
-        holder.tvAnswerCount.setText(""+questionList.get(position).getAnswersSize());
-
-       
-       
+        holder.tvAnswerCount.setText("" + questionList.get(position).getAnswersSize());
     }
 
     public void setQuestionList(List<prozQuestion> questionList) {
-        this.questionList=questionList;
+        this.questionList = questionList;
         notifyDataSetChanged();
     }
 

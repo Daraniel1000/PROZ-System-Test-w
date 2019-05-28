@@ -20,8 +20,6 @@ import com.example.projekt_proz.adapters.AdminAnswerViewAdapter;
 import com.example.projekt_proz.models.prozAnswer;
 import com.example.projekt_proz.models.prozQuestion;
 
-import java.util.Calendar;
-
 
 public class QuestionEditActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -78,8 +76,6 @@ public class QuestionEditActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putSerializable("cur_question", currentQuestion);
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

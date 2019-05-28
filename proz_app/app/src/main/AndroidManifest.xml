@@ -14,12 +14,23 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".activities.admin.AdminPanelActivity"
+            android:label="Panel administratora"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.admin.QuestionEditActivity" />
-        <activity android:name=".activities.admin.TestEditActivity" />
-        <activity android:name=".activities.admin.ResultsActivity" />
-        <activity android:name=".activities.AfterLogin" />
-        <activity android:name=".activities.WithinTest" />
+        <activity
+            android:name=".activities.admin.QuestionEditActivity"
+            android:label="Edycja pytania" />
+        <activity
+            android:name=".activities.admin.TestEditActivity"
+            android:label="Edycja testu" />
+        <activity
+            android:name=".activities.admin.ResultsActivity"
+            android:label="Wyniki testu" />
+        <activity
+            android:name=".activities.AfterLogin"
+            android:label="Dostępne testy" />
+        <activity
+            android:name=".activities.WithinTest"
+            android:label="Test" />
         <activity
             android:name=".activities.MainActivity"
             android:windowSoftInputMode="stateVisible|adjustResize">

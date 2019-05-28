@@ -32,9 +32,6 @@ public class AdminPanelActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        navigationView.setCheckedItem(R.id.nav_results);
-        changeView(FragmentAdminResultsList.class);
-
         if (savedInstanceState == null)
         {
             // Start with the drawer open
@@ -69,6 +66,7 @@ public class AdminPanelActivity extends AppCompatActivity
         }
         if(fragmentClass != null) {
             changeView(fragmentClass);
+            setTitle(item.getTitle());
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

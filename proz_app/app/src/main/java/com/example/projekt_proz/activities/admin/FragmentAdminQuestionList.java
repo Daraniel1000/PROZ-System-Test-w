@@ -61,9 +61,11 @@ public class FragmentAdminQuestionList extends Fragment implements AdminQuestion
         prozQuestion dummy1 = new prozQuestion("Przykładowe pytanie " + (questionList.size() + 1), 10);
         dummy1.addAnswer(yay);
         dummy1.addAnswer(nay);
-        prozQuestion dummy2 = new prozQuestion("Przykładowe pytanie " + (questionList.size() + 1), 10);
         questionList.add(dummy1);
+
+        prozQuestion dummy2 = new prozQuestion("Przykładowe pytanie " + (questionList.size() + 1), 10);
         questionList.add(dummy2);
+
         return questionList;
     }
 

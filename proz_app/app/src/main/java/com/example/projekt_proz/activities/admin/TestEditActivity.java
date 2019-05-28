@@ -1,104 +1,157 @@
 package com.example.projekt_proz.activities.admin;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projekt_proz.R;
-
 import com.example.projekt_proz.adapters.AdminTestQuestionsViewAdapter;
-import com.example.projekt_proz.models.QuestionListWrapper;
-import com.example.projekt_proz.models.prozAnswer;
-import com.example.projekt_proz.models.prozQuestion;
 import com.example.projekt_proz.models.prozTest;
 
-import java.util.ArrayList;
+public class TestEditActivity extends AppCompatActivity implements AdminTestQuestionsViewAdapter.OnQuestionClickListener {
+    private prozTest currentTest;
 
-public class TestEditActivity extends AppCompatActivity implements AdminTestQuestionsViewAdapter.OnQuestionClickListener{
     private RecyclerView recyclerView;
-    private ArrayList<prozQuestion> questionList;
+    private EditText editText;
 
-    private EditText text;
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_activity_test_edit);
-        text=findViewById(R.id.text_input_test_name);
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (savedInstanceState == null) {
+            currentTest = (prozTest) getIntent().getSerializableExtra("cur_test");
+            if (currentTest == null) {
+                // Creating a new test
+                currentTest = new prozTest();
+                currentTest.initQuestions(0);
+            }
+        } else {
+            currentTest = (prozTest) savedInstanceState.getSerializable("cur_test");
+        }
+
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new AdminTestQuestionsViewAdapter(this, this));
+        recyclerView.setAdapter(new AdminTestQuestionsViewAdapter(this, this, currentTest.getQuestions()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
-        boolean edited=getIntent().getBooleanExtra("edited",false);
-        if(edited==false){
-            prozTest test = (prozTest) getIntent().getSerializableExtra("cur_test");
-            if (test != null)
-            {
-                // Editing an existing test
-                questionList = test.getQuestions();
+        editText = findViewById(R.id.text_input_question_name);
+        editText.setText(currentTest.getTitle());
+
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
-            else
-            {
-                // Starting a new test creation
-                questionList = new ArrayList<>();
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
-        }
-        else{
-            QuestionListWrapper qlw =(QuestionListWrapper)getIntent().getSerializableExtra("qlw");
-            questionList=qlw.getProzQuestionArrayList();
 
-            String s = qlw.getTestName();
-            text.setText(s);
-
-        }
-        ((AdminTestQuestionsViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
+            @Override
+            public void afterTextChanged(Editable editable) {
+                currentTest.setTitle(editable.toString());
+            }
+        });
     }
 
-    public void addQuestion(View view){
-        prozAnswer yay = new prozAnswer(1,true,"Prawidłowa odpowiedź");
-        prozAnswer nay = new prozAnswer(2,false,"Niepoprawna odpowiedź");
-
-        prozQuestion dummy1= new prozQuestion("Nowe pytanie "+(questionList.size()+1),10);
-        dummy1.addAnswer(yay);
-        dummy1.addAnswer(nay);
-        questionList.add(dummy1);
-        ((AdminTestQuestionsViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
-        recyclerView.scrollToPosition(questionList.size()-1);
-    }
-    public void deleteQuestion(View view){
-        if(questionList.isEmpty())return;
-        questionList.remove(questionList.size()-1);
-        ((AdminTestQuestionsViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
-        recyclerView.scrollToPosition(questionList.size()-1);
-    }
-    public void saveTest(View view){
-        String title= text.getText().toString();
-        if(title.length()==0){
-            Toast.makeText(TestEditActivity.this, "Nie podano nazwy testu!", Toast.LENGTH_LONG).show();return;}
-        prozTest pTest = new prozTest();
-        pTest.setQuestions(questionList);
-        pTest.setTitle(title);
-        /*TODO:ask about start and finish date, send test*/
-
-    }
     @Override
-    public void onQuestionClick(CardView view, int position){
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("cur_test", currentTest);
+    }
 
-        Editable e= text.getText();
-        String s = e.toString();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.editor, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+
+        if (id == R.id.save_changes) {
+            saveTest();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void addQuestion(View view) {
+        // TODO: Miały być pytania z bazy pytań...
+        /*prozQuestion q = ???;
+        currentTest.getQuestions().add(q);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scrollToPosition(currentTest.getQuestionsSize() - 1);*/
+    }
+
+    public void deleteQuestion(View view) {
+        if (currentTest.getQuestions().isEmpty())
+            return;
+        currentTest.getQuestions().remove(currentTest.getQuestionsSize() - 1);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scrollToPosition(currentTest.getQuestionsSize() - 1);
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+            .setTitle("Zapisywanie zmian")
+            .setMessage("Czy chcesz wyjść bez zapisywania zmian?")
+            .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    supportFinishAfterTransition();
+                }
+
+            })
+            .setNegativeButton("Nie", null)
+            .setCancelable(true)
+            .show();
+    }
+
+    public void saveTest() {
+        String title = currentTest.getTitle();
+        if (title.length() == 0) {
+            Toast.makeText(TestEditActivity.this, "Nie podano nazwy testu!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // TODO: data startu/końca
+
+        // TODO: wyślij do serwera
+
+        supportFinishAfterTransition();
+    }
+
+    @Override
+    public void onQuestionClick(CardView view, int position) {
         Intent i = new Intent(TestEditActivity.this, QuestionEditActivity.class);
-        QuestionListWrapper questionListWrapper = new QuestionListWrapper(questionList,position,s);
-
-        i.putExtra("qlw",questionListWrapper);
+        i.putExtra("cur_question", currentTest.getQuestions().get(position));
         startActivity(i);
     }
 }
