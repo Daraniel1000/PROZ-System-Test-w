@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.projekt_proz.R;
 
-import com.example.projekt_proz.adapters.QuestionViewAdapter;
+import com.example.projekt_proz.adapters.AdminTestQuestionsViewAdapter;
 import com.example.projekt_proz.models.QuestionListWrapper;
 import com.example.projekt_proz.models.prozAnswer;
 import com.example.projekt_proz.models.prozQuestion;
@@ -22,7 +22,7 @@ import com.example.projekt_proz.models.prozTest;
 
 import java.util.ArrayList;
 
-public class TestEditActivity extends AppCompatActivity implements QuestionViewAdapter.OnQuestionClickListener{
+public class TestEditActivity extends AppCompatActivity implements AdminTestQuestionsViewAdapter.OnQuestionClickListener{
     private RecyclerView recyclerView;
     private ArrayList<prozQuestion> questionList;
 
@@ -34,7 +34,7 @@ public class TestEditActivity extends AppCompatActivity implements QuestionViewA
         text=findViewById(R.id.text_input_test_name);
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new QuestionViewAdapter(this, this));
+        recyclerView.setAdapter(new AdminTestQuestionsViewAdapter(this, this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
         boolean edited=getIntent().getBooleanExtra("edited",false);
@@ -59,7 +59,7 @@ public class TestEditActivity extends AppCompatActivity implements QuestionViewA
             text.setText(s);
 
         }
-        ((QuestionViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
+        ((AdminTestQuestionsViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
     }
 
     public void addQuestion(View view){
@@ -70,13 +70,13 @@ public class TestEditActivity extends AppCompatActivity implements QuestionViewA
         dummy1.addAnswer(yay);
         dummy1.addAnswer(nay);
         questionList.add(dummy1);
-        ((QuestionViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
+        ((AdminTestQuestionsViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
         recyclerView.scrollToPosition(questionList.size()-1);
     }
     public void deleteQuestion(View view){
         if(questionList.isEmpty())return;
         questionList.remove(questionList.size()-1);
-        ((QuestionViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
+        ((AdminTestQuestionsViewAdapter) recyclerView.getAdapter()).setQuestionList(TestEditActivity.this.questionList);
         recyclerView.scrollToPosition(questionList.size()-1);
     }
     public void saveTest(View view){

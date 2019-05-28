@@ -15,7 +15,7 @@ import com.example.projekt_proz.models.prozQuestion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionViewAdapter extends RecyclerView.Adapter<QuestionViewAdapter.MyViewHolder> {
+public class AdminTestQuestionsViewAdapter extends RecyclerView.Adapter<AdminTestQuestionsViewAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
     private OnQuestionClickListener mOnQuestionClickListener;
@@ -26,7 +26,7 @@ public class QuestionViewAdapter extends RecyclerView.Adapter<QuestionViewAdapte
         void onQuestionClick(CardView view, int position);
     }
 
-    public QuestionViewAdapter(Context ctx, OnQuestionClickListener OnQuestionClickListener) {
+    public AdminTestQuestionsViewAdapter(Context ctx, OnQuestionClickListener OnQuestionClickListener) {
         inflater = LayoutInflater.from(ctx);
         mOnQuestionClickListener = OnQuestionClickListener;
     }
@@ -39,7 +39,7 @@ public class QuestionViewAdapter extends RecyclerView.Adapter<QuestionViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(QuestionViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(AdminTestQuestionsViewAdapter.MyViewHolder holder, int position) {
         holder.tvTitle.setText(questionList.get(position).getText());
         holder.tvAnswerCount.setText(""+questionList.get(position).getAnswersSize());
 

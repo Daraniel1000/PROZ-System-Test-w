@@ -34,6 +34,12 @@ public class AdminPanelActivity extends AppCompatActivity
 
         navigationView.setCheckedItem(R.id.nav_results);
         changeView(FragmentAdminResultsList.class);
+
+        if (savedInstanceState == null)
+        {
+            // Start with the drawer open
+            drawer.openDrawer(GravityCompat.START);
+        }
     }
 
     @Override
