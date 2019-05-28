@@ -73,4 +73,14 @@ class prozQueryGenerator {
         return "select ANSWER_ID from RESULTS_ANSWERS where RESULTS_ID = " + rID;
     }
 
+    static String InsertUsersTestsQuery(int uID, int tID)
+    {
+        return "insert into users_tests values (" + uID + "," + tID + ")";
+    }
+
+    static String getAllUsersQuery()
+    {
+        return "select * from users";
+    }
+
 }
