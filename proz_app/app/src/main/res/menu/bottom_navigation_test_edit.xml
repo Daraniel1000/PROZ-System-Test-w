@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_test_settings"
+        android:icon="@drawable/ic_menu_tests"
+        android:title="Ogólne"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_test_questions"
+        android:icon="@drawable/ic_menu_questions"
+        android:title="Pytania"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_test_users"
+        android:icon="@drawable/ic_menu_users"
+        android:title="Użytkownicy"
+        app:showAsAction="always" />
+</menu>

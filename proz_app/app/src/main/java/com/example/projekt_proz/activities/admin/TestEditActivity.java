@@ -6,8 +6,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -32,14 +38,14 @@ import java.io.IOException;
 
 import okhttp3.Credentials;
 
-public class TestEditActivity extends AppCompatActivity implements AdminTestQuestionsViewAdapter.OnQuestionClickListener {
-    private prozTest currentTest;
+public class TestEditActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
+    prozTest currentTest;
 
     private String login;
     private String password;
 
-    private RecyclerView recyclerView;
-    private EditText editText;
+    private BottomNavigationView bottomNavigationView;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,30 +68,12 @@ public class TestEditActivity extends AppCompatActivity implements AdminTestQues
             currentTest = (prozTest) savedInstanceState.getSerializable("test");
         }
 
-        recyclerView = findViewById(R.id.recycler);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new AdminTestQuestionsViewAdapter(this, this, currentTest.getQuestions()));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        editText = findViewById(R.id.text_input_question_name);
-        editText.setText(currentTest.getTitle());
-
-        editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                currentTest.setTitle(editable.toString());
-            }
-        });
+        viewPager = findViewById(R.id.viewpager);
+        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        viewPager.addOnPageChangeListener(this);
     }
 
     @Override
@@ -117,22 +105,6 @@ public class TestEditActivity extends AppCompatActivity implements AdminTestQues
         return super.onOptionsItemSelected(item);
     }
 
-    public void addQuestion(View view) {
-        // TODO: Miały być pytania z bazy pytań...
-        /*prozQuestion q = ???;
-        currentTest.getQuestions().add(q);
-        recyclerView.getAdapter().notifyDataSetChanged();
-        recyclerView.scrollToPosition(currentTest.getQuestionsSize() - 1);*/
-    }
-
-    public void deleteQuestion(View view) {
-        if (currentTest.getQuestions().isEmpty())
-            return;
-        currentTest.getQuestions().remove(currentTest.getQuestionsSize() - 1);
-        recyclerView.getAdapter().notifyDataSetChanged();
-        recyclerView.scrollToPosition(currentTest.getQuestionsSize() - 1);
-    }
-
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
@@ -157,8 +129,6 @@ public class TestEditActivity extends AppCompatActivity implements AdminTestQues
             return;
         }
 
-        // TODO: data startu/końca
-
         if (currentTest.getTestID() < 0)
         {
             new AddTest(login, password, currentTest).execute();
@@ -181,10 +151,39 @@ public class TestEditActivity extends AppCompatActivity implements AdminTestQues
     }
 
     @Override
-    public void onQuestionClick(CardView view, int position) {
-        Intent i = new Intent(TestEditActivity.this, QuestionEditActivity.class);
-        i.putExtra("question", currentTest.getQuestions().get(position));
-        startActivity(i);
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch(menuItem.getItemId()) {
+            case R.id.action_test_settings:
+                viewPager.setCurrentItem(0);
+                break;
+            case R.id.action_test_questions:
+                viewPager.setCurrentItem(1);
+                break;
+            case R.id.action_test_users:
+                viewPager.setCurrentItem(2);
+                break;
+        }
+
+        return true;
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        bottomNavigationView.getMenu().findItem(R.id.action_test_settings).setChecked(false);
+        bottomNavigationView.getMenu().findItem(R.id.action_test_questions).setChecked(false);
+        bottomNavigationView.getMenu().findItem(R.id.action_test_users).setChecked(false);
+
+        bottomNavigationView.getMenu().getItem(position).setChecked(true);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 
     public class AddTest extends AsyncTask<Void, Void, prozTest>
@@ -226,6 +225,31 @@ public class TestEditActivity extends AppCompatActivity implements AdminTestQues
             }
 
             supportFinishAfterTransition();
+        }
+    }
+
+    private class ViewPagerAdapter extends FragmentPagerAdapter {
+        public ViewPagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            switch (i) {
+                case 0:
+                    return new TestEditGeneralFragment();
+                case 1:
+                    return new TestEditQuestionsFragment();
+                case 2:
+                    return new TestEditUsersFragment();
+                default:
+                    throw new IllegalArgumentException();
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
         }
     }
 }

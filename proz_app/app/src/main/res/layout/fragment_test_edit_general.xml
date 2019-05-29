@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.projekt_proz.activities.admin.TestEditGeneralFragment">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/text_input_question_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/text11"
+            android:layout_marginTop="30dp"
+            android:hint="Nazwa testu" />
+
+    </android.support.design.widget.TextInputLayout>
+</LinearLayout>
