@@ -5,4 +5,10 @@
     android:orientation="vertical"
     tools:context="com.example.projekt_proz.activities.admin.TestEditUsersFragment">
 
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+    </RadioGroup>
 </LinearLayout>

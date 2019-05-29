@@ -22,14 +22,15 @@ public class TestViewAdapter extends RecyclerView.Adapter<TestViewAdapter.MyView
     private LayoutInflater inflater;
     private OnTestClickListener mOnTestClickListener;
 
-    private List<prozTest> testList = new ArrayList<>();
+    private List<prozTest> testList;
 
     public interface OnTestClickListener {
         void onTestClick(CardView view, int position);
     }
 
-    public TestViewAdapter(Context ctx, OnTestClickListener onTestClickListener) {
+    public TestViewAdapter(Context ctx, List<prozTest> testList, OnTestClickListener onTestClickListener) {
         inflater = LayoutInflater.from(ctx);
+        this.testList = testList;
         mOnTestClickListener = onTestClickListener;
     }
 

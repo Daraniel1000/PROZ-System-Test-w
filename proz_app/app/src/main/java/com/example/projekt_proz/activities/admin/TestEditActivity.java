@@ -19,15 +19,18 @@ import android.widget.Toast;
 
 import com.example.projekt_proz.R;
 import com.example.projekt_proz.models.prozTest;
+import com.example.projekt_proz.models.prozUser;
 import com.example.projekt_proz.net.MyClient;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Credentials;
 import retrofit2.Response;
 
 public class TestEditActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
     prozTest currentTest;
+    ArrayList<Integer> usersToAdd = new ArrayList<>();
 
     String login;
     String password;
@@ -54,6 +57,7 @@ public class TestEditActivity extends AppCompatActivity implements BottomNavigat
             }
         } else {
             currentTest = (prozTest) savedInstanceState.getSerializable("test");
+            usersToAdd = (ArrayList<Integer>) savedInstanceState.getSerializable("usersToAdd");
         }
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -68,6 +72,7 @@ public class TestEditActivity extends AppCompatActivity implements BottomNavigat
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable("test", currentTest);
+        outState.putSerializable("usersToAdd", usersToAdd);
     }
 
     @Override
@@ -212,7 +217,10 @@ public class TestEditActivity extends AppCompatActivity implements BottomNavigat
         @Override
         protected prozTest doInBackground(Void... voids) {
             try {
-                return new MyClient().tests().addTest(test, Credentials.basic(login, password)).execute().body();
+                MyClient client = new MyClient();
+                prozTest newTest = client.tests().addTest(test, Credentials.basic(login, password)).execute().body();
+                client.tests().addUsersToTest(newTest.getTestID(), usersToAdd, Credentials.basic(login, password)).execute();
+                return newTest;
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;

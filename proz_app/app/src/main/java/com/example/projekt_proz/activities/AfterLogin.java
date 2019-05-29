@@ -29,7 +29,7 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
     private RecyclerView recyclerView;
     private SwipeRefreshLayout refreshLayout;
 
-    private ArrayList<prozTest> testList;
+    private ArrayList<prozTest> testList = new ArrayList<>();
 
     private Handler timerHandler = new Handler();
 
@@ -45,7 +45,7 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
 
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new TestViewAdapter(this, this));
+        recyclerView.setAdapter(new TestViewAdapter(this, testList, this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
         refreshLayout = findViewById(R.id.swipe_container);

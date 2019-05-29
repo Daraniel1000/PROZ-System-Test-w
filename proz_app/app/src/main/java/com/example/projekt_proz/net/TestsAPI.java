@@ -29,5 +29,5 @@ public interface TestsAPI {
     Call<prozTest> addTest(@Body prozTest test, @Header("Authorization") String userCreds);
 
     @POST("tests/{testId}/users")
-    Call<prozTest> addTest(@Path("testId") int testId, @Body List<Integer> users, @Header("Authorization") String userCreds);
+    Call<prozTest> addUsersToTest(@Path("testId") int testId, @Body List<Integer> users, @Header("Authorization") String userCreds);
 }
