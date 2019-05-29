@@ -5,7 +5,7 @@
     android:id="@+id/swipe_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.projekt_proz.activities.admin.FragmentAdminTestList">
+    tools:activity="com.example.projekt_proz.activities.admin.FragmentTestList">
 
     <FrameLayout
         android:layout_width="match_parent"

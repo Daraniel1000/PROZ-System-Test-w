@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,13 +20,18 @@ import com.example.projekt_proz.R;
 import com.example.projekt_proz.adapters.AdminQuestionsViewAdapter;
 import com.example.projekt_proz.models.prozAnswer;
 import com.example.projekt_proz.models.prozQuestion;
+import com.example.projekt_proz.tasks.FetchQuestion;
+import com.example.projekt_proz.tasks.FetchQuestions;
+import com.example.projekt_proz.tasks.FetchTest;
+import com.example.projekt_proz.tasks.FetchTests;
 
 import java.util.ArrayList;
 
 
-public class FragmentAdminQuestionList extends Fragment implements AdminQuestionsViewAdapter.OnQuestionClickListener {
+public class FragmentAdminQuestionList extends Fragment implements AdminQuestionsViewAdapter.OnQuestionClickListener, SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView recyclerView;
-    private ArrayList<prozQuestion> prozQuestions;
+    private ArrayList<prozQuestion> questionsList = new ArrayList<>();
+    private SwipeRefreshLayout refreshLayout;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -35,13 +41,19 @@ public class FragmentAdminQuestionList extends Fragment implements AdminQuestion
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        prozQuestions = populateTestingData();
-
         recyclerView = view.findViewById(R.id.recycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new AdminQuestionsViewAdapter(getActivity(), this));
+        recyclerView.setAdapter(new AdminQuestionsViewAdapter(getActivity(), questionsList, this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        ((AdminQuestionsViewAdapter) recyclerView.getAdapter()).setQuestionList(prozQuestions);
+
+        refreshLayout = view.findViewById(R.id.swipe_container);
+        refreshLayout.setOnRefreshListener(this);
+        refreshLayout.setColorSchemeResources(R.color.colorPrimary,
+            android.R.color.holo_green_dark,
+            android.R.color.holo_orange_dark,
+            android.R.color.holo_blue_dark);
+
+        new FetchQuestions(getActivity(), getArguments().getString("login"), getArguments().getString("password"), questionsList, recyclerView, refreshLayout).execute();
 
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -53,26 +65,13 @@ public class FragmentAdminQuestionList extends Fragment implements AdminQuestion
         });
     }
 
-    private ArrayList<prozQuestion> populateTestingData() {
-        ArrayList<prozQuestion> questionList = new ArrayList<>();
-        prozAnswer yay = new prozAnswer(true, "Prawidłowa odpowiedź");
-        prozAnswer nay = new prozAnswer(false, "Niepoprawna odpowiedź");
-
-        prozQuestion dummy1 = new prozQuestion("Przykładowe pytanie " + (questionList.size() + 1), 10);
-        dummy1.addAnswer(yay);
-        dummy1.addAnswer(nay);
-        questionList.add(dummy1);
-
-        prozQuestion dummy2 = new prozQuestion("Przykładowe pytanie " + (questionList.size() + 1), 10);
-        questionList.add(dummy2);
-
-        return questionList;
+    @Override
+    public void onQuestionClick(CardView view, int position) {
+        new FetchQuestion(getActivity(), QuestionEditActivity.class, getArguments().getString("login"), getArguments().getString("password"), view, questionsList.get(position).getQuestionID()).execute();
     }
 
     @Override
-    public void onQuestionClick(CardView view, int position) {
-        Intent i = new Intent(getActivity(), QuestionEditActivity.class);
-        i.putExtra("cur_question", prozQuestions.get(position));
-        startActivity(i);
+    public void onRefresh() {
+        new FetchQuestions(getActivity(), getArguments().getString("login"), getArguments().getString("password"), questionsList, recyclerView, refreshLayout).execute();
     }
 }

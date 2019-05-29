@@ -30,7 +30,7 @@ public class ResultsActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_activity_results_view);
 
-        currentTest = (prozTest) getIntent().getSerializableExtra("cur_test");
+        currentTest = (prozTest) getIntent().getSerializableExtra("test");
         if (savedInstanceState == null)
         {
             pResults = populateTestingData(currentTest);

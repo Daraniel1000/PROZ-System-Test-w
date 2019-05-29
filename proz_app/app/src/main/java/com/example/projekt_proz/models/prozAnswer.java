@@ -41,7 +41,7 @@ public class prozAnswer implements Serializable {
         return answerID;
     }
 
-    @JsonIgnore
+    // @JsonIgnore // TODO: ukryć przy wysyłaniu testu
     public boolean isCorrect() {
         return correct;
     }

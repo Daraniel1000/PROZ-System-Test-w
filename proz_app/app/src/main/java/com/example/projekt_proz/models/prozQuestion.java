@@ -31,7 +31,10 @@ public class prozQuestion implements Serializable {
 
     public void setAnswers(ArrayList<prozAnswer> aList)
     {
-        answers = new ArrayList<>(aList);
+        if (aList == null)
+            answers = null;
+        else
+            answers = new ArrayList<>(aList);
     }
 
     public void initAnswers(int n)

@@ -1,21 +1,14 @@
 package com.example.projekt_proz.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.projekt_proz.R;
-import com.example.projekt_proz.activities.admin.FragmentAdminResultsList;
 import com.example.projekt_proz.models.prozResults;
 
 import java.util.ArrayList;
@@ -34,7 +27,7 @@ public class AdminResultsViewAdapter extends RecyclerView.Adapter<AdminResultsVi
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.a_recycler_item_result_admin_view, parent, false);
+        View view = inflater.inflate(R.layout.a_recycler_item_result, parent, false);
         return new MyViewHolder(view);
     }
 

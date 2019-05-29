@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.projekt_proz.R;
-import com.example.projekt_proz.adapters.AdminResultsViewAdapter;
 import com.example.projekt_proz.adapters.AdminTestViewAdapter;
 import com.example.projekt_proz.models.prozAnswer;
 import com.example.projekt_proz.models.prozQuestion;
@@ -23,7 +22,7 @@ import com.example.projekt_proz.models.prozTest;
 
 import java.util.ArrayList;
 
-public class FragmentAdminResultsList extends Fragment implements AdminTestViewAdapter.OnAdminTestClickListener {
+public class FragmentResultsList extends Fragment implements AdminTestViewAdapter.OnTestClickListener {
     private RecyclerView recyclerView;
     private ArrayList<prozTest> testList;
 
@@ -38,9 +37,8 @@ public class FragmentAdminResultsList extends Fragment implements AdminTestViewA
         testList = populateTestingData();
         recyclerView = view.findViewById(R.id.recycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new AdminTestViewAdapter(getActivity(), this));
+        recyclerView.setAdapter(new AdminTestViewAdapter(getActivity(), testList, this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        ((AdminTestViewAdapter) recyclerView.getAdapter()).setAdminTestList(testList);
     }
 
     private ArrayList<prozTest> populateTestingData() {
@@ -63,9 +61,9 @@ public class FragmentAdminResultsList extends Fragment implements AdminTestViewA
     }
 
     @Override
-    public void onAdminTestClick(CardView view, int position) {
+    public void onTestClick(CardView view, int position) {
         Intent i = new Intent(getActivity(), ResultsActivity.class);
-        i.putExtra("cur_test", testList.get(position));
+        i.putExtra("test", testList.get(position));
         startActivity(i);
     }
 }

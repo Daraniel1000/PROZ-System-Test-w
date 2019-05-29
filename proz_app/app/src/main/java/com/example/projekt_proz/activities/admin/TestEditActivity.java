@@ -36,14 +36,14 @@ public class TestEditActivity extends AppCompatActivity implements AdminTestQues
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
-            currentTest = (prozTest) getIntent().getSerializableExtra("cur_test");
+            currentTest = (prozTest) getIntent().getSerializableExtra("test");
             if (currentTest == null) {
                 // Creating a new test
                 currentTest = new prozTest();
                 currentTest.initQuestions(0);
             }
         } else {
-            currentTest = (prozTest) savedInstanceState.getSerializable("cur_test");
+            currentTest = (prozTest) savedInstanceState.getSerializable("test");
         }
 
         recyclerView = findViewById(R.id.recycler);
@@ -75,7 +75,7 @@ public class TestEditActivity extends AppCompatActivity implements AdminTestQues
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable("cur_test", currentTest);
+        outState.putSerializable("test", currentTest);
     }
 
     @Override
@@ -151,7 +151,7 @@ public class TestEditActivity extends AppCompatActivity implements AdminTestQues
     @Override
     public void onQuestionClick(CardView view, int position) {
         Intent i = new Intent(TestEditActivity.this, QuestionEditActivity.class);
-        i.putExtra("cur_question", currentTest.getQuestions().get(position));
+        i.putExtra("question", currentTest.getQuestions().get(position));
         startActivity(i);
     }
 }

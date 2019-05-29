@@ -3,7 +3,6 @@ package com.example.projekt_proz.activities.admin;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
@@ -18,6 +17,9 @@ import com.example.projekt_proz.R;
 public class AdminPanelActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
+    private String login;
+    private String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,9 @@ public class AdminPanelActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        login = getIntent().getStringExtra("login");
+        password = getIntent().getStringExtra("password");
 
         if (savedInstanceState == null)
         {
@@ -56,9 +61,9 @@ public class AdminPanelActivity extends AppCompatActivity
 
         Class<? extends Fragment> fragmentClass = null;
         if (id == R.id.nav_results) {
-            fragmentClass = FragmentAdminResultsList.class;
+            fragmentClass = FragmentResultsList.class;
         } else if (id == R.id.nav_tests) {
-            fragmentClass = FragmentAdminTestList.class;
+            fragmentClass = FragmentTestList.class;
         } else if (id == R.id.nav_questions) {
             fragmentClass = FragmentAdminQuestionList.class;
         }
@@ -76,8 +81,11 @@ public class AdminPanelActivity extends AppCompatActivity
     {
         try {
             Fragment fragment = fragmentClass.newInstance();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content, fragment).commit();
+            Bundle args = new Bundle();
+            args.putString("login", login);
+            args.putString("password", password);
+            fragment.setArguments(args);
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
         } catch (Exception e) {
             e.printStackTrace();
         }

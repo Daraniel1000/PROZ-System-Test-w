@@ -127,4 +127,14 @@ public class InMemoryTestsDAO implements TestsDAO {
     public prozQuestion GetQuestion(int questionId) throws SQLException {
         throw new UnsupportedOperationException(); // TODO
     }
+
+    @Override
+    public ArrayList<prozUser> getAllUsers() throws SQLException {
+        throw new UnsupportedOperationException(); // TODO
+    }
+
+    @Override
+    public void addUserToTest(int uID, int tID) throws SQLException {
+        throw new UnsupportedOperationException(); // TODO
+    }
 }

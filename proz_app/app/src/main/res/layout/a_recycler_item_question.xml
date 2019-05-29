@@ -37,22 +37,12 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvQCLabel"
+                    android:id="@+id/tvQuestionType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:text="Liczba odpowiedzi: "
+                    android:text="Typ pytania"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tvAnswerCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="*99999999*"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp" />
 
                 <TextView

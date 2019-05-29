@@ -20,33 +20,29 @@ public class AdminQuestionsViewAdapter extends RecyclerView.Adapter<AdminQuestio
     private LayoutInflater inflater;
     private OnQuestionClickListener mOnQuestionClickListener;
 
-    private List<prozQuestion> questionList = new ArrayList<>();
+    private List<prozQuestion> questionList;
 
     public interface OnQuestionClickListener {
         void onQuestionClick(CardView view, int position);
     }
 
-    public AdminQuestionsViewAdapter(Context ctx, OnQuestionClickListener OnQuestionClickListener) {
+    public AdminQuestionsViewAdapter(Context ctx, ArrayList<prozQuestion> questionList, OnQuestionClickListener OnQuestionClickListener) {
         inflater = LayoutInflater.from(ctx);
+        this.questionList = questionList;
         mOnQuestionClickListener = OnQuestionClickListener;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.a_recycler_item_question_admin_view, parent, false);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = inflater.inflate(R.layout.a_recycler_item_question, parent, false);
         return new MyViewHolder(view, mOnQuestionClickListener);
     }
 
     @Override
-    public void onBindViewHolder(AdminQuestionsViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdminQuestionsViewAdapter.MyViewHolder holder, int position) {
         holder.tvTitle.setText(questionList.get(position).getText());
-        holder.tvAnswerCount.setText(""+questionList.get(position).getAnswersSize());
-    }
-
-    public void setQuestionList(List<prozQuestion> questionList) {
-        this.questionList=questionList;
-        notifyDataSetChanged();
+        holder.tvQuestionType.setText(questionList.get(position).getType() == prozQuestion.TYPE_SINGLE_CHOICE ? "Pytanie jednokrotnego wyboru" : "Pytanie wielokrotnego wyboru");
     }
 
     @Override
@@ -56,14 +52,14 @@ public class AdminQuestionsViewAdapter extends RecyclerView.Adapter<AdminQuestio
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         private CardView cardView;
-        private TextView tvTitle, tvAnswerCount;
+        private TextView tvTitle, tvQuestionType;
 
         MyViewHolder(View itemView, final OnQuestionClickListener OnQuestionClickListener) {
             super(itemView);
 
             cardView = itemView.findViewById(R.id.card_view);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvAnswerCount = itemView.findViewById(R.id.tvAnswerCount);
+            tvQuestionType = itemView.findViewById(R.id.tvQuestionType);
 
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override

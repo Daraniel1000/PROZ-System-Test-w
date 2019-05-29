@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,15 +17,16 @@ import android.view.ViewGroup;
 
 import com.example.projekt_proz.R;
 import com.example.projekt_proz.adapters.AdminTestViewAdapter;
-import com.example.projekt_proz.models.prozAnswer;
-import com.example.projekt_proz.models.prozQuestion;
 import com.example.projekt_proz.models.prozTest;
+import com.example.projekt_proz.tasks.FetchTest;
+import com.example.projekt_proz.tasks.FetchTests;
 
 import java.util.ArrayList;
 
-public class FragmentAdminTestList extends Fragment implements AdminTestViewAdapter.OnAdminTestClickListener {
+public class FragmentTestList extends Fragment implements AdminTestViewAdapter.OnTestClickListener, SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView recyclerView;
-    private ArrayList<prozTest> testList;
+    private ArrayList<prozTest> testList = new ArrayList<>();
+    private SwipeRefreshLayout refreshLayout;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -34,12 +36,19 @@ public class FragmentAdminTestList extends Fragment implements AdminTestViewAdap
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        testList = populateTestingData();
         recyclerView = view.findViewById(R.id.recycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new AdminTestViewAdapter(getActivity(), this));
+        recyclerView.setAdapter(new AdminTestViewAdapter(getActivity(), testList, this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        ((AdminTestViewAdapter) recyclerView.getAdapter()).setAdminTestList(testList);
+
+        refreshLayout = view.findViewById(R.id.swipe_container);
+        refreshLayout.setOnRefreshListener(this);
+        refreshLayout.setColorSchemeResources(R.color.colorPrimary,
+            android.R.color.holo_green_dark,
+            android.R.color.holo_orange_dark,
+            android.R.color.holo_blue_dark);
+
+        new FetchTests(getActivity(), getArguments().getString("login"), getArguments().getString("password"), testList, recyclerView, refreshLayout).execute();
 
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -51,29 +60,13 @@ public class FragmentAdminTestList extends Fragment implements AdminTestViewAdap
         });
     }
 
-    private ArrayList<prozTest> populateTestingData() {
-        ArrayList<prozTest> prozTests = new ArrayList<>();
-        ArrayList<prozQuestion> questionList = new ArrayList<>();
-        prozAnswer yay = new prozAnswer(true, "Prawidłowa odpowiedź");
-        prozAnswer nay = new prozAnswer(false, "Niepoprawna odpowiedź");
-
-        prozQuestion dummy1 = new prozQuestion("Przykładowe pytanie " + (questionList.size() + 1), 10);
-        dummy1.addAnswer(yay);
-        dummy1.addAnswer(nay);
-        prozQuestion dummy2 = new prozQuestion("Przykładowe pytanie " + (questionList.size() + 1), 10);
-        questionList.add(dummy1);
-        questionList.add(dummy2);
-        prozTest pt = new prozTest();
-        pt.setQuestions(questionList);
-        pt.setTitle("sdasdasfasfa");
-        prozTests.add(pt);
-        return prozTests;
+    @Override
+    public void onTestClick(CardView view, int position) {
+        new FetchTest(getActivity(), TestEditActivity.class, getArguments().getString("login"), getArguments().getString("password"), view, testList.get(position).getTestID()).execute();
     }
 
     @Override
-    public void onAdminTestClick(CardView view, int position) {
-        Intent i = new Intent(getActivity(), TestEditActivity.class);
-        i.putExtra("cur_test", testList.get(position));
-        startActivity(i);
+    public void onRefresh() {
+        new FetchTests(getActivity(), getArguments().getString("login"), getArguments().getString("password"), testList, recyclerView, refreshLayout).execute();
     }
 }

@@ -1,11 +1,6 @@
 package com.example.projekt_proz.activities;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,14 +14,11 @@ import android.widget.Toast;
 import com.example.projekt_proz.R;
 import com.example.projekt_proz.models.prozTest;
 import com.example.projekt_proz.adapters.TestViewAdapter;
-import com.example.projekt_proz.net.MyClient;
+import com.example.projekt_proz.tasks.FetchTest;
+import com.example.projekt_proz.tasks.FetchTests;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-
-import okhttp3.Credentials;
 
 public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnTestClickListener, SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = "AfterLogin";
@@ -66,11 +58,11 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
         if (savedInstanceState != null)
         {
             testList = (ArrayList<prozTest>) savedInstanceState.getSerializable("tests");
-            ((TestViewAdapter) recyclerView.getAdapter()).setTestList(AfterLogin.this.testList);
+            ((TestViewAdapter) recyclerView.getAdapter()).setTestList(testList);
         }
         else
         {
-            new FetchTests().execute();
+            new FetchTests(this, login, password, testList, recyclerView, refreshLayout).execute();
         }
 
         Runnable timerRunnable = new Runnable() {
@@ -87,7 +79,7 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
     @Override
     protected void onRestart() {
         super.onRestart();
-        new FetchTests().execute();
+        new FetchTests(this, login, password, testList, recyclerView, refreshLayout).execute();
     }
 
     @Override
@@ -110,7 +102,7 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
 
     @Override
     public void onRefresh() {
-        new FetchTests().execute();
+        new FetchTests(this, login, password, testList, recyclerView, refreshLayout).execute();
     }
 
     @Override
@@ -131,86 +123,9 @@ public class AfterLogin extends AppCompatActivity implements TestViewAdapter.OnT
         }
         else
         {
-            new FetchTest(view, test.getTestID()).execute();
+            new FetchTest(this, WithinTest.class, login, password, view, test.getTestID()).execute();
         }
     }
 
-    private class FetchTests extends AsyncTask<Void, Void, List<prozTest>> {
-        @Override
-        protected void onPreExecute() {
-            refreshLayout.setRefreshing(true);
-        }
-
-        @Override
-        protected List<prozTest> doInBackground(Void... voids) {
-            try {
-                return new MyClient().tests().getAvailableTests(Credentials.basic(login, password)).execute().body();
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(List<prozTest> testList) {
-            refreshLayout.setRefreshing(false);
-            if (testList == null) {
-                Toast.makeText(AfterLogin.this, "Nie udało się pobrać testów!", Toast.LENGTH_LONG).show();
-                finish();
-                return;
-            }
-            AfterLogin.this.testList = new ArrayList<>(testList);
-            TestViewAdapter adapter = (TestViewAdapter) recyclerView.getAdapter();
-            adapter.setTestList(AfterLogin.this.testList);
-        }
-    }
-
-    private class FetchTest extends AsyncTask<Void, Void, prozTest> {
-        private ProgressDialog dialog;
-        private CardView card;
-
-        private final int testId;
-
-        private FetchTest(CardView card, int testId) {
-            super();
-            this.card = card;
-            this.testId = testId;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            dialog = ProgressDialog.show(AfterLogin.this, "", "Ładowanie testu", true);
-        }
-
-        @Override
-        protected prozTest doInBackground(Void... voids) {
-            try {
-                return new MyClient().tests().getTest(testId, Credentials.basic(login, password)).execute().body();
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(prozTest test) {
-            dialog.cancel();
-            if (test == null) {
-                Toast.makeText(AfterLogin.this, "Nie udało się załadować testu!", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            Intent intent = new Intent(AfterLogin.this, WithinTest.class);
-            intent.putExtra("login", login);
-            intent.putExtra("password", password);
-            intent.putExtra("test", test);
-            ActivityOptionsCompat options =
-                ActivityOptionsCompat.makeSceneTransitionAnimation(AfterLogin.this,
-                    card,
-                    "testActivity"
-                );
-            ActivityCompat.startActivity(AfterLogin.this, intent, options.toBundle());
-        }
-    }
 }
 

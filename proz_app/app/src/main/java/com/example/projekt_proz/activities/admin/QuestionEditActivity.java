@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projekt_proz.R;
-import com.example.projekt_proz.adapters.AdminAnswerViewAdapter;
+import com.example.projekt_proz.adapters.AdminQuestionAnswersViewAdapter;
 import com.example.projekt_proz.models.prozAnswer;
 import com.example.projekt_proz.models.prozQuestion;
 
@@ -35,19 +35,19 @@ public class QuestionEditActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
-            currentQuestion = (prozQuestion) getIntent().getSerializableExtra("cur_question");
+            currentQuestion = (prozQuestion) getIntent().getSerializableExtra("question");
             if (currentQuestion == null) {
                 // Creating a new question
                 currentQuestion = new prozQuestion();
                 currentQuestion.initAnswers(0);
             }
         } else {
-            currentQuestion = (prozQuestion) savedInstanceState.getSerializable("cur_question");
+            currentQuestion = (prozQuestion) savedInstanceState.getSerializable("question");
         }
 
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new AdminAnswerViewAdapter(this, currentQuestion.getAnswers()));
+        recyclerView.setAdapter(new AdminQuestionAnswersViewAdapter(this, currentQuestion.getAnswers()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
         editText = findViewById(R.id.text_input_question_name);
@@ -74,7 +74,7 @@ public class QuestionEditActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable("cur_question", currentQuestion);
+        outState.putSerializable("question", currentQuestion);
     }
 
     @Override

@@ -17,11 +17,11 @@ import com.example.projekt_proz.models.prozAnswer;
 
 import java.util.List;
 
-public class AdminAnswerViewAdapter extends RecyclerView.Adapter<AdminAnswerViewAdapter.MyViewHolder> {
+public class AdminQuestionAnswersViewAdapter extends RecyclerView.Adapter<AdminQuestionAnswersViewAdapter.MyViewHolder> {
     private LayoutInflater inflater;
     private List<prozAnswer> answerList;
 
-    public AdminAnswerViewAdapter(Context ctx, List<prozAnswer> answerList) {
+    public AdminQuestionAnswersViewAdapter(Context ctx, List<prozAnswer> answerList) {
         inflater = LayoutInflater.from(ctx);
         this.answerList = answerList;
     }
@@ -34,7 +34,7 @@ public class AdminAnswerViewAdapter extends RecyclerView.Adapter<AdminAnswerView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final AdminAnswerViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final AdminQuestionAnswersViewAdapter.MyViewHolder holder, int position) {
         final prozAnswer answer = answerList.get(position);
 
         holder.teAnswer.setText(answer.getText());

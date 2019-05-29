@@ -12,44 +12,42 @@ import android.widget.TextView;
 import com.example.projekt_proz.R;
 import com.example.projekt_proz.models.prozTest;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AdminTestViewAdapter extends RecyclerView.Adapter<AdminTestViewAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
-    private OnAdminTestClickListener mOnAdminTestClickListener;
+    private OnTestClickListener mOnTestClickListener;
 
-    private List<prozTest> adminTestList = new ArrayList<>();
+    private List<prozTest> adminTestList;
 
-    public interface OnAdminTestClickListener {
-        void onAdminTestClick(CardView view, int position);
+    public interface OnTestClickListener {
+        void onTestClick(CardView view, int position);
     }
 
-    public AdminTestViewAdapter(Context ctx, OnAdminTestClickListener OnAdminTestClickListener) {
+    public AdminTestViewAdapter(Context ctx, ArrayList<prozTest> testList, OnTestClickListener OnTestClickListener) {
         inflater = LayoutInflater.from(ctx);
-        mOnAdminTestClickListener = OnAdminTestClickListener;
+        adminTestList = testList;
+        mOnTestClickListener = OnTestClickListener;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.a_recycler_item_test_admin_view, parent, false);
-        return new MyViewHolder(view, mOnAdminTestClickListener);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = inflater.inflate(R.layout.a_recycler_item_test, parent, false);
+        return new MyViewHolder(view, mOnTestClickListener);
     }
 
     @Override
-    public void onBindViewHolder(AdminTestViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdminTestViewAdapter.MyViewHolder holder, int position) {
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
         holder.tvTitle.setText(adminTestList.get(position).getTitle());
-        holder.tvQuestionCount.setText(""+adminTestList.get(position).getQuestionsSize());
-        holder.tvID.setText(""+adminTestList.get(position).getTestID());
-
-
-    }
-
-    public void setAdminTestList(List<prozTest> adminTestList) {
-        this.adminTestList=adminTestList;
-        notifyDataSetChanged();
+        holder.tvStartDate.setText(dateFormat.format(adminTestList.get(position).getStartDate()));
+        holder.tvEndDate.setText(dateFormat.format(adminTestList.get(position).getEndDate()));
     }
 
     @Override
@@ -59,20 +57,20 @@ public class AdminTestViewAdapter extends RecyclerView.Adapter<AdminTestViewAdap
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         private CardView cardView;
-        private TextView tvTitle, tvQuestionCount,tvID;
+        private TextView tvTitle, tvStartDate, tvEndDate;
 
-        MyViewHolder(View itemView, final OnAdminTestClickListener OnAdminTestClickListener) {
+        MyViewHolder(View itemView, final OnTestClickListener OnTestClickListener) {
             super(itemView);
 
             cardView = itemView.findViewById(R.id.card_view);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvID = itemView.findViewById(R.id.tvID);
-            tvQuestionCount = itemView.findViewById(R.id.tvQuestionNumber);
+            tvStartDate = itemView.findViewById(R.id.tvStartDate);
+            tvEndDate = itemView.findViewById(R.id.tvEndDate);
 
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    OnAdminTestClickListener.onAdminTestClick(cardView, getAdapterPosition());
+                    OnTestClickListener.onTestClick(cardView, getAdapterPosition());
                 }
             });
         }

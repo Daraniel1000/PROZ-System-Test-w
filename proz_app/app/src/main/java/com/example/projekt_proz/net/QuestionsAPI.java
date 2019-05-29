@@ -1,6 +1,9 @@
 package com.example.projekt_proz.net;
 
+import com.example.projekt_proz.models.prozQuestion;
 import com.example.projekt_proz.models.prozTest;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -11,11 +14,11 @@ import retrofit2.http.Path;
 
 public interface QuestionsAPI {
     @GET("questions")
-    Call<prozTest> listQuestions(@Header("Authorization") String userCreds);
+    Call<ArrayList<prozQuestion>> listQuestions(@Header("Authorization") String userCreds);
 
     @GET("questions/{questionId}")
-    Call<prozTest> getQuestion(@Path("questionId") int questionId, @Header("Authorization") String userCreds);
+    Call<prozQuestion> getQuestion(@Path("questionId") int questionId, @Header("Authorization") String userCreds);
 
     @POST("questions")
-    Call<prozTest> addQuestion(@Body prozTest test, @Header("Authorization") String userCreds);
+    Call<prozQuestion> addQuestion(@Body prozTest test, @Header("Authorization") String userCreds);
 }
