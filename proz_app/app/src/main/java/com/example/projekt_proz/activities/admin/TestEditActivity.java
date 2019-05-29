@@ -123,11 +123,26 @@ public class TestEditActivity extends AppCompatActivity implements BottomNavigat
     }
 
     public void saveTest() {
-        String title = currentTest.getTitle();
-        if (title == null || title.length() == 0) {
+        if (currentTest.getTitle() == null || currentTest.getTitle().length() == 0) {
             Toast.makeText(TestEditActivity.this, "Nie podano nazwy testu!", Toast.LENGTH_LONG).show();
             return;
         }
+        if (currentTest.getStartDate() == null)
+        {
+            Toast.makeText(TestEditActivity.this, "Nie podano daty rozpoczęcia!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (currentTest.getEndDate() == null)
+        {
+            Toast.makeText(TestEditActivity.this, "Nie podano daty zakończenia!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (currentTest.getStartDate().getTime() > currentTest.getEndDate().getTime())
+        {
+            Toast.makeText(TestEditActivity.this, "Data rozpoczęcia jest późniejsza niż zakończenia!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
 
         if (currentTest.getTestID() < 0)
         {

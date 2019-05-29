@@ -93,6 +93,14 @@ public class prozTest implements Serializable {
         return endDate;
     }
 
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(Timestamp endDate) {
+        this.endDate = endDate;
+    }
+
     public int getType() {
         return type;
     }
