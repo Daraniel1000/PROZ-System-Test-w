@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 
 public class prozAnswer implements Serializable {
-    private int answerID;
+    private int answerID = -1;
     private boolean correct;
     private String text;
 

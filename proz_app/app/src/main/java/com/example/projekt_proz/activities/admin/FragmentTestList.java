@@ -48,16 +48,22 @@ public class FragmentTestList extends Fragment implements AdminTestViewAdapter.O
             android.R.color.holo_orange_dark,
             android.R.color.holo_blue_dark);
 
-        new FetchTests(getActivity(), getArguments().getString("login"), getArguments().getString("password"), testList, recyclerView, refreshLayout).execute();
-
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), TestEditActivity.class);
+                i.putExtra("login", getArguments().getString("login"));
+                i.putExtra("password", getArguments().getString("password"));
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        new FetchTests(getActivity(), getArguments().getString("login"), getArguments().getString("password"), testList, recyclerView, refreshLayout).execute();
     }
 
     @Override

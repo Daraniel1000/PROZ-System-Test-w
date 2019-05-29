@@ -1,8 +1,13 @@
 package com.example.projekt_proz.activities.admin;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -19,10 +24,19 @@ import android.widget.Toast;
 
 import com.example.projekt_proz.R;
 import com.example.projekt_proz.adapters.AdminTestQuestionsViewAdapter;
+import com.example.projekt_proz.models.prozQuestion;
 import com.example.projekt_proz.models.prozTest;
+import com.example.projekt_proz.net.MyClient;
+
+import java.io.IOException;
+
+import okhttp3.Credentials;
 
 public class TestEditActivity extends AppCompatActivity implements AdminTestQuestionsViewAdapter.OnQuestionClickListener {
     private prozTest currentTest;
+
+    private String login;
+    private String password;
 
     private RecyclerView recyclerView;
     private EditText editText;
@@ -32,6 +46,8 @@ public class TestEditActivity extends AppCompatActivity implements AdminTestQues
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_activity_test_edit);
 
+        login = getIntent().getStringExtra("login");
+        password = getIntent().getStringExtra("password");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -136,16 +152,32 @@ public class TestEditActivity extends AppCompatActivity implements AdminTestQues
 
     public void saveTest() {
         String title = currentTest.getTitle();
-        if (title.length() == 0) {
+        if (title == null || title.length() == 0) {
             Toast.makeText(TestEditActivity.this, "Nie podano nazwy testu!", Toast.LENGTH_LONG).show();
             return;
         }
 
         // TODO: data startu/końca
 
-        // TODO: wyślij do serwera
+        if (currentTest.getTestID() < 0)
+        {
+            new AddTest(login, password, currentTest).execute();
+            return;
+        }
 
-        supportFinishAfterTransition();
+        new AlertDialog.Builder(this)
+            .setTitle("Test już zapisano")
+            .setMessage("Spowoduje to utworzenie duplikatu. Czy na pewno chcesz to zrobić?")
+            .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    new AddTest(login, password, currentTest).execute();
+                }
+
+            })
+            .setNegativeButton("Nie", null)
+            .setCancelable(true)
+            .show();
     }
 
     @Override
@@ -153,5 +185,47 @@ public class TestEditActivity extends AppCompatActivity implements AdminTestQues
         Intent i = new Intent(TestEditActivity.this, QuestionEditActivity.class);
         i.putExtra("question", currentTest.getQuestions().get(position));
         startActivity(i);
+    }
+
+    public class AddTest extends AsyncTask<Void, Void, prozTest>
+    {
+        private final String login;
+        private final String password;
+        private final prozTest test;
+
+        private ProgressDialog dialog;
+
+        public AddTest(String login, String password, prozTest test) {
+            super();
+            this.login = login;
+            this.password = password;
+            this.test = test;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            dialog = ProgressDialog.show(TestEditActivity.this, "", "Zapisywanie testu", true);
+        }
+
+        @Override
+        protected prozTest doInBackground(Void... voids) {
+            try {
+                return new MyClient().tests().addTest(test, Credentials.basic(login, password)).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(prozTest test) {
+            dialog.cancel();
+            if (test == null) {
+                Toast.makeText(TestEditActivity.this, "Nie udało się zapisać testu!", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            supportFinishAfterTransition();
+        }
     }
 }

@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class prozResults implements Serializable {
-    private int resultsID,testID,userID,points;
+    private int resultsID = -1,testID,userID,points;
     private Timestamp sentDate;
     private ArrayList<Integer> answerID;
 

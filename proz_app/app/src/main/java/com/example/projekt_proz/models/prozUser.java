@@ -3,7 +3,7 @@ package com.example.projekt_proz.models;
 import java.io.Serializable;
 
 public class prozUser implements Serializable {
-    private int userId;
+    private int userId = -1;
     private String login;
     private String firstName;
     private String lastName;

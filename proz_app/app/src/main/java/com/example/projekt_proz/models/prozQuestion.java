@@ -9,7 +9,7 @@ public class prozQuestion implements Serializable {
     public static final int TYPE_SINGLE_CHOICE = 0;
     public static final int TYPE_MULTIPLE_CHOICE = 1;
 
-    private int questionID, type;
+    private int questionID = -1, type;
     private String text;
     private ArrayList<prozAnswer> answers;
 

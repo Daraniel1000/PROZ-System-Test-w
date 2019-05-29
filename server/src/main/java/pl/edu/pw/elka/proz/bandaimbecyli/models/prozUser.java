@@ -3,7 +3,7 @@ package pl.edu.pw.elka.proz.bandaimbecyli.models;
 import java.io.Serializable;
 
 public class prozUser implements Serializable {
-    private int userId;
+    private int userId = -1;
     private String login;
     private String firstName;
     private String lastName;

@@ -28,7 +28,7 @@ import com.example.projekt_proz.tasks.FetchTests;
 import java.util.ArrayList;
 
 
-public class FragmentAdminQuestionList extends Fragment implements AdminQuestionsViewAdapter.OnQuestionClickListener, SwipeRefreshLayout.OnRefreshListener {
+public class FragmentQuestionList extends Fragment implements AdminQuestionsViewAdapter.OnQuestionClickListener, SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView recyclerView;
     private ArrayList<prozQuestion> questionsList = new ArrayList<>();
     private SwipeRefreshLayout refreshLayout;
@@ -53,16 +53,22 @@ public class FragmentAdminQuestionList extends Fragment implements AdminQuestion
             android.R.color.holo_orange_dark,
             android.R.color.holo_blue_dark);
 
-        new FetchQuestions(getActivity(), getArguments().getString("login"), getArguments().getString("password"), questionsList, recyclerView, refreshLayout).execute();
-
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), QuestionEditActivity.class);
+                i.putExtra("login", getArguments().getString("login"));
+                i.putExtra("password", getArguments().getString("password"));
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        new FetchQuestions(getActivity(), getArguments().getString("login"), getArguments().getString("password"), questionsList, recyclerView, refreshLayout).execute();
     }
 
     @Override

@@ -20,5 +20,5 @@ public interface QuestionsAPI {
     Call<prozQuestion> getQuestion(@Path("questionId") int questionId, @Header("Authorization") String userCreds);
 
     @POST("questions")
-    Call<prozQuestion> addQuestion(@Body prozTest test, @Header("Authorization") String userCreds);
+    Call<prozQuestion> addQuestion(@Body prozQuestion question, @Header("Authorization") String userCreds);
 }
