@@ -1,48 +1,36 @@
 package com.example.projekt_proz.activities.admin;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projekt_proz.R;
-import com.example.projekt_proz.adapters.AdminTestQuestionsViewAdapter;
-import com.example.projekt_proz.models.prozQuestion;
 import com.example.projekt_proz.models.prozTest;
 import com.example.projekt_proz.net.MyClient;
 
 import java.io.IOException;
 
 import okhttp3.Credentials;
+import retrofit2.Response;
 
 public class TestEditActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
     prozTest currentTest;
 
-    private String login;
-    private String password;
+    String login;
+    String password;
 
     private BottomNavigationView bottomNavigationView;
     private ViewPager viewPager;

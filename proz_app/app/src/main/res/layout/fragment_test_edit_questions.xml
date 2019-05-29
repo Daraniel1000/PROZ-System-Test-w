@@ -5,47 +5,10 @@
     android:orientation="vertical"
     tools:context="com.example.projekt_proz.activities.admin.TestEditQuestionsFragment">
 
-    <TextView
-        android:id="@+id/text11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:text="Lista pytań:"
-        android:textSize="30sp" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:layout_weight="1"
-        android:padding="4dp">
-
-    </android.support.v7.widget.RecyclerView>
-
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:padding="8dp">
-
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="addQuestion"
-            android:text="Dodaj pytanie" />
-
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="deleteQuestion"
-            android:text="Usuń pytanie" />
-
-    </LinearLayout>
+    </RadioGroup>
 </LinearLayout>

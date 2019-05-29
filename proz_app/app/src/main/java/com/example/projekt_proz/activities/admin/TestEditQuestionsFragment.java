@@ -1,27 +1,40 @@
 package com.example.projekt_proz.activities.admin;
 
-
-import android.content.Intent;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.projekt_proz.R;
-import com.example.projekt_proz.adapters.AdminTestQuestionsViewAdapter;
+import com.example.projekt_proz.models.prozQuestion;
 import com.example.projekt_proz.models.prozTest;
+import com.example.projekt_proz.net.MyClient;
 
-public class TestEditQuestionsFragment extends Fragment implements AdminTestQuestionsViewAdapter.OnQuestionClickListener {
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.Credentials;
+
+public class TestEditQuestionsFragment extends Fragment {
+    private String login;
+    private String password;
     private prozTest currentTest;
 
-    private RecyclerView recyclerView;
+    private RadioGroup radioGroup;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -32,33 +45,81 @@ public class TestEditQuestionsFragment extends Fragment implements AdminTestQues
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         currentTest = ((TestEditActivity) getActivity()).currentTest;
+        login = ((TestEditActivity) getActivity()).login;
+        password = ((TestEditActivity) getActivity()).password;
 
-        recyclerView = view.findViewById(R.id.recycler);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new AdminTestQuestionsViewAdapter(getActivity(), this, currentTest.getQuestions()));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        radioGroup = view.findViewById(R.id.radio_group);
+
+        new LoadQuestions().execute();
     }
 
-    public void addQuestion(View view) {
-        // TODO: Miały być pytania z bazy pytań...
-        /*prozQuestion q = ???;
-        currentTest.getQuestions().add(q);
-        recyclerView.getAdapter().notifyDataSetChanged();
-        recyclerView.scrollToPosition(currentTest.getQuestionsSize() - 1);*/
+    private void updateQuestions(List<prozQuestion> questionList) {
+        radioGroup.removeAllViews();
+
+        for(final prozQuestion question : questionList)
+        {
+            CheckBox button = new CheckBox(getActivity());
+            button.setId(View.generateViewId());
+            button.setText(question.getText());
+            for(prozQuestion q : currentTest.getQuestions())
+            {
+                if (q.getQuestionID() == question.getQuestionID())
+                    button.setChecked(true);
+            }
+            button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    for(prozQuestion q : currentTest.getQuestions())
+                    {
+                        if (q.getQuestionID() == question.getQuestionID())
+                        {
+                            if (b)
+                                return;
+                            else
+                            {
+                                currentTest.getQuestions().remove(q);
+                                break;
+                            }
+                        }
+                    }
+                    if (b)
+                        currentTest.getQuestions().add(question);
+                }
+            });
+
+            button.setLayoutParams(new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, RadioGroup.LayoutParams.WRAP_CONTENT, 1f));
+            button.setBackgroundColor(getResources().getColor(R.color.colorTestQuestion));
+            radioGroup.addView(button);
+        }
     }
 
-    public void deleteQuestion(View view) {
-        if (currentTest.getQuestions().isEmpty())
-            return;
-        currentTest.getQuestions().remove(currentTest.getQuestionsSize() - 1);
-        recyclerView.getAdapter().notifyDataSetChanged();
-        recyclerView.scrollToPosition(currentTest.getQuestionsSize() - 1);
-    }
+    public class LoadQuestions extends AsyncTask<Void, Void, List<prozQuestion>> {
+        private ProgressDialog dialog;
 
-    @Override
-    public void onQuestionClick(CardView view, int position) {
-        Intent i = new Intent(getActivity(), QuestionEditActivity.class);
-        i.putExtra("question", currentTest.getQuestions().get(position));
-        startActivity(i);
+        @Override
+        protected void onPreExecute() {
+            dialog = ProgressDialog.show(getActivity(), "", "Ładowanie pytań", true);
+        }
+
+        @Override
+        protected List<prozQuestion> doInBackground(Void... voids) {
+            try {
+                return new MyClient().questions().listQuestions(Credentials.basic(login, password)).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(List<prozQuestion> testList) {
+            dialog.cancel();
+            if (testList == null) {
+                Toast.makeText(getActivity(), "Nie udało się pobrać pytań!", Toast.LENGTH_LONG).show();
+                getActivity().finish();
+                return;
+            }
+            updateQuestions(testList);
+        }
     }
 }
