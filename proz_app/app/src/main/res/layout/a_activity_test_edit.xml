@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:transitionName="testActivity"
-    tools:activity=".activities.admin.TestEditActivity">
+    tools:activity="com.example.projekt_proz.activities.admin.TestEditActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"

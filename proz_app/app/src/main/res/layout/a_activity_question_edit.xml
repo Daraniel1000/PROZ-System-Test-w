@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:transitionName="testActivity"
-    tools:activity=".activities.admin.QuestionEditActivity">
+    tools:activity="com.example.projekt_proz.activities.admin.QuestionEditActivity">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"

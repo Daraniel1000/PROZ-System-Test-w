@@ -1,10 +1,17 @@
 package com.example.projekt_proz.activities.admin;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.projekt_proz.R;
@@ -19,16 +26,25 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class ResultsActivity extends AppCompatActivity  {
-    private RecyclerView recyclerView;
+public class ResultsActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
+    prozTest currentTest;
+    ArrayList<prozResults> pResults;
 
-    private prozTest currentTest;
-    private ArrayList<prozResults> pResults;
+    String login;
+    String password;
+
+    private BottomNavigationView bottomNavigationView;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_activity_results_view);
+
+        login = getIntent().getStringExtra("login");
+        password = getIntent().getStringExtra("password");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         currentTest = (prozTest) getIntent().getSerializableExtra("test");
         if (savedInstanceState == null)
@@ -40,10 +56,12 @@ public class ResultsActivity extends AppCompatActivity  {
             pResults = (ArrayList<prozResults>) savedInstanceState.getSerializable("results");
         }
 
-        recyclerView = findViewById(R.id.recycler);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new AdminResultsViewAdapter(this, pResults));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+        viewPager = findViewById(R.id.viewpager);
+        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        viewPager.addOnPageChangeListener(this);
     }
 
     private static ArrayList<prozResults> populateTestingData(prozTest test) {
@@ -59,62 +77,82 @@ public class ResultsActivity extends AppCompatActivity  {
         outState.putSerializable("results", pResults);
     }
 
-    class SortbyPoints implements Comparator<prozResults>
-    {
-        public int compare(prozResults  a, prozResults b)
-        {
-            return a.getPoints()-b.getPoints();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+
+        return super.onOptionsItemSelected(item);
     }
 
-    class SortbyResultsID implements Comparator<prozResults>
-    {
-        public int compare(prozResults  a, prozResults b)
-        {
-            return a.getResultsID()-b.getResultsID();
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch(menuItem.getItemId()) {
+            case R.id.action_results_stats:
+                viewPager.setCurrentItem(0);
+                break;
+            case R.id.action_results_questions:
+                viewPager.setCurrentItem(1);
+                break;
+            case R.id.action_results_scores:
+                viewPager.setCurrentItem(2);
+                break;
         }
+
+        return true;
     }
-    class SortbyTestID implements Comparator<prozResults>
-    {
-        public int compare(prozResults  a, prozResults b)
-        {
-            return a.getTestID()-b.getTestID();
-        }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
     }
-    class SortbyUserID implements Comparator<prozResults>
-    {
-        public int compare(prozResults  a, prozResults b)
-        {
-            return a.getUserID()-b.getUserID();
-        }
+
+    @Override
+    public void onPageSelected(int position) {
+        bottomNavigationView.getMenu().findItem(R.id.action_results_stats).setChecked(false);
+        bottomNavigationView.getMenu().findItem(R.id.action_results_questions).setChecked(false);
+        bottomNavigationView.getMenu().findItem(R.id.action_results_scores).setChecked(false);
+
+        bottomNavigationView.getMenu().getItem(position).setChecked(true);
     }
-    class SortbyTIME implements Comparator<prozResults>
-    {
-        public int compare(prozResults  a, prozResults b)
-        {
-            return a.getSentDate().compareTo(b.getSentDate());
-        }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
-    public void sortByPoints(View view){
-        Collections.sort(pResults,new SortbyPoints());
-        recyclerView.getAdapter().notifyDataSetChanged();
-    }
-    public void sortByResultID(View view){
-        Collections.sort(pResults,new SortbyResultsID());
-        recyclerView.getAdapter().notifyDataSetChanged();
-    }
-    public void sortByUserID(View view){
-        Collections.sort(pResults,new SortbyUserID());
-        recyclerView.getAdapter().notifyDataSetChanged();
-    }
-    public void sortByTestID(View view){
-        Collections.sort(pResults,new SortbyTestID());
-        recyclerView.getAdapter().notifyDataSetChanged();
-    }
-    public void sortByTime(View view){
-        Collections.sort(pResults,new SortbyTIME());
-        recyclerView.getAdapter().notifyDataSetChanged();
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
 
+    private class ViewPagerAdapter extends FragmentPagerAdapter {
+        public ViewPagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            switch (i) {
+                case 0:
+                    return new ResultsStatsFragment();
+                case 1:
+                    return new ResultsQuestionStatsFragment();
+                case 2:
+                    return new ResultsListFragment();
+                default:
+                    throw new IllegalArgumentException();
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+    }
 }
