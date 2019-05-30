@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f61e7b6-e7c6-4289-833e-bf86be330dd0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/net/MyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/net/MyClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proz_app/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/admin/ResultsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/admin/ResultsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/admin/ResultsStatsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/java/com/example/projekt_proz/activities/admin/ResultsStatsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/res/layout/fragment_results_question_stats.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/layout/fragment_results_question_stats.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proz_app/app/src/main/res/layout/fragment_results_stats.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/app/src/main/res/layout/fragment_results_stats.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proz_app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../proz_app/build.gradle" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -86,8 +90,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="259" column="5" lean-forward="true" selection-start-line="259" selection-start-column="5" selection-end-line="259" selection-end-column="5" />
+            <state relative-caret-position="219">
+              <caret line="247" column="25" lean-forward="true" selection-start-line="247" selection-start-column="25" selection-end-line="247" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -348,33 +352,6 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Run server" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="tomcat7:run" />
-              </list>
-            </option>
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -389,18 +366,17 @@
       <workItem from="1555490561466" duration="1308000" />
       <workItem from="1558515913315" duration="21539000" />
       <workItem from="1558603299802" duration="14871000" />
-      <workItem from="1559037252881" duration="19663000" />
+      <workItem from="1559037252881" duration="20805000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66717000" />
+    <option name="totallyTimeSpent" value="67859000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1062" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49839744" visible="true" weight="0.14239828" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49839744" visible="true" weight="0.14239828" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -415,7 +391,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946466" visible="true" weight="0.33368984" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49946466" visible="true" weight="0.33368984" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005353" side_tool="true" weight="0.3315508" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
@@ -753,8 +729,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="259" column="5" lean-forward="true" selection-start-line="259" selection-start-column="5" selection-end-line="259" selection-end-column="5" />
+        <state relative-caret-position="219">
+          <caret line="247" column="25" lean-forward="true" selection-start-line="247" selection-start-column="25" selection-end-line="247" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

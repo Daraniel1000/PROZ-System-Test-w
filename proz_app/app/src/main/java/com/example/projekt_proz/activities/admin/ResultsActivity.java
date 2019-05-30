@@ -66,8 +66,13 @@ public class ResultsActivity extends AppCompatActivity implements BottomNavigati
 
     private static ArrayList<prozResults> populateTestingData(prozTest test) {
         ArrayList<prozResults> results = new ArrayList<>();
-        results.add(new prozResults(test.getTestID(), 1, new Timestamp(Calendar.getInstance().getTime().getTime()), 5));
-        results.add(new prozResults(test.getTestID(), 2, new Timestamp(Calendar.getInstance().getTime().getTime()), 7));
+        results.add(new prozResults(test.getTestID(), 1, new Timestamp(Calendar.getInstance().getTime().getTime()), 0));
+        results.add(new prozResults(test.getTestID(), 2, new Timestamp(Calendar.getInstance().getTime().getTime()), 1));
+        results.add(new prozResults(test.getTestID(), 3, new Timestamp(Calendar.getInstance().getTime().getTime()), 1));
+        results.add(new prozResults(test.getTestID(), 4, new Timestamp(Calendar.getInstance().getTime().getTime()), 1));
+        results.add(new prozResults(test.getTestID(), 5, new Timestamp(Calendar.getInstance().getTime().getTime()), 2));
+        results.add(new prozResults(test.getTestID(), 6, new Timestamp(Calendar.getInstance().getTime().getTime()), 2));
+        results.add(new prozResults(test.getTestID(), 7, new Timestamp(Calendar.getInstance().getTime().getTime()), 3));
         return results;
     }
 
