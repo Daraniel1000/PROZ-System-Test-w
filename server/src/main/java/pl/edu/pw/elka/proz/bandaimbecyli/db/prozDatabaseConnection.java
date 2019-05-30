@@ -352,6 +352,7 @@ public class prozDatabaseConnection implements TestsDAO {
         checkConnection();
         Statement stmt = databaseConn.createStatement();
         ResultSet rs = stmt.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.ResultsForTestQuery(tID));
+        ResultSet rs2;
         while (rs.next())
         {
             rList.add(new prozResults(
@@ -364,16 +365,15 @@ public class prozDatabaseConnection implements TestsDAO {
             rList.get(i).initAnswers(rs.getFetchSize());
             stmt.close();
             stmt = databaseConn.createStatement();
-            rs.close();
-            rs = stmt.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.AnswerIDsForResultsQuery(rList.get(i).getResultsID()));
-            while(rs.next())
+            rs2 = stmt.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.AnswerIDsForResultsQuery(rList.get(i).getResultsID()));
+            while(rs2.next())
             {
                 rList.get(i).addAnswerID(rs.getInt("ANSWER_ID"));
             }
-            rs.close();
             ++i;
         }
         rs.close();
+        if(rs2!=null) rs2.close();
         return rList;
     }
 
