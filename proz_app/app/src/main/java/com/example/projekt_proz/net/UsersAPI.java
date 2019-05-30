@@ -2,7 +2,7 @@ package com.example.projekt_proz.net;
 
 import com.example.projekt_proz.models.prozUser;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,5 +13,5 @@ public interface UsersAPI {
     Call<prozUser> getMe(@Header("Authorization") String userCreds);
 
     @GET("users")
-    Call<List<prozUser>> getAllUsers(@Header("Authorization") String userCreds);
+    Call<ArrayList<prozUser>> getAllUsers(@Header("Authorization") String userCreds);
 }

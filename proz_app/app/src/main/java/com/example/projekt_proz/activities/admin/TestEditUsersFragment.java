@@ -1,26 +1,22 @@
 package com.example.projekt_proz.activities.admin;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.projekt_proz.R;
+import com.example.projekt_proz.models.prozQuestion;
 import com.example.projekt_proz.models.prozUser;
-import com.example.projekt_proz.models.prozTest;
 import com.example.projekt_proz.net.MyClient;
 
 import java.io.IOException;
@@ -35,6 +31,7 @@ public class TestEditUsersFragment extends Fragment {
     private List<Integer> usersToAdd;
 
     private RadioGroup radioGroup;
+    private ArrayList<prozUser> userList;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -50,7 +47,21 @@ public class TestEditUsersFragment extends Fragment {
 
         radioGroup = view.findViewById(R.id.radio_group);
 
-        new LoadUsers().execute();
+        if (savedInstanceState != null)
+        {
+            userList = (ArrayList<prozUser>) savedInstanceState.getSerializable("userList");
+            updateUsers(userList);
+        }
+        else
+        {
+            new LoadUsers().execute();
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("userList", userList);
     }
 
     private void updateUsers(List<prozUser> usersList) {
@@ -78,7 +89,7 @@ public class TestEditUsersFragment extends Fragment {
         }
     }
 
-    public class LoadUsers extends AsyncTask<Void, Void, List<prozUser>> {
+    public class LoadUsers extends AsyncTask<Void, Void, ArrayList<prozUser>> {
         private ProgressDialog dialog;
 
         @Override
@@ -87,7 +98,7 @@ public class TestEditUsersFragment extends Fragment {
         }
 
         @Override
-        protected List<prozUser> doInBackground(Void... voids) {
+        protected ArrayList<prozUser> doInBackground(Void... voids) {
             try {
                 return new MyClient().users().getAllUsers(Credentials.basic(login, password)).execute().body();
             } catch (IOException e) {
@@ -97,14 +108,15 @@ public class TestEditUsersFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(List<prozUser> testList) {
+        protected void onPostExecute(ArrayList<prozUser> userList) {
             dialog.cancel();
-            if (testList == null) {
+            if (userList == null) {
                 Toast.makeText(getActivity(), "Nie udało się pobrać użytkowników!", Toast.LENGTH_LONG).show();
                 getActivity().finish();
                 return;
             }
-            updateUsers(testList);
+            TestEditUsersFragment.this.userList = userList;
+            updateUsers(userList);
         }
     }
 }

@@ -1,8 +1,10 @@
 package com.example.projekt_proz.activities.admin;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,16 +18,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projekt_proz.R;
 import com.example.projekt_proz.adapters.AdminResultsViewAdapter;
 import com.example.projekt_proz.models.prozResults;
 import com.example.projekt_proz.models.prozTest;
+import com.example.projekt_proz.models.prozUser;
+import com.example.projekt_proz.net.MyClient;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 
 import de.codecrafters.tableview.SortableTableView;
@@ -35,12 +42,17 @@ import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.model.TableColumnWeightModel;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
+import okhttp3.Credentials;
 
 public class ResultsListFragment extends Fragment {
     private static final DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
 
     private prozTest currentTest;
     private ArrayList<prozResults> pResults;
+    private String login, password;
+
+    private SortableTableView tableView;
+    private ArrayList<prozUser> userList = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -50,10 +62,13 @@ public class ResultsListFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        login = ((ResultsActivity) getActivity()).login;
+        password = ((ResultsActivity) getActivity()).password;
+
         currentTest = ((ResultsActivity) getActivity()).currentTest;
         pResults = ((ResultsActivity) getActivity()).pResults;
 
-        SortableTableView tableView = view.findViewById(R.id.tableView);
+        tableView = view.findViewById(R.id.tableView);
         tableView.setColumnCount(3);
 
         TableColumnWeightModel columnModel = new TableColumnWeightModel(3);
@@ -68,6 +83,21 @@ public class ResultsListFragment extends Fragment {
         tableView.setColumnComparator(2, new SortbyPoints());
         tableView.setDataAdapter(new ResultsTableDataAdapter(getActivity(), pResults));
         tableView.sort(1, SortingOrder.ASCENDING);
+
+        if (savedInstanceState != null)
+        {
+            userList = (ArrayList<prozUser>) savedInstanceState.getSerializable("userList");
+        }
+        else
+        {
+            new LoadUsers().execute();
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("userList", userList);
     }
 
     class SortbyUserID implements Comparator<prozResults> {
@@ -107,7 +137,16 @@ public class ResultsListFragment extends Fragment {
 
             switch (columnIndex) {
                 case 0:
-                    textView.setText(String.valueOf(results.getUserID()));
+                    String userDisplayName = results.getUserID() + "?";
+                    for(prozUser user : userList)
+                    {
+                        if (user.getUserId() == results.getUserID())
+                        {
+                            userDisplayName = user.getFirstName() + " " + user.getLastName() + " [" + user.getLogin() + "]";
+                            break;
+                        }
+                    }
+                    textView.setText(userDisplayName);
                     break;
                 case 1:
                     textView.setText(dateFormat.format(results.getSentDate()));
@@ -118,6 +157,38 @@ public class ResultsListFragment extends Fragment {
             }
 
             return textView;
+        }
+    }
+
+    public class LoadUsers extends AsyncTask<Void, Void, List<prozUser>> {
+        private ProgressDialog dialog;
+
+        @Override
+        protected void onPreExecute() {
+            dialog = ProgressDialog.show(getActivity(), "", "Ładowanie użytkowników", true);
+        }
+
+        @Override
+        protected List<prozUser> doInBackground(Void... voids) {
+            try {
+                return new MyClient().users().getAllUsers(Credentials.basic(login, password)).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(List<prozUser> userList) {
+            dialog.cancel();
+            if (userList == null) {
+                Toast.makeText(getActivity(), "Nie udało się pobrać użytkowników!", Toast.LENGTH_LONG).show();
+                getActivity().finish();
+                return;
+            }
+            ResultsListFragment.this.userList.clear();
+            ResultsListFragment.this.userList.addAll(userList);
+            ResultsListFragment.this.tableView.getDataAdapter().notifyDataSetChanged();
         }
     }
 }

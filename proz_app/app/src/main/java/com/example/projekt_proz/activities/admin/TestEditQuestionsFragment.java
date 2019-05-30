@@ -35,6 +35,7 @@ public class TestEditQuestionsFragment extends Fragment {
     private prozTest currentTest;
 
     private RadioGroup radioGroup;
+    private ArrayList<prozQuestion> questionList;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -50,7 +51,21 @@ public class TestEditQuestionsFragment extends Fragment {
 
         radioGroup = view.findViewById(R.id.radio_group);
 
-        new LoadQuestions().execute();
+        if (savedInstanceState != null)
+        {
+            questionList = (ArrayList<prozQuestion>) savedInstanceState.getSerializable("questionList");
+            updateQuestions(questionList);
+        }
+        else
+        {
+            new LoadQuestions().execute();
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("questionList", questionList);
     }
 
     private void updateQuestions(List<prozQuestion> questionList) {
@@ -93,7 +108,7 @@ public class TestEditQuestionsFragment extends Fragment {
         }
     }
 
-    public class LoadQuestions extends AsyncTask<Void, Void, List<prozQuestion>> {
+    public class LoadQuestions extends AsyncTask<Void, Void, ArrayList<prozQuestion>> {
         private ProgressDialog dialog;
 
         @Override
@@ -102,7 +117,7 @@ public class TestEditQuestionsFragment extends Fragment {
         }
 
         @Override
-        protected List<prozQuestion> doInBackground(Void... voids) {
+        protected ArrayList<prozQuestion> doInBackground(Void... voids) {
             try {
                 return new MyClient().questions().listQuestions(Credentials.basic(login, password)).execute().body();
             } catch (IOException e) {
@@ -112,14 +127,15 @@ public class TestEditQuestionsFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(List<prozQuestion> testList) {
+        protected void onPostExecute(ArrayList<prozQuestion> questionList) {
             dialog.cancel();
-            if (testList == null) {
+            if (questionList == null) {
                 Toast.makeText(getActivity(), "Nie udało się pobrać pytań!", Toast.LENGTH_LONG).show();
                 getActivity().finish();
                 return;
             }
-            updateQuestions(testList);
+            TestEditQuestionsFragment.this.questionList = questionList;
+            updateQuestions(questionList);
         }
     }
 }
