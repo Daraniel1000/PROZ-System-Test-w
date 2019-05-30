@@ -3,6 +3,7 @@ package com.example.projekt_proz.activities.admin;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projekt_proz.R;
+import com.example.projekt_proz.activities.WithinTest;
 import com.example.projekt_proz.adapters.AdminResultsViewAdapter;
 import com.example.projekt_proz.models.prozResults;
 import com.example.projekt_proz.models.prozTest;
@@ -39,12 +41,13 @@ import de.codecrafters.tableview.SortableTableView;
 import de.codecrafters.tableview.SortingOrder;
 import de.codecrafters.tableview.TableDataAdapter;
 import de.codecrafters.tableview.TableView;
+import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.model.TableColumnWeightModel;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 import okhttp3.Credentials;
 
-public class ResultsListFragment extends Fragment {
+public class ResultsListFragment extends Fragment implements TableDataClickListener<prozResults> {
     private static final DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
 
     private prozTest currentTest;
@@ -84,6 +87,8 @@ public class ResultsListFragment extends Fragment {
         tableView.setDataAdapter(new ResultsTableDataAdapter(getActivity(), pResults));
         tableView.sort(1, SortingOrder.ASCENDING);
 
+        tableView.addDataClickListener(this);
+
         if (savedInstanceState != null)
         {
             userList = (ArrayList<prozUser>) savedInstanceState.getSerializable("userList");
@@ -98,6 +103,14 @@ public class ResultsListFragment extends Fragment {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable("userList", userList);
+    }
+
+    @Override
+    public void onDataClicked(int rowIndex, prozResults clickedData) {
+        Intent i = new Intent(getActivity(), WithinTest.class);
+        i.putExtra("test", currentTest);
+        i.putExtra("results", clickedData);
+        startActivity(i);
     }
 
     class SortbyUserID implements Comparator<prozResults> {
