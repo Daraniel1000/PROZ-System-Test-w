@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f61e7b6-e7c6-4289-833e-bf86be330dd0" name="Default Changelist" comment="" />
+    <list default="true" id="3f61e7b6-e7c6-4289-833e-bf86be330dd0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,7 +86,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
+            <state relative-caret-position="3930">
               <caret line="275" column="5" selection-start-line="275" selection-start-column="5" selection-end-line="275" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -92,11 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="374" column="21" selection-start-line="374" selection-start-column="21" selection-end-line="374" selection-end-column="21" />
+            <state relative-caret-position="435">
+              <caret line="30" column="131" selection-start-line="30" selection-start-column="131" selection-end-line="30" selection-end-column="131" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,11 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/logic/PointsCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="19" column="49" lean-forward="true" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+            <state relative-caret-position="295">
+              <caret line="24" column="22" lean-forward="true" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#837#838#0" expanded="true" />
@@ -146,6 +149,7 @@
       <find>GetTest(</find>
       <find>getGeneratedKeys</find>
       <find>pl.edu.pw.elka.proz.bandaimbecyli.models.</find>
+      <find>executeUpdate</find>
     </findStrings>
     <replaceStrings>
       <replace>prozTest</replace>
@@ -179,7 +183,6 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/TestResults.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/dao/TestsDAO.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8681c9a9-6a65-477a-87b9-26dc6b14226d/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/AvailableTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/dao/DatabaseTestsDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/generator/TestGenerator.java" />
@@ -198,6 +201,7 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/TestsDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/InMemoryTestsDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8681c9a9-6a65-477a-87b9-26dc6b14226d/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java" />
       </list>
     </option>
@@ -210,6 +214,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="960" />
     <option name="y" value="-1" />
     <option name="width" value="960" />
     <option name="height" value="1062" />
@@ -220,7 +225,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -324,6 +328,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -333,7 +338,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="database.console.LAST_STATE" value="false" />
+    <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -405,17 +410,19 @@
       <workItem from="1558515913315" duration="21539000" />
       <workItem from="1558603299802" duration="14871000" />
       <workItem from="1559037252881" duration="24416000" />
+      <workItem from="1559247069260" duration="332000" />
+      <workItem from="1559247746737" duration="611000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71470000" />
+    <option name="totallyTimeSpent" value="72413000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="960" height="1062" extended-state="6" />
+    <frame x="0" y="-1" width="1920" height="1062" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49839744" visible="true" weight="0.29295155" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49839744" visible="true" weight="0.09689508" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -430,13 +437,13 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946466" visible="true" weight="0.33368984" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946466" weight="0.33582887" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005353" side_tool="true" weight="0.3315508" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32941177" />
-      <window_info anchor="bottom" id="Database Console" order="13" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Database Console" order="13" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.32941177" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -444,7 +451,7 @@
       <window_info anchor="right" id="Maven" order="3" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" weight="0.18254818" />
+      <window_info anchor="right" id="Database" order="6" visible="true" weight="0.18254818" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" />
@@ -454,7 +461,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/TestsServer.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/media/jersey-media-json-jackson/2.28/jersey-media-json-jackson-2.28.jar!/org/glassfish/jersey/jackson/internal/jackson/jaxrs/annotation/JacksonFeatures.class" />
     <entry file="jar://$MAVEN_REPOSITORY$/javax/ws/rs/javax.ws.rs-api/2.0.1/javax.ws.rs-api-2.0.1.jar!/javax/ws/rs/NotFoundException.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/InvalidRequestExceptionMapper.java" />
@@ -470,7 +476,6 @@
     <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/test-framework/jersey-test-framework-core/2.28/jersey-test-framework-core-2.28.jar!/org/glassfish/jersey/test/JerseyTest.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/GeneratedTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/TestResults.java" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8681c9a9-6a65-477a-87b9-26dc6b14226d/console.sql" />
     <entry file="jar:///usr/lib/jvm/java-11-oracle/lib/src.zip!/java.sql/java/sql/ResultSet.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/AvailableTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/dao/DatabaseTestsDAO.java" />
@@ -617,24 +622,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/TestAndUsers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#282#283#0" expanded="true" />
-            <element signature="e#309#310#0" expanded="true" />
-            <element signature="e#351#352#0" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#422#423#0" expanded="true" />
-            <element signature="e#450#451#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#533#534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/TestAndUsers.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/models/ResultsResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -749,18 +737,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/web/TestsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
+        <state relative-caret-position="3930">
           <caret line="275" column="5" selection-start-line="275" selection-start-column="5" selection-end-line="275" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="374" column="21" selection-start-line="374" selection-start-column="21" selection-end-line="374" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -769,12 +747,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/logic/PointsCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="19" column="49" lean-forward="true" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+        <state relative-caret-position="295">
+          <caret line="24" column="22" lean-forward="true" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#837#838#0" expanded="true" />
             <element signature="e#866#867#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-11-oracle/lib/src.zip!/java.sql/java/sql/PreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="95" column="21" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8681c9a9-6a65-477a-87b9-26dc6b14226d/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-11-oracle/lib/src.zip!/java.sql/java/sql/Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="84" column="17" selection-start-line="84" selection-start-column="17" selection-end-line="84" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/edu/pw/elka/proz/bandaimbecyli/db/prozDatabaseConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="30" column="131" selection-start-line="30" selection-start-column="131" selection-end-line="30" selection-end-column="131" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

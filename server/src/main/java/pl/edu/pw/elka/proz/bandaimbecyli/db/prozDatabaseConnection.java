@@ -1,5 +1,6 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.db;
 
+import oracle.jdbc.driver.OracleConnection;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.*;
 
 import java.sql.*;
@@ -26,7 +27,11 @@ public class prozDatabaseConnection implements TestsDAO {
 
     private void checkConnection() throws SQLException {
         if (!testConnection())
+        {
             databaseConn = DriverManager.getConnection("jdbc:oracle:thin:@ora3.elka.pw.edu.pl:1521:ora3inf","mkapusci","mkapusci");
+            ((OracleConnection) databaseConn).setStatementCacheSize(0);
+        }
+
     }
 
     @Override
