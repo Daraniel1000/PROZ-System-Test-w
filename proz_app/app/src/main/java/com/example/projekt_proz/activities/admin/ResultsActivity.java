@@ -1,5 +1,7 @@
 package com.example.projekt_proz.activities.admin;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,22 +15,27 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.projekt_proz.R;
 
 import com.example.projekt_proz.adapters.AdminResultsViewAdapter;
 import com.example.projekt_proz.models.prozResults;
 import com.example.projekt_proz.models.prozTest;
+import com.example.projekt_proz.net.MyClient;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 
+import okhttp3.Credentials;
+
 public class ResultsActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
     prozTest currentTest;
-    ArrayList<prozResults> pResults;
+    ArrayList<prozResults> pResults = new ArrayList<>();
 
     String login;
     String password;
@@ -49,7 +56,7 @@ public class ResultsActivity extends AppCompatActivity implements BottomNavigati
         currentTest = (prozTest) getIntent().getSerializableExtra("test");
         if (savedInstanceState == null)
         {
-            pResults = populateTestingData(currentTest);
+            new FetchResults(login, password, currentTest.getTestID()).execute();
         }
         else
         {
@@ -62,18 +69,6 @@ public class ResultsActivity extends AppCompatActivity implements BottomNavigati
         viewPager = findViewById(R.id.viewpager);
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
         viewPager.addOnPageChangeListener(this);
-    }
-
-    private static ArrayList<prozResults> populateTestingData(prozTest test) {
-        ArrayList<prozResults> results = new ArrayList<>();
-        results.add(new prozResults(test.getTestID(), 1, new Timestamp(Calendar.getInstance().getTime().getTime()), 0));
-        results.add(new prozResults(test.getTestID(), 2, new Timestamp(Calendar.getInstance().getTime().getTime()), 1));
-        results.add(new prozResults(test.getTestID(), 3, new Timestamp(Calendar.getInstance().getTime().getTime()), 1));
-        results.add(new prozResults(test.getTestID(), 4, new Timestamp(Calendar.getInstance().getTime().getTime()), 1));
-        results.add(new prozResults(test.getTestID(), 5, new Timestamp(Calendar.getInstance().getTime().getTime()), 2));
-        results.add(new prozResults(test.getTestID(), 6, new Timestamp(Calendar.getInstance().getTime().getTime()), 2));
-        results.add(new prozResults(test.getTestID(), 7, new Timestamp(Calendar.getInstance().getTime().getTime()), 3));
-        return results;
     }
 
     @Override
@@ -158,6 +153,57 @@ public class ResultsActivity extends AppCompatActivity implements BottomNavigati
         @Override
         public int getCount() {
             return 3;
+        }
+
+        @Override
+        public int getItemPosition(@NonNull Object object) {
+            return POSITION_NONE;
+        }
+    }
+
+
+    public class FetchResults extends AsyncTask<Void, Void, ArrayList<prozResults>>
+    {
+        private final String login;
+        private final String password;
+        private final int testId;
+
+        private ProgressDialog dialog;
+
+        public FetchResults(String login, String password, int testId) {
+            super();
+            this.login = login;
+            this.password = password;
+            this.testId = testId;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            dialog = ProgressDialog.show(ResultsActivity.this, "", "Pobieranie wyników", true);
+        }
+
+        @Override
+        protected ArrayList<prozResults> doInBackground(Void... voids) {
+            try {
+                return new MyClient().tests().getAllResults(testId, Credentials.basic(login, password)).execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<prozResults> results) {
+            dialog.cancel();
+            if (results == null) {
+                Toast.makeText(ResultsActivity.this, "Nie udało się pobrać wyników!", Toast.LENGTH_LONG).show();
+                supportFinishAfterTransition();
+                return;
+            }
+
+            pResults.clear();
+            pResults.addAll(results);
+            viewPager.getAdapter().notifyDataSetChanged();
         }
     }
 }

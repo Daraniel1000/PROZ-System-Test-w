@@ -1,8 +1,10 @@
 package com.example.projekt_proz.net;
 
 import com.example.projekt_proz.models.ResultsResponse;
+import com.example.projekt_proz.models.prozResults;
 import com.example.projekt_proz.models.prozTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,6 +26,9 @@ public interface TestsAPI {
 
     @GET("tests/{testId}/results")
     Call<ResultsResponse> getResults(@Path("testId") int testId, @Header("Authorization") String userCreds);
+
+    @GET("tests/{testId}/allResults")
+    Call<ArrayList<prozResults>> getAllResults(@Path("testId") int testId, @Header("Authorization") String userCreds);
 
     @POST("tests")
     Call<prozTest> addTest(@Body prozTest test, @Header("Authorization") String userCreds);
