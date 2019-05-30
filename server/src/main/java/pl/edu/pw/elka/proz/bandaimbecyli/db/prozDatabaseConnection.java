@@ -16,6 +16,7 @@ public class prozDatabaseConnection implements TestsDAO {
         try {
             Statement stmt = databaseConn.createStatement();
             stmt.executeQuery("select 1 from dual");
+            stmt.close();
             return true;
         }
         catch(SQLRecoverableException ex) {
