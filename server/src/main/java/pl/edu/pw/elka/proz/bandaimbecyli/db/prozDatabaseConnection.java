@@ -1,8 +1,6 @@
 package pl.edu.pw.elka.proz.bandaimbecyli.db;
 
 import pl.edu.pw.elka.proz.bandaimbecyli.models.*;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozUser;
-import pl.edu.pw.elka.proz.bandaimbecyli.models.prozResults;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -345,7 +343,8 @@ public class prozDatabaseConnection implements TestsDAO {
         preparedStmt.close();
     }
 
-    public ArrayList<pl.edu.pw.elka.proz.bandaimbecyli.models.prozResults> GetResultsForTest(int tID) throws SQLException
+    @Override
+    public ArrayList<prozResults> GetResultsForTest(int tID) throws SQLException
     {
         ArrayList<prozResults> rList = new ArrayList<prozResults>();
         int i=0;
@@ -362,18 +361,18 @@ public class prozDatabaseConnection implements TestsDAO {
                     rs.getInt("POINTS")
             ));
             rList.get(i).initAnswers(rs.getFetchSize());
-            stmt.close();
-            stmt = databaseConn.createStatement();
-            rs.close();
-            rs = stmt.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.AnswerIDsForResultsQuery(rList.get(i).getResultsID()));
-            while(rs.next())
+            Statement stmt2 = databaseConn.createStatement();
+            ResultSet rs2 = stmt2.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.AnswerIDsForResultsQuery(rList.get(i).getResultsID()));
+            while(rs2.next())
             {
-                rList.get(i).addAnswerID(rs.getInt("ANSWER_ID"));
+                rList.get(i).addAnswerID(rs2.getInt("ANSWER_ID"));
             }
-            rs.close();
+            rs2.close();
+            stmt2.close();
             ++i;
         }
         rs.close();
+        stmt.close();
         return rList;
     }
 

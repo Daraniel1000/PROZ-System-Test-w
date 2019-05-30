@@ -259,6 +259,22 @@ public class TestsService {
         return new ResultsResponse(results, correctAnswers);
     }
 
+    @Path("/tests/{testId}/allResults")
+    @GET
+    public ArrayList<prozResults> getAllResults(@PathParam("testId") int testId, @HeaderParam("Authorization") String auth) throws SQLException {
+        prozUser user = checkUser(auth);
+        if (user == null)
+            throw new ForbiddenException("Invalid user");
+        if (!user.isAdmin())
+            throw new ForbiddenException("Not an admin");
+
+        prozTest test = dao.GetTest(testId);
+        if (test == null)
+            throw new NotFoundException("No such test found");
+
+        return dao.GetResultsForTest(test.getTestID());
+    }
+
     private prozUser checkUser(String authString) throws SQLException {
         if (authString == null)
             return null;

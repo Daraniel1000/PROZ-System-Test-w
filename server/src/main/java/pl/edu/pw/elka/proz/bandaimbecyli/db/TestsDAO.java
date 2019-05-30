@@ -37,4 +37,6 @@ public interface TestsDAO {
     ArrayList<prozUser> getAllUsers() throws SQLException;
 
     void addUserToTest(int uID, int tID) throws SQLException;
+
+    ArrayList<prozResults> GetResultsForTest(int tID) throws SQLException;
 }
