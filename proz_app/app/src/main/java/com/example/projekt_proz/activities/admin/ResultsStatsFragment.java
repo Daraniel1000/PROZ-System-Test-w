@@ -70,7 +70,6 @@ public class ResultsStatsFragment extends Fragment {
             entries.add(new BarEntry(i, points[i]));
 
         BarDataSet dataSet = new BarDataSet(entries, "Punkty");
-        //dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         dataSet.setColor(Color.parseColor("#3498db"));
 
         BarData data = new BarData(dataSet);

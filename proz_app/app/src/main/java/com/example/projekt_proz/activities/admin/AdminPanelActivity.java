@@ -66,6 +66,8 @@ public class AdminPanelActivity extends AppCompatActivity
             fragmentClass = FragmentTestList.class;
         } else if (id == R.id.nav_questions) {
             fragmentClass = FragmentQuestionList.class;
+        } else if (id == R.id.nav_logout) {
+            supportFinishAfterTransition();
         }
         if(fragmentClass != null) {
             changeView(fragmentClass);

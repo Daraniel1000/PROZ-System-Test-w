@@ -16,6 +16,10 @@
             android:id="@+id/nav_questions"
             android:icon="@drawable/ic_menu_questions"
             android:title="Baza pytań" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_logout"
+            android:title="Wyloguj się" />
     </group>
 
 </menu>
