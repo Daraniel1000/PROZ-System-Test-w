@@ -2,6 +2,7 @@ package pl.edu.pw.elka.proz.bandaimbecyli.db;
 
 import pl.edu.pw.elka.proz.bandaimbecyli.models.*;
 import pl.edu.pw.elka.proz.bandaimbecyli.models.prozUser;
+import pl.edu.pw.elka.proz.bandaimbecyli.models.prozResults;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -342,6 +343,38 @@ public class prozDatabaseConnection implements TestsDAO {
         preparedStmt.setInt(2, tID);
         preparedStmt.execute();
         preparedStmt.close();
+    }
+
+    public ArrayList<pl.edu.pw.elka.proz.bandaimbecyli.models.prozResults> GetResultsForTest(int tID) throws SQLException
+    {
+        ArrayList<prozResults> rList = new ArrayList<prozResults>();
+        int i=0;
+        checkConnection();
+        Statement stmt = databaseConn.createStatement();
+        ResultSet rs = stmt.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.ResultsForTestQuery(tID));
+        while (rs.next())
+        {
+            rList.add(new prozResults(
+                    rs.getInt("RESULTS_ID"),
+                    tID,
+                    rs.getInt("USER_ID"),
+                    rs.getTimestamp("SENT_DATE"),
+                    rs.getInt("POINTS")
+            ));
+            rList.get(i).initAnswers(rs.getFetchSize());
+            stmt.close();
+            stmt = databaseConn.createStatement();
+            rs.close();
+            rs = stmt.executeQuery(pl.edu.pw.elka.proz.bandaimbecyli.db.prozQueryGenerator.AnswerIDsForResultsQuery(rList.get(i).getResultsID()));
+            while(rs.next())
+            {
+                rList.get(i).addAnswerID(rs.getInt("ANSWER_ID"));
+            }
+            rs.close();
+            ++i;
+        }
+        rs.close();
+        return rList;
     }
 
 }

@@ -87,4 +87,9 @@ class prozQueryGenerator {
         return "select * from users";
     }
 
+    static String ResultsForTestQuery(int tID)
+    {
+        return "select * from results where test_ID = " + tID;
+    }
+
 }
