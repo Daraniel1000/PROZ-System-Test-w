@@ -46,9 +46,11 @@ public class prozDatabaseConnection implements TestsDAO {
                     rs.getBoolean("ADMIN")
             );
             rs.close();
+            stmt.close();
             return user;
         }
         rs.close();
+        stmt.close();
         return null;
     }
 
@@ -70,6 +72,7 @@ public class prozDatabaseConnection implements TestsDAO {
                 rs.getBoolean("isComplete")));
         }
         rs.close();
+        stmt.close();
         return testList;
     }
 
@@ -92,6 +95,7 @@ public class prozDatabaseConnection implements TestsDAO {
                     rs.getString("TEXT")));
         }
         rs.close();
+        stmt.close();
         return qList;
     }
 
@@ -114,6 +118,7 @@ public class prozDatabaseConnection implements TestsDAO {
                     rs.getString("TEXT")));
         }
         rs.close();
+        stmt.close();
         return aList;
     }
 
@@ -130,9 +135,11 @@ public class prozDatabaseConnection implements TestsDAO {
                     rs.getTimestamp("FINISH_DATE"),
                     rs.getInt("TYPE"));
             rs.close();
+            stmt.close();
             return test;
         }
         rs.close();
+        stmt.close();
         return null;
     }
 
@@ -149,6 +156,7 @@ public class prozDatabaseConnection implements TestsDAO {
         ResultSet rs = preparedStmt.getGeneratedKeys();
         rs.next();
         Results.setResultsID(rs.getInt(1));
+        rs.close();
         preparedStmt.close();
         for(int i=0; i<Results.getAnswerIDSize(); ++i)
         {
@@ -167,6 +175,7 @@ public class prozDatabaseConnection implements TestsDAO {
         ResultSet rs = stmt.executeQuery(prozQueryGenerator.ResultsForUserTestQuery(tID, uID));
         Boolean b = rs.next();
         rs.close();
+        stmt.close();
         return b;
     }
 
@@ -195,9 +204,11 @@ public class prozDatabaseConnection implements TestsDAO {
                 Results.addAnswerID(rs.getInt("ANSWER_ID"));
             }
             rs.close();
+            stmt.close();
             return Results;
         }
         rs.close();
+        stmt.close();
         return null;
     }
 
@@ -269,6 +280,7 @@ public class prozDatabaseConnection implements TestsDAO {
             ));
         }
         rs.close();
+        stmt.close();
         return qList;
     }
 
@@ -290,6 +302,7 @@ public class prozDatabaseConnection implements TestsDAO {
             ));
         }
         rs.close();
+        stmt.close();
         return tList;
     }
 
@@ -304,9 +317,11 @@ public class prozDatabaseConnection implements TestsDAO {
                     rs.getInt("TYPE"),
                     rs.getString("TEXT"));
             rs.close();
+            stmt.close();
             return q;
         }
         rs.close();
+        stmt.close();
         return null;
     }
 
@@ -329,6 +344,7 @@ public class prozDatabaseConnection implements TestsDAO {
             ));
         }
         rs.close();
+        stmt.close();
         return uList;
     }
 
