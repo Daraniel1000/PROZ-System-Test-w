@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.projekt_proz.R;
+import com.example.projekt_proz.models.prozAnswer;
+import com.example.projekt_proz.models.prozQuestion;
 import com.example.projekt_proz.models.prozResults;
 import com.example.projekt_proz.models.prozTest;
 import com.github.mikephil.charting.charts.BarChart;
@@ -62,13 +64,29 @@ public class ResultsQuestionStatsFragment extends Fragment {
 
         chart.getAxisRight().setEnabled(false);
 
-        int[] points = new int[currentTest.getQuestionsSize()+1];
+        int[] points = new int[currentTest.getQuestionsSize()];
         for(prozResults results : pResults)
-            points[results.getPoints()] ++;
+        {
+            for (int i = 0; i < currentTest.getQuestionsSize(); i++)
+            {
+                prozQuestion question = currentTest.getQuestion(i);
+                boolean correct = true;
+                for(prozAnswer a : question.getAnswers())
+                {
+                    if (a.isCorrect() != results.getAnswerID().contains(a.getAnswerID()))
+                    {
+                        correct = false;
+                        break;
+                    }
+                }
+                if (correct)
+                    points[i] ++;
+            }
+        }
 
         List<BarEntry> entries = new ArrayList<>();
         for(int i = 0; i < points.length; i++)
-            entries.add(new BarEntry(i, points[i]));
+            entries.add(new BarEntry(i + 1, points[i]));
 
         BarDataSet dataSet = new BarDataSet(entries, "Punkty");
         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
