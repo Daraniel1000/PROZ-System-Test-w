@@ -4,8 +4,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class MyClient {
-    private static final String baseUrl = "http://10.42.0.1:8080";
-    //private static final String baseUrl = "http://krzysh.pl:8123";
+    //private static final String baseUrl = "http://10.42.0.1:8080";
+    private static final String baseUrl = "http://krzysh.pl:8123";
 
     private Retrofit retrofit;
 
