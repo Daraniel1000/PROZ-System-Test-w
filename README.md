@@ -1,3 +1,6 @@
+# Projekt z PROZ - System testów
+Projekt składa się z serwera, aplikacji mobilnej oraz bazy danych na serwerze galera.ii.pw.edu.pl
+
 ## Server install
 
 ```bash
